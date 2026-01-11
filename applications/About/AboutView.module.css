@@ -1,7 +1,8 @@
+/* Base Typography and Layout */
 .home-title {
   display: flex;
   justify-content: center;
-  font-family: 'Century Schoolbook', sans-serif;
+  font-family: 'Century Schoolbook', serif;
   font-size: 2rem;
   text-transform: uppercase;
   letter-spacing: -1px;
@@ -11,13 +12,14 @@
 .home-subtitle {
   display: flex;
   justify-content: center;
-  font-family: 'Century Schoolbook', sans-serif;
+  font-family: 'Century Schoolbook', serif;
   font-size: 1rem;
   text-transform: uppercase;
   font-weight: normal;
   margin-top: 0.5rem;
 }
 
+/* Navigation */
 .navigation {
   width: 12rem;
   min-width: 12rem;
@@ -36,20 +38,22 @@
   font-size: 1rem;
 }
 
+/* Page Headers */
 .page-h1 {
-  font-family: 'Century Schoolbook', sans-serif;
+  font-family: 'Century Schoolbook', serif;
   font-weight: normal;
   font-size: 2rem;
 }
 
 .logo-part {
   display: block;
-  font-family: 'Century Schoolbook', sans-serif;
+  font-family: 'Century Schoolbook', serif;
   font-size: 1.5rem;
   letter-spacing: -1px;
   text-transform: uppercase;
 }
 
+/* Page Layouts */
 .home-page {
   display: flex;
 }
@@ -63,10 +67,56 @@
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  padding: 1.5rem;
+  padding: 2rem;
   overflow: auto;
 }
 
+.subpage-content h1 {
+  font-family: 'Century Schoolbook', serif;
+  font-weight: normal;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #8b6f47;
+  padding-bottom: 1rem;
+}
+
+.subpage-content h2 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-family: 'Century Schoolbook', serif;
+  font-size: 1.8rem;
+  font-weight: normal;
+  color: #3d2817;
+}
+
+.subpage-content h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-family: 'Century Schoolbook', serif;
+  font-size: 1.3rem;
+  font-weight: normal;
+  color: #5a4a3a;
+}
+
+.subpage-content p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.subpage-content ul {
+  list-style: disc;
+  padding: 0 0 0 2rem;
+  margin: 1rem 0;
+}
+
+.subpage-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+/* Home Page */
 .subpage-home {
   display: flex;
   flex-direction: column;
@@ -90,59 +140,68 @@
   padding: 15px 10px;
 }
 
-.subpage-content h2 {
-  margin-top: 1rem;
-}
-
-.subpage-content ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
+/* Project Buttons */
 .project-button {
-  border-radius: 0;
-  margin-top: 0.5rem;
-  padding: 10px 15px;
-  border: none;
-  color: #000;
-  background-color: #dcdcdc;
-  font-size: 1.05em;
-  box-shadow: inset -1px -1px #535353,inset 1px 1px #fff,inset -2px -2px grey,inset 2px 2px #dfdfdf;
+  border-radius: 8px;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  padding: 16px 20px;
+  border: 1px solid #d0d0d0;
+  color: #2c2c2c;
+  background-color: #ffffff;
+  font-size: 1.1em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   user-select: none;
   cursor: pointer;
   white-space: nowrap;
-  font-family: 'Noto Serif Toto', sans-serif;
+  font-family: 'Century Schoolbook', serif;
   display: flex;
-  align-items: stretch;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  width: 100%;
+}
 
+.project-button:hover {
+  background-color: #f5f1ed;
+  box-shadow: 0 4px 16px rgba(139, 111, 71, 0.2);
+  transform: translateY(-2px);
+  border-color: #8b6f47;
+}
+
+.project-button:active {
+  background-color: #ede9e3;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transform: translateY(0);
 }
 
 .project-button div {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding-right: 5px;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  background-color: #f0e8df;
+  border-radius: 6px;
+  padding: 6px;
 }
 
 .project-button span {
-  line-height: 32px;
+  line-height: 1.4;
   display: block;
+  text-align: left;
+  font-weight: 500;
+  color: #3d2817;
 }
 
 .project-button img {
   image-rendering: pixelated;
+  width: 24px;
+  height: 24px;
 }
 
-.project-button:hover {
-  background-color: #c9c9c9;
-}
-
-.project-button:active {
-  background-color: #dcdcdc;
-  box-shadow: inset -1px -1px #fff,inset 1px 1px #535353,inset -2px -2px #dfdfdf,inset 2px 2px grey
-}
-
+/* Link Buttons */
 .button-link {
   border: none;
   padding: 0;
@@ -158,6 +217,7 @@
   text-decoration: underline;
 }
 
+/* Download Section */
 .download-cv hr {
   display: block;
   width: 100%;
@@ -179,6 +239,7 @@
   margin: 0;
 }
 
+/* Legacy Image Containers */
 .image-container {
   display: block;
   float: right;
@@ -216,4 +277,413 @@
 .project-video {
   min-width: 300px;
   width: 100%;
+}
+
+/* ========================================
+   PROJECT PAGE STYLES
+   ======================================== */
+
+/* Project Page Layout */
+.project-page {
+  min-height: 100vh;
+  background: #faf9f7;
+  padding: 40px 20px;
+}
+
+.project-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Project Header */
+.project-header {
+  margin-bottom: 48px;
+  padding-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  border-bottom: 1px solid #e5ddd0;
+}
+
+.project-header h1 {
+  font-family: 'Century Schoolbook', serif;
+  font-size: 2.2rem;
+  color: #1a1a1a;
+  margin: 0;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+  flex: 1;
+  min-width: 250px;
+}
+
+/* Back Button */
+.back-button {
+  background: #3d2817;
+  color: #faf9f7;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Century Schoolbook', serif;
+  font-weight: normal;
+  letter-spacing: 0.3px;
+}
+
+.back-button:hover {
+  background: #5a4a3a;
+  transform: translateX(-3px);
+}
+
+.back-button:active {
+  transform: translateX(-1px);
+}
+
+/* Project Content Base */
+.project-content {
+  font-family: 'Century Schoolbook', serif;
+  line-height: 1.7;
+  color: #333;
+}
+
+.project-content > h3:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.project-content h3 {
+  font-size: 1.2rem;
+  color: #1a1a1a;
+  margin: 40px 0 16px 0;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+  padding-top: 32px;
+  border-top: 1px solid #e5ddd0;
+}
+
+.project-content h3:first-child {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.project-content h4 {
+  font-size: 0.95rem;
+  color: #3d2817;
+  margin: 24px 0 12px 0;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.project-content p {
+  margin-bottom: 14px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.project-content ul {
+  margin: 14px 0;
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.project-content li {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.project-content strong {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+/* Content Cards - Clean, Minimal Style */
+.content-card {
+  background: transparent;
+  padding: 0;
+  margin: 40px 0;
+  border: none;
+}
+
+.content-card:first-of-type {
+  margin-top: 0;
+}
+
+.content-card h3 {
+  margin: 0 0 16px 0 !important;
+  padding-top: 32px !important;
+  padding-bottom: 0 !important;
+  border-top: 1px solid #e5ddd0 !important;
+  border-bottom: none !important;
+  font-size: 1.2rem !important;
+  color: #1a1a1a !important;
+  font-family: 'Century Schoolbook', serif !important;
+  font-weight: normal !important;
+  letter-spacing: 0.5px !important;
+}
+
+.content-card:first-of-type h3 {
+  border-top: none !important;
+  padding-top: 0 !important;
+}
+
+.content-card h4 {
+  margin: 24px 0 12px 0 !important;
+  color: #3d2817 !important;
+  font-size: 0.95rem !important;
+  padding-bottom: 0 !important;
+  font-weight: 500 !important;
+  font-style: italic !important;
+}
+
+.content-card h4:first-child {
+  margin-top: 0 !important;
+}
+
+.content-card p {
+  margin-bottom: 14px !important;
+  font-size: 0.95rem !important;
+  line-height: 1.7 !important;
+  color: #333 !important;
+}
+
+.content-card ul {
+  margin: 14px 0 0 0 !important;
+  padding-left: 20px !important;
+  list-style: disc !important;
+}
+
+.content-card li {
+  margin-bottom: 10px !important;
+  line-height: 1.7 !important;
+  font-size: 0.95rem !important;
+  color: #333 !important;
+}
+
+/* Hardware Card - Matching Content Card Style */
+.hardware-card {
+  background: transparent;
+  padding: 0;
+  margin: 40px 0;
+  border: none;
+}
+
+.hardware-card h3 {
+  margin: 0 0 16px 0 !important;
+  padding-top: 32px !important;
+  padding-bottom: 0 !important;
+  border-top: 1px solid #e5ddd0 !important;
+  border-bottom: none !important;
+  font-size: 1.2rem !important;
+  color: #1a1a1a !important;
+  font-family: 'Century Schoolbook', serif !important;
+  font-weight: normal !important;
+  letter-spacing: 0.5px !important;
+}
+
+.hardware-card h4 {
+  color: #3d2817 !important;
+  margin: 24px 0 12px 0 !important;
+  font-size: 0.95rem !important;
+  padding-bottom: 0 !important;
+  border-bottom: none !important;
+  font-weight: 500 !important;
+  font-style: italic !important;
+}
+
+.hardware-card h4:first-child {
+  margin-top: 0 !important;
+}
+
+.hardware-card ul {
+  margin: 14px 0 0 0 !important;
+  padding-left: 20px !important;
+  list-style: disc !important;
+}
+
+.hardware-card li {
+  margin-bottom: 10px !important;
+  line-height: 1.7 !important;
+  font-size: 0.95rem !important;
+  color: #333 !important;
+}
+
+/* Two-Column Card Grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin: 40px 0;
+}
+
+.card-grid .content-card {
+  margin: 0;
+}
+
+.card-grid .content-card h3 {
+  border-top: none !important;
+  padding-top: 0 !important;
+}
+
+/* Project Media - Images and Videos */
+.project-media {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.project-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #e5ddd0;
+  display: block;
+  transition: border-color 0.2s ease;
+}
+
+.project-image:hover {
+  border-color: #d0c4af;
+}
+
+.project-video {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #e5ddd0;
+  background: #1a1a1a;
+  display: block;
+}
+
+.project-media figcaption {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: #777;
+  font-style: italic;
+  padding: 0 20px;
+  line-height: 1.5;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+  .project-page {
+    padding: 20px 15px;
+  }
+
+  .project-header {
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+  }
+
+  .project-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .back-button {
+    width: 100%;
+    padding: 12px 20px;
+  }
+
+  .project-content h3,
+  .content-card h3,
+  .hardware-card h3 {
+    font-size: 1.1rem !important;
+    margin: 32px 0 14px 0 !important;
+    padding-top: 24px !important;
+  }
+
+  .project-content h4,
+  .content-card h4,
+  .hardware-card h4 {
+    font-size: 0.9rem !important;
+    margin: 20px 0 10px 0 !important;
+  }
+
+  .project-content p,
+  .project-content li,
+  .content-card p,
+  .content-card li,
+  .hardware-card li {
+    font-size: 0.9rem !important;
+  }
+
+  .project-media {
+    margin: 30px 0;
+  }
+
+  .project-media figcaption {
+    padding: 0 10px;
+    font-size: 0.8rem;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .project-content h3,
+  .content-card h3,
+  .hardware-card h3 {
+    font-size: 1rem !important;
+  }
+
+  .project-content h4,
+  .content-card h4,
+  .hardware-card h4 {
+    font-size: 0.85rem !important;
+  }
+
+  .back-button {
+    font-size: 0.85rem;
+    padding: 10px 16px;
+  }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+  .project-page {
+    background: white;
+    padding: 0;
+  }
+
+  .back-button {
+    display: none;
+  }
+
+  .project-header {
+    border-bottom: 2px solid #333;
+  }
+
+  .project-image,
+  .project-video {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  .project-content h3,
+  .content-card,
+  .hardware-card {
+    page-break-after: avoid;
+  }
+
+  .content-card h3,
+  .hardware-card h3 {
+    border-top: 1px solid #999 !important;
+  }
 }

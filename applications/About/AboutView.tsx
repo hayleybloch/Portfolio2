@@ -4,7 +4,7 @@ import styles from './AboutView.module.css';
 import { BaseApplicationManager } from '../ApplicationManager';
 import { useTranslation } from 'react-i18next';
 import { TFunction } from 'i18next';
-import { ProjectWeek1, ProjectWeek2, ProjectWeek3, ProjectWeek4, ProjectWeek5, ProjectWeek6, ProjectWeek7 } from './Projects';
+import { ProjectAnimatronicHead, ProjectWoodenRecordPlayer, ProjectFlameThrowerGlove, ProjectRockPaperScissorsHand } from './Projects';
 import getPublicPath from '@/lib/getPublicPath';
 import { ScreenResolution } from '@/apis/Screen/ScreenService';
 
@@ -13,13 +13,10 @@ type SubView = (
   'about' |
   'experience' |
   'projects' |
-  'project-week1' |
-  'project-week2' |
-  'project-week3' |
-  'project-week4' |
-  'project-week5' |
-  'project-week6' |
-  'project-week7' |
+  'project-animatronic-head' |
+  'project-record-player' |
+  'project-flame-thrower' |
+  'project-rock-paper-scissors' |
   'contact'
 );
 
@@ -240,13 +237,10 @@ function ProjectsSubView(params: SubViewParams) {
         <h1 className={styles['page-h1']}>{t("about.navigation.projects")}</h1>
 
         <ul>
-          <li>{ProjectButton('Week 1 - Computer-Aided Design', 'project-week1', '/icons/project-portfolio-2024.png')}</li>
-          <li>{ProjectButton('Week 2 - Computer-Controlled Cutting', 'project-week2', '/icons/project-pcparts.png')}</li>
-          <li>{ProjectButton('Week 3 - Electronics Production', 'project-week3', '/icons/project-redis.png')}</li>
-          <li>{ProjectButton('Week 4 - 3D Printing & Scanning', 'project-week4', '/icons/project-t-bot.png')}</li>
-            <li>{ProjectButton('Week 5 - Prototype & Test', 'project-week5', '/icons/printer.png')}</li>
-              <li>{ProjectButton('Week 6 - Electronics Production', 'project-week6', '/icons/skills/soldering.svg')}</li>
-        <li>{ProjectButton('Week 7 - Computer-Controlled Machining', 'project-week7', '/icons/project-pcparts.png')}</li>
+          <li>{ProjectButton('Animatronic Humanoid Head', 'project-animatronic-head', '/icons/project-portfolio-2024.png')}</li>
+          <li>{ProjectButton('Wooden Record Player', 'project-record-player', '/icons/project-pcparts.png')}</li>
+          <li>{ProjectButton('Flame Thrower Glove', 'project-flame-thrower', '/icons/skills/soldering.svg')}</li>
+          <li>{ProjectButton('Rock-Paper-Scissors Hand', 'project-rock-paper-scissors', '/icons/project-t-bot.png')}</li>
         </ul>
       </div>
     </div>
@@ -259,13 +253,10 @@ function RenderSubView(view: SubView, params: SubViewParams): JSX.Element {
     case 'about': return AboutSubView(params);
     case 'experience': return ExperienceSubView(params);
     case 'projects': return ProjectsSubView(params);
-    case 'project-week1': return ProjectWeek1(params);
-    case 'project-week2': return ProjectWeek2(params);
-    case 'project-week3': return ProjectWeek3(params);
-    case 'project-week4': return ProjectWeek4(params);
-      case 'project-week5': return ProjectWeek5(params);
-      case 'project-week6': return ProjectWeek6(params);
-    case 'project-week7': return ProjectWeek7(params);
+    case 'project-animatronic-head': return ProjectAnimatronicHead(params);
+    case 'project-record-player': return ProjectWoodenRecordPlayer(params);
+    case 'project-flame-thrower': return ProjectFlameThrowerGlove(params);
+    case 'project-rock-paper-scissors': return ProjectRockPaperScissorsHand(params);
   }
   
   return <></>;
