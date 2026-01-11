@@ -14,9 +14,24 @@ export function ProjectRockPaperScissorsHand(params: SubViewParams) {
       </p>
 
       <ProjectImage 
-        src="rps-arm-hero.jpg" 
-        alt="Full view of the rock-paper-scissors mechanical arm"
-        caption="The completed rock-paper-scissors mechanical arm system"
+        src="images/RockPaperScissorsHand/camera-arm-mirror.MOV" 
+        alt="Camera and arm mirror video"
+        caption="Camera and arm mirror video"
+        isVideo
+      />
+
+      <ProjectImage 
+        src="images/RockPaperScissorsHand/mechanical-arm-test.MOV" 
+        alt="Mechanical arm test"
+        caption="Mechanical arm test"
+        isVideo
+      />
+
+      <ProjectImage 
+        src="images/RockPaperScissorsHand/rock-paper-scissors.MOV" 
+        alt="Rock paper scissors gameplay"
+        caption="Rock paper scissors gameplay"
+        isVideo
       />
 
       <div className={styles['content-card']}>
@@ -43,12 +58,6 @@ export function ProjectRockPaperScissorsHand(params: SubViewParams) {
         </p>
       </div>
 
-      <ProjectImage 
-        src="rps-arm-vision.jpg" 
-        alt="Camera view showing hand gesture detection"
-        caption="Real-time computer vision pipeline detecting hand gestures"
-      />
-
       <div className={styles['content-card']}>
         <h3>How It Works</h3>
         <p>
@@ -61,13 +70,6 @@ export function ProjectRockPaperScissorsHand(params: SubViewParams) {
           The emphasis is on embodiment—software decisions are expressed through motion rather than screens. 
           The mechanical hand physically performs its response, making the interaction tangible and immediate.
         </p>
-
-        <ProjectImage 
-          src="rps-arm-demo.mp4" 
-          alt="Demonstration of the mechanical arm playing rock-paper-scissors"
-          caption="Video: Complete game sequence from gesture detection to mechanical response"
-          isVideo
-        />
       </div>
 
       <div className={styles['hardware-card']}>

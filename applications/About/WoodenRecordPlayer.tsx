@@ -14,9 +14,23 @@ export function ProjectWoodenRecordPlayer(params: SubViewParams) {
       </p>
 
       <ProjectImage 
-        src="hero-record-player.jpg" 
+        src="images/WoodenRecordPlayer/Wooden-Record-Player.JPG" 
         alt="Full view of the wooden digital record player"
         caption="The completed wooden digital record player"
+      />
+
+      <ProjectImage 
+        src="images/WoodenRecordPlayer/First-record-test.MOV" 
+        alt="First record test"
+        caption="First record test"
+        isVideo
+      />
+
+      <ProjectImage 
+        src="images/WoodenRecordPlayer/swapable-records.MOV" 
+        alt="Swappable records demonstration"
+        caption="Swappable records demonstration"
+        isVideo
       />
 
       <div className={styles['content-card']}>
@@ -39,12 +53,6 @@ export function ProjectWoodenRecordPlayer(params: SubViewParams) {
           intuitive. All components are hidden within the wooden enclosure, allowing the object to present 
           as furniture rather than consumer technology.
         </p>
-
-        <ProjectImage 
-          src="wooden-disk-closeup.jpg" 
-          alt="Close-up of laser-engraved wooden record disk"
-          caption="Custom laser-engraved wooden disk with embedded RFID tag"
-        />
       </div>
 
       <div className={styles['content-card']}>
@@ -57,13 +65,6 @@ export function ProjectWoodenRecordPlayer(params: SubViewParams) {
           the music and stops rotation. Returning it resumes playback seamlessly, just like a traditional 
           record player.
         </p>
-
-        <ProjectImage 
-          src="record-player-demo.mp4" 
-          alt="Demonstration of the record player in use"
-          caption="Video: Placing disk, moving tonearm, and playing music"
-          isVideo
-        />
       </div>
 
       <div className={styles['hardware-card']}>

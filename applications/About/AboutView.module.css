@@ -67,7 +67,7 @@
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  padding: 2rem;
+  padding: 3rem;
   overflow: auto;
 }
 
@@ -541,19 +541,24 @@
   width: 100%;
   max-width: 100%;
   height: auto;
+  max-height: 600px;
+  object-fit: contain;
   border: 1px solid #e5ddd0;
   display: block;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
+  cursor: pointer;
 }
 
 .project-image:hover {
   border-color: #d0c4af;
+  opacity: 0.95;
 }
 
 .project-video {
   width: 100%;
   max-width: 100%;
   height: auto;
+  max-height: 600px;
   border: 1px solid #e5ddd0;
   background: #1a1a1a;
   display: block;

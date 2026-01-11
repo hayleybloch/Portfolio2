@@ -38,9 +38,9 @@ export class AboutApplication extends Application {
   }
 
   private createNewWindow(event: ApplicationOpenEvent): Window {
-    const y       = 100;
-    const width   = window.innerWidth * 0.75;
-    const height  = window.innerHeight * 0.75 - y;
+    const y       = 50;
+    const width   = window.innerWidth * 0.85;
+    const height  = window.innerHeight * 0.85 - y;
     const x       = (window.innerWidth - width) / 2;
 
     return this.compositor.open({

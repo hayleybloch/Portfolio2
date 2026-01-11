@@ -14,9 +14,24 @@ export function ProjectFlameThrowerGlove(params: SubViewParams) {
       </p>
 
       <ProjectImage 
-        src="flame-glove-hero.jpg" 
-        alt="Full view of the punch-activated flame thrower glove"
-        caption="The completed punch-activated flame thrower glove"
+        src="images/FlameThrowerGlove/final_prototype_build_video_web.mp4" 
+        alt="Final prototype build video"
+        caption="Final prototype build video"
+        isVideo
+      />
+
+      <ProjectImage 
+        src="images/FlameThrowerGlove/flame_thrower_test_video_web.mp4" 
+        alt="Flame thrower test video"
+        caption="Flame thrower test video"
+        isVideo
+      />
+
+      <ProjectImage 
+        src="images/FlameThrowerGlove/glove_prototpe_video_web.mp4" 
+        alt="Glove prototype video"
+        caption="Glove prototype video"
+        isVideo
       />
 
       <div className={styles['content-card']}>
@@ -41,12 +56,6 @@ export function ProjectFlameThrowerGlove(params: SubViewParams) {
         </p>
       </div>
 
-      <ProjectImage 
-        src="flame-glove-detail.jpg" 
-        alt="Close-up of the glove showing integrated components"
-        caption="Detail view showing the compact integration of electronics and fuel system"
-      />
-
       <div className={styles['content-card']}>
         <h3>How It Works</h3>
         <p>
@@ -61,25 +70,12 @@ export function ProjectFlameThrowerGlove(params: SubViewParams) {
           glove in immediate response to the motion. All components are housed inside a custom 3D-printed 
           glove structure designed for compactness, durability, and wearability.
         </p>
-
-        <ProjectImage 
-          src="flame-glove-demo.mp4" 
-          alt="Demonstration of the flame glove in action"
-          caption="Video: Punch gesture triggering flame output"
-          isVideo
-        />
       </div>
 
       <div className={styles['hardware-card']}>
         <h3>Hardware Stack</h3>
         
         <h4>Core Processing</h4>
-        <ul>
-          <li><strong>Microcontroller</strong> - Processes IMU data in real-time and executes gesture recognition algorithms</li>
-          <li><strong>IMU (Inertial Measurement Unit)</strong> - 6-axis accelerometer and gyroscope for motion sensing</li>
-        </ul>
-
-        <h4>Fuel System</h4>
         <ul>
           <li><strong>Fuel Reservoir</strong> - Compact pressurized container integrated into glove structure</li>
           <li><strong>Solenoid Valve</strong> - Electronically controlled for precise fuel delivery timing</li>
@@ -114,7 +110,6 @@ export function ProjectFlameThrowerGlove(params: SubViewParams) {
       />
 
       <div className={styles['content-card']}>
-        <h3>Gesture Recognition System</h3>
         
         <h4>Motion Detection Algorithm</h4>
         <p>

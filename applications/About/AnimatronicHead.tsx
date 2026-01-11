@@ -5,634 +5,334 @@ import styles from "./AboutView.module.css";
 export function ProjectAnimatronicHead(params: SubViewParams) {
   const content = (
     <div>
-      <h3>Project Overview</h3>
+      <h3>Project Goal</h3>
       <p>
-        An expressive humanoid robotic bust combining sculpture, mechanical systems, electronics, and 
-        interaction into a cohesive project. The intent was to design a visibly mechanical figure whose 
-        facial motion alone could evoke emotion, intention, and presence. The head relies on articulated 
-        eyes, eyelids, eyebrows, jaw, lips, and tongue to communicate expression through carefully tuned 
-        motion translated through silicone skin.
+        Design and build an expressive animatronic head that demonstrates the integration of mechanical design, embedded electronics, and software control. The challenge: create a system where minimal but deliberate movements evoke genuine emotion and presence through carefully choreographed motion—proving that mechanical systems can feel alive when their behavior is designed with intention.
       </p>
 
+      <div style={{ marginBottom: '2rem' }}>
+        <video controls style={{ maxHeight: '100vh', width: 'auto', display: 'block', marginBottom: '1rem' }}>
+          <source src="images/AnimatronicHead/eyes-moving-with-skin-attached.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <video controls style={{ maxHeight: '100vh', width: 'auto', display: 'block' }}>
+          <source src="images/AnimatronicHead/Final-presenation-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <h3>Key Features</h3>
+      <ul>
+        <li><strong>21 servo motors</strong> for independent control of eyes, eyelids, eyebrows, jaw, and mouth</li>
+        <li><strong>Custom silicone skin</strong> with embedded neodymium magnets for removable, non-destructive attachment</li>
+        <li><strong>Browser-based WiFi control</strong> via ESP32 S3 access point—no external network required</li>
+        <li><strong>Modular mechanical design</strong> enabling independent testing and rapid iteration of subsystems</li>
+        <li><strong>Real-time expression choreography</strong> with smooth servo interpolation and synchronized speech</li>
+        <li><strong>Custom PCBs</strong> designed in KiCad and fabricated on desktop milling machine</li>
+        <li><strong>Distributed power architecture</strong> supporting continuous operation under full servo load</li>
+      </ul>
+
       <ProjectImage 
-        src="AnimatronicHead/me-with-final-head.jpeg" 
+        src="images/AnimatronicHead/me-with-final-head.jpeg" 
         alt="Final animatronic head with creator"
         caption="Final head with creator"
       />
 
       <ProjectImage 
-        src="AnimatronicHead/presentation-day.jpeg" 
+        src="images/AnimatronicHead/presentation-day.jpeg" 
         alt="Presentation day"
         caption="Presentation day"
       />
 
       <div className={styles['content-card']}>
-        <h3>Design Philosophy</h3>
+        <h3>Context</h3>
         <p>
-          Minimal but deliberate movements are used to explore how machines can feel alive when their 
-          behavior is designed with intention. This project sits directly at the intersection of art and 
-          engineering. The sculptural form defines mechanical constraints, the mechanics dictate electronics 
-          and actuation strategy, and the electronics shape how interaction is possible.
+          This was my final project for a mechatronics course, developed over several months as a 
+          comprehensive exploration of interdisciplinary engineering. The project requirements included 
+          demonstrating integration of mechanical design, embedded electronics, and software control, with 
+          emphasis on creating a functional demonstration piece suitable for public presentation.
+        </p>
+        <p>
+          The challenge was open-ended: create a mechatronic system that showcases technical skill while 
+          pushing the boundaries of what we'd learned in class. I chose to build an animatronic head 
+          because it sits directly at the intersection of art and engineering—where sculptural form defines 
+          mechanical constraints, mechanics dictate electronics strategy, and electronics shape how 
+          interaction becomes possible.
+        </p>
+      </div>
+
+      <div className={styles['content-card']}>
+        <h3>My Role</h3>
+        <p>
+          I designed and built the entire system independently, from initial concept through final 
+          demonstration. My specific contributions included:
+        </p>
+        <ul>
+          <li><strong>Mechanical Design:</strong> Complete 3D modeling in Fusion 360 of the internal skeleton, all servo mounting systems, linkage mechanisms, and structural components. Designed the magnetic attachment system for the removable skin.</li>
+          <li><strong>Electronics Design:</strong> Custom PCB design in KiCad, power distribution architecture, servo driver integration, and complete system wiring. Fabricated PCBs using the Bantam Tools desktop milling machine.</li>
+          <li><strong>Firmware Development:</strong> Wrote all control software in Arduino IDE including servo calibration systems, WiFi access point creation, web server implementation, and expression choreography logic.</li>
+          <li><strong>Fabrication:</strong> 3D printed all structural components, created positive and negative molds for silicone casting, and performed all silicone skin casting and finishing work using Smooth-On Dragon Skin FX Pro.</li>
+          <li><strong>System Integration:</strong> Assembled all subsystems, performed comprehensive calibration of 21 individual servos, and developed the browser-based control interface.</li>
+        </ul>
+        <p>
+          The only component I didn't design from scratch was the basic hand-drawn sketch I used as 
+          inspiration for facial proportions—everything else, from CAD models to firmware to the final 
+          skin casting, was my own work.
+        </p>
+      </div>
+
+      <div className={styles['content-card']}>
+        <h3>Design Philosophy & Key Decisions</h3>
+        <p>
+          The core philosophy: minimal but deliberate movements can make machines feel alive when their behavior is designed with intention. Rather than photorealistic replication, I embraced the mechanical nature while striving for expressive motion that reads as emotionally authentic.
+        </p>
+        <ul>
+          <li><strong>21 servos:</strong> Independent control over eyes (6), eyebrows (4), jaw (2), and mouth (9) for believable expressions. Fewer would limit expressiveness; more would add complexity without improvement.</li>
+          <li><strong>Removable silicone skin:</strong> Enables maintenance access, iterative development, and educational demonstrations revealing internal mechanisms.</li>
+          <li><strong>Browser-based WiFi control:</strong> ESP32 S3 creates its own access point—no external network required. Accessible from any device, demonstrates anywhere.</li>
+          <li><strong>Magnetic attachment:</strong> Tool-free, non-destructive removal critical for rapid iteration and repeated demonstration cycles.</li>
+        </ul>
+
+        <ProjectImage 
+          src="images/AnimatronicHead/final-assembly-fusion.png" 
+          alt="CAD assembly showing internal structure"
+          caption="Fusion 360 assembly showing complete internal skeleton and servo placement"
+        />
+      </div>
+
+      <div className={styles['content-card']}>
+        <h3>Design Philosophy & Goals</h3>
+        <p>
+          My core design philosophy was that minimal but deliberate movements can make machines feel alive 
+          when their behavior is designed with intention. Rather than attempting photorealistic human 
+          replication, I embraced the mechanical nature of the system while striving for expressive motion 
+          that reads as emotionally authentic.
+        </p>
+        <ul>
+          <li>Create convincing facial expressions and synchronized speech capability</li>
+          <li>Modular design enabling independent testing and refinement of subsystems</li>
+          <li>Browser-based control interface for real-time operation without specialized software</li>
+          <li>Removable silicone skin exposing internal mechanisms for educational demonstrations</li>
+          <li>Robust enough for classroom demonstrations and public exhibitions</li>
+        </ul>
+      </div>
+
+      <div className={styles['content-card']}>
+        <h3>Prototyping & Iterations</h3>
+
+        <ProjectImage 
+          src="images/AnimatronicHead/first-version-head-and-skin.jpeg" 
+          alt="Early prototype assembly"
+          caption="First complete assembly revealing mechanical interference issues"
+        />
+
+        <p>
+          The first complete assembly revealed mechanical interference between adjacent servo systems requiring significant redesign of mounting strategies and linkage geometries. Wire management proved far more complex than anticipated, leading to connector standardization overhaul.
+        </p>
+        <p>
+          <strong>Key learning:</strong> Keep early models mechanically simple—rectangular and functional—before adding aesthetics. This lets you focus on getting mechanisms working before worrying about appearance. Virtual collision detection in Fusion 360 caught many issues before printing, significantly reducing iteration time.
         </p>
       </div>
 
       <div className={styles['content-card']}>
         <h3>How the System Works</h3>
         <p>
-          The animatronic head operates as a distributed embedded system with carefully orchestrated 
-          hardware and software components. The architecture prioritizes real-time responsiveness while 
-          maintaining safe operational limits for all mechanical subsystems.
+          The animatronic head operates as a distributed embedded system with carefully orchestrated hardware and software components prioritizing real-time responsiveness while maintaining safe operational limits.
         </p>
-        <ul>
-          <li>Servo driver boards are powered from a dedicated 5V external power supply capable of delivering sustained current to 21 simultaneous servo motors</li>
-          <li>The ESP32 S3 microcontroller creates a custom WiFi access point (SSID: Animatronic_Head) enabling direct connection without existing network infrastructure</li>
-          <li>A browser-based interface connects locally to 192.168.4.1, providing real-time control with minimal latency</li>
-          <li>The web interface allows users to select from predefined facial movements, trigger custom expressions, and initiate synchronized speech sequences</li>
-          <li>Expression commands and audio playback events trigger precisely coordinated servo motion patterns designed to create natural, believable facial movements</li>
-        </ul>
 
         <ProjectImage 
-          src="AnimatronicHead/final-system-diagram.JPG" 
+          src="images/AnimatronicHead/final-system-diagram.JPG" 
           alt="System Architecture Diagram"
-          caption="System Architecture Diagram"
+          caption="Complete system architecture showing communication flow"
         />
-      </div>
 
-      <div className={styles['content-card']}>
-        <h3>Final System Overview</h3>
-        <p>
-          The final robotic bust represents a sophisticated integration of mechanical engineering, 
-          electronics, and software design. Each subsystem was developed iteratively to balance complexity 
-          with reliability, resulting in a cohesive platform capable of nuanced expression and interaction.
-        </p>
-        <p>
-          The system consists of several tightly integrated subsystems:
-        </p>
         <ul>
-          <li>A rigid internal skeleton fabricated from 3D printed PLA components that supports all mechanical loads while providing precise mounting points for servo mechanisms</li>
-          <li>Twenty-one servo driven mechanisms controlling eyes, eyelids, eyebrows, jaw, lips, and tongue with individual calibration and safety limits</li>
-          <li>Custom designed electronics integrating microcontroller, servo drivers, audio systems, and power distribution with robust connector systems for serviceability</li>
-          <li>A flexible food-grade silicone skin attached magnetically to the underlying structure, enabling removal for maintenance while maintaining realistic appearance</li>
-          <li>A browser-accessible real-time calibration and control architecture supporting both manual operation and scripted expression sequences</li>
+          <li>Servo drivers powered from dedicated 5V external supply capable of sustaining 21 simultaneous servo motors</li>
+          <li>ESP32 S3 creates custom WiFi access point (SSID: Animatronic_Head) enabling direct connection without external network</li>
+          <li>Browser interface connects to 192.168.4.1 providing real-time control with minimal latency</li>
+          <li>Expression commands and audio playback trigger precisely coordinated servo motion patterns</li>
         </ul>
-        <p>
-          The complete assembly is mounted on a weighted base "neck" structure that provides mechanical 
-          stability during operation and houses the primary electrical connections. Wire routing, connector 
-          placement, and mechanical clearances were planned systematically to eliminate interference during 
-          the full range of motion. All control electronics and power distribution are housed discretely in 
-          the posterior region of the head assembly.
-        </p>
-
-        <ProjectImage 
-          src="AnimatronicHead/final-assembly-fusion.png" 
-          alt="Final Assembly CAD"
-          caption="Final Assembly CAD"
-        />
-
-        <ProjectImage 
-          src="AnimatronicHead/final-fusion-assembly2.png" 
-          alt="Final Assembly CAD Detail"
-          caption="Final Assembly CAD Detail"
-        />
       </div>
 
       <div className={styles['hardware-card']}>
-        <h3>Electronic Architecture</h3>
-        <p>
-          The electrical system was designed around distributed control principles to manage the complexity 
-          of coordinating 21 servo motors while maintaining real-time responsiveness. The architecture 
-          separates high-level control logic from low-level PWM generation to ensure reliable operation.
-        </p>
+        <h3>Hardware Architecture</h3>
         <ul>
-          <li><strong>Control MCU:</strong> ESP32 S3 with dual-core processing, integrated WiFi, and sufficient GPIO for system coordination</li>
-          <li><strong>Servo Drivers:</strong> Two Adafruit PCA9685 16-channel servo drivers operating on I2C bus with addresses 0x40 and 0x41, providing 12-bit PWM resolution</li>
-          <li>Each servo motor is assigned a dedicated PWM channel with individual calibration parameters stored in non-volatile memory</li>
-          <li>Servo motors are isolated from the microcontroller through dedicated driver boards to prevent current spikes and timing conflicts that could destabilize the main control loop</li>
-          <li><strong>Audio:</strong> Integrated DFPlayer Mini MP3 module with dedicated microSD storage for audio file management and synchronized playback</li>
-          <li><strong>Power:</strong> External 5V switching power supply rated for continuous operation under full servo load conditions</li>
+          <li><strong>Control MCU:</strong> ESP32 S3 with dual-core processing and WiFi for simultaneous network and real-time servo control</li>
+          <li><strong>Servo Drivers:</strong> Two Adafruit PCA9685 16-channel I2C servo drivers (addresses 0x40, 0x41) providing 12-bit PWM resolution</li>
+          <li><strong>Audio:</strong> DFPlayer Mini MP3 module with microSD storage for synchronized audio playback</li>
+          <li><strong>Power:</strong> External 5V switching supply (5A+ capacity) with isolated power rails preventing servo current spikes from affecting logic</li>
+          <li><strong>Servo Motors:</strong> 6 SG90 micro servos (eyes), 13 MG90S 9g metal-geared servos (eyebrows/mouth), 2 MG996R high-torque servos (jaw)</li>
         </ul>
 
+        <h4>Why This Architecture?</h4>
+        <p>
+          The ESP32 S3's dual-core processing separates WiFi/web server duties from real-time servo control, preventing network latency from affecting motion smoothness. The PCA9685 boards offload PWM generation from the microcontroller, providing stable, jitter-free servo signals. Separate power supplies for logic and servos prevent voltage sag that would destabilize the system.
+        </p>
+
         <ProjectImage 
-          src="AnimatronicHead/Final-pcb1.png" 
+          src="images/AnimatronicHead/Final-pcb1.png" 
           alt="Primary PCB Design"
-          caption="Primary PCB Design"
+          caption="Primary PCB showing ESP32 S3 and servo driver integration"
         />
 
         <ProjectImage 
-          src="AnimatronicHead/final-pcb2.png" 
-          alt="Secondary PCB Design"
-          caption="Secondary PCB Design"
-        />
-
-        <ProjectImage 
-          src="AnimatronicHead/first-assembled-head.jpeg" 
-          alt="Early skeleton assembly"
-          caption="Early skeleton assembly"
-        />
-
-        <ProjectImage 
-          src="AnimatronicHead/first-assembled-head2.jpeg" 
-          alt="Skeleton development"
-          caption="Skeleton development"
-        />
-
-        <ProjectImage 
-          src="AnimatronicHead/final-skeleton.jpeg" 
-          alt="Complete skeleton"
-          caption="Complete skeleton"
-        />
-
-        <ProjectImage 
-          src="AnimatronicHead/final-wiring.jpeg" 
-          alt="Wiring integration"
-          caption="Wiring integration"
+          src="images/AnimatronicHead/final-skeleton.jpeg" 
+          alt="Complete skeleton with all electronics"
+          caption="Complete skeleton assembly with all servo motors and electronics installed"
         />
       </div>
 
       <div className={styles['content-card']}>
-        <h3>Calibration and Control</h3>
+        <h3>Mechanical Design & Subsystems</h3>
         <p>
-          The control system implements a hierarchical approach to motion management, balancing expressive 
-          capability with mechanical safety. Each servo motor undergoes individual characterization to 
-          establish safe operating parameters and optimize performance within the physical constraints of 
-          the mechanism.
-        </p>
-        <p>
-          A comprehensive calibration process manually defines critical parameters for each actuator:
-        </p>
-        <ul>
-          <li><strong>Neutral position:</strong> The default rest state that minimizes mechanical stress and provides optimal range for bidirectional movement</li>
-          <li><strong>Minimum safe position:</strong> The software-enforced lower limit preventing mechanical binding, linkage interference, or servo damage</li>
-          <li><strong>Maximum safe position:</strong> The upper operational boundary ensuring clearance and preventing over-extension of mechanical components</li>
-        </ul>
-        <p>
-          These operational limits are discovered through systematic manual testing and documented in the 
-          control firmware to prevent damage during autonomous operation. The software actively enforces 
-          these constraints in real-time, rejecting commands that would exceed safe operating ranges. Facial 
-          expressions are implemented as carefully choreographed servo position sets, with smooth interpolation 
-          between states to create natural-looking transitions and movements.
-        </p>
-      </div>
-
-      <div className={styles['content-card']}>
-        <h3>Audio Integration</h3>
-        <p>
-          The audio subsystem provides synchronized speech capability through careful integration of digital 
-          audio playback with coordinated facial movements. The system is designed to create convincing 
-          lip-sync and expression timing that enhances the illusion of natural speech.
-        </p>
-        <ul>
-          <li>Custom MP3 audio files are stored on a high-speed microSD card with organized file naming for efficient access and management</li>
-          <li>A dedicated DFPlayer Mini module handles all audio processing, including digital-to-analog conversion, amplification, and file management independent of the main control processor</li>
-          <li>Specific pre-recorded phrases are precisely synchronized with corresponding servo motion sequences to create believable speech animation</li>
-          <li>Mouth, jaw, and tongue movements are carefully mapped to audio timing using phoneme analysis to simulate accurate articulation and speech clarity</li>
-          <li>Audio playback triggers are integrated into the expression control system, allowing seamless coordination between speech and emotional expression</li>
-        </ul>
-      </div>
-
-      <div className={styles['content-card']}>
-        <h3>Mechanical Architecture</h3>
-        <p>
-          The mechanical design prioritizes modularity and serviceability while achieving the complex motion 
-          requirements for believable facial expression. Each subsystem operates independently but coordinates 
-          seamlessly to create cohesive, lifelike movement patterns.
+          The mechanical design prioritizes modularity while achieving complex motion requirements for believable facial expression. Each subsystem was designed to operate independently but coordinate seamlessly.
         </p>
 
-        <h4>Eyes</h4>
-        <p>
-          The ocular system employs 6 precision SG90 micro servos arranged in a sophisticated linkage configuration:
-        </p>
+        <h4>Eyes (6 Servos)</h4>
         <ul>
-          <li>1 servo controlling horizontal left-right eye movement through a coordinated linkage system connecting both eyeballs</li>
-          <li>1 servo managing vertical up-down eye movement with mechanical stops to prevent over-rotation</li>
-          <li>2 independent upper eyelid servos (left and right) enabling asymmetric blinking and expression</li>
-          <li>2 independent lower eyelid servos (left and right) providing complete control over eye aperture and expression intensity</li>
+          <li>1 servo for coordinated horizontal left-right movement (linked eyeballs)</li>
+          <li>1 servo for vertical up-down movement with mechanical stops</li>
+          <li>2 upper eyelid servos (left/right) for asymmetric blinking</li>
+          <li>2 lower eyelid servos (left/right) for complete eye aperture control</li>
         </ul>
+        <p><strong>Why this design?</strong> Linking both eyeballs to one servo ensures natural movement; humans can't independently control each eye. Separate eyelid servos enable expressions like winking. SG90 micro servos fit the constrained eye socket space.</p>
+
+        <h4>Eyebrows (4 Servos)</h4>
+        <ul>
+          <li>2 outer eyebrow servos (left/right) for surprise, skepticism, curiosity</li>
+          <li>2 inner eyebrow servos (left/right) for frowning, concern, concentration</li>
+        </ul>
+        <p><strong>Why split inner/outer?</strong> Eyebrows don't move as rigid units—furrowing pulls inner corners together while surprise raises outer corners. Four servos create those subtle distinctions. Metal-geared MG90S provides sufficient torque against skin resistance.</p>
+
+        <h4>Jaw (2 Servos)</h4>
         <p>
-          The eye mechanism incorporates custom 3D-printed linkages designed to translate servo rotation 
-          into natural eye movement while maintaining proper geometric relationships. Mechanical limits 
-          prevent the eyeballs from rotating beyond anatomically realistic positions.
+          Two high-torque MG996R servos providing substantial force for jaw opening/closing against silicone skin resistance. Dual configuration ensures sufficient torque and provides redundancy.
         </p>
+
+        <h4>Mouth (9 Servos)</h4>
+        <ul>
+          <li>2 upper lip servos (left/right) for asymmetric expressions and speech articulation</li>
+          <li>4 smile/frown servos creating natural curves at mouth corners</li>
+          <li>2 lower lip servos (left/right) for complex mouth shapes</li>
+          <li>1 tongue actuator for speech synchronization</li>
+        </ul>
+        <p><strong>Why 9 servos?</strong> The mouth is the most expressive facial region. Independent lip control enables asymmetric expressions while smile/frown servos create natural curves. Tongue movement significantly improves lip-sync illusion.</p>
 
         <ProjectImage 
-          src="AnimatronicHead/eyeball-plan.JPG" 
-          alt="Eyeball Plan"
-          caption="Eyeball Plan"
+          src="images/AnimatronicHead/eyeball-plan.JPG" 
+          alt="Eyeball mechanism design"
+          caption="Eyeball linkage system showing coordinated horizontal movement"
         />
 
         <ProjectImage 
-          src="AnimatronicHead/eye-socket-plan.JPG" 
-          alt="Eye Socket Plan"
-          caption="Eye Socket Plan"
-        />
-
-        <ProjectImage 
-          src="AnimatronicHead/eye-servo-plan.JPG" 
-          alt="Eye Servo Plan"
-          caption="Eye Servo Plan"
-        />
-
-        <h4>Eyebrows</h4>
-        <p>
-          The eyebrow articulation system utilizes 4 high-torque MG90S 9g metal-geared servos for precise expression control:
-        </p>
-        <ul>
-          <li>2 outer eyebrow servos (left and right) controlling the lateral portions for expressions like surprise, skepticism, and curiosity</li>
-          <li>2 inner eyebrow servos (left and right) managing the medial sections to create frowning, concern, and concentration expressions</li>
-        </ul>
-        <p>
-          This four-servo configuration enables complex eyebrow movements including asymmetric expressions, 
-          subtle emotional nuances, and dramatic gestures. The metal-geared servos provide sufficient torque 
-          to overcome the resistance of the silicone skin while maintaining precise positional control.
-        </p>
-
-        <ProjectImage 
-          src="AnimatronicHead/eyebrow-mechanism.png" 
-          alt="Eyebrow Mechanism"
-          caption="Eyebrow Mechanism"
-        />
-
-        <h4>Jaw</h4>
-        <p>
-          The jaw mechanism employs the most powerful actuators in the system:
-        </p>
-        <ul>
-          <li>2 high-torque MG996R servos providing the substantial force required to operate the jaw mechanism against the resistance of the silicone skin and underlying structure</li>
-          <li>Coordinated operation controls jaw opening and closing with smooth, natural motion profiles designed to simulate human speech patterns and emotional expressions</li>
-          <li>The dual-servo configuration provides redundancy and ensures sufficient torque for reliable operation under varying load conditions</li>
-        </ul>
-
-        <h4>Mouth</h4>
-        <p>
-          The most complex mechanical subsystem utilizes 9 precision MG90S 9g metal-geared servos for comprehensive oral expression:
-        </p>
-        <ul>
-          <li>2 upper lip servos controlling independent left and right upper lip sections for asymmetric expressions and speech articulation</li>
-          <li>4 dedicated servos managing smile and frown control through carefully designed linkages that pull the corners of the mouth in natural arcs</li>
-          <li>2 lower lip servos providing independent control over left and right lower lip sections for complex mouth shapes and emotional expressions</li>
-          <li>1 tongue actuator enabling speech-like tongue movements essential for realistic audio synchronization and pronunciation simulation</li>
-        </ul>
-        <p>
-          The mouth mechanism represents the most mechanically complex aspect of the project, requiring 
-          precise coordination between multiple actuators to achieve believable expressions. Custom linkages 
-          translate servo motion into natural lip and mouth movements while accommodating the flexibility 
-          constraints of the silicone skin overlay.
-        </p>
-      </div>
-
-      <div className={styles['content-card']}>
-        <h3>Magnetic Skin Attachment</h3>
-        <p>
-          The magnetic attachment system represents a critical design innovation that enables the removable 
-          silicone skin while maintaining secure positioning during operation. This approach allows for 
-          maintenance access to internal components while preserving the aesthetic integrity of the final assembly.
-        </p>
-        <p>
-          Precisely positioned magnetic snap-on attachment points are embedded strategically in both the 
-          silicone skin and underlying structure at:
-        </p>
-        <ul>
-          <li>Eyebrow regions: Ensuring secure attachment of the forehead area while allowing eyebrow mechanism movement</li>
-          <li>Upper lip sections: Providing stable positioning for the mouth area during complex lip movements</li>
-          <li>Lower lip sections: Securing the lower mouth region while accommodating jaw opening motions</li>
-          <li>Temple areas: Anchoring the lateral regions of the skin to the skull structure</li>
-          <li>Nose bridge and tip: Maintaining proper nasal profile and preventing displacement during expression changes</li>
-          <li>Cheekbone regions: Supporting the mid-face area and ensuring smooth skin transitions</li>
-          <li>Chin and jawline: Securing the lower face while allowing natural jaw movement</li>
-          <li>Posterior attachment points: Additional securing points around the back of the head for overall stability</li>
-        </ul>
-        <p>
-          The magnetic system uses carefully selected neodymium magnets that provide sufficient holding 
-          force without being so strong as to damage the delicate silicone skin during removal. Each 
-          attachment point incorporates protective backing plates to distribute magnetic forces and prevent 
-          tearing of the silicone material.
-        </p>
-
-        <ProjectImage 
-          src="AnimatronicHead/final-skin.jpeg" 
-          alt="Final skin"
-          caption="Final skin"
+          src="images/AnimatronicHead/eyebrow-mechanism.png" 
+          alt="Eyebrow mechanism"
+          caption="Four-servo eyebrow system enabling complex asymmetric expressions"
         />
       </div>
 
       <div className={styles['content-card']}>
-        <h3>Silicone Skin Development Process</h3>
+        <h3>Silicone Skin & Magnetic Attachment</h3>
+        <p>
+          The silicone skin serves dual purposes: it provides a lifelike appearance while enabling tool-free removal for maintenance and demonstration.
+        </p>
+
+        <h4>Mold & Casting Process</h4>
 
         <ProjectImage 
-          src="AnimatronicHead/plaster-mold.jpeg" 
+          src="images/AnimatronicHead/plaster-mold.jpeg" 
           alt="Plaster mold"
-          caption="Plaster mold"
+          caption="Initial plaster mold created from sculptural form"
         />
 
         <ProjectImage 
-          src="AnimatronicHead/positive-mold.jpeg" 
-          alt="Positive mold"
-          caption="Positive mold"
-        />
-
-        <ProjectImage 
-          src="AnimatronicHead/plaster-silicon-mold.jpeg" 
+          src="images/AnimatronicHead/plaster-silicon-mold.jpeg" 
           alt="Complete mold system"
-          caption="Complete mold system"
+          caption="Complete two-part mold system ready for silicone pour"
+        />
+
+        <h4>Material & Technique</h4>
+        <ul>
+          <li><strong>Material:</strong> Smooth-On Dragon Skin FX Pro with custom flesh-toned pigment—offers optimal balance of flexibility for expression and durability for handling</li>
+          <li><strong>Thickness:</strong> 3-4mm provides optimal flexibility for movement while maintaining structural integrity. Thicker resists servo motion; thinner tears easily.</li>
+          <li><strong>Magnet embedding:</strong> Neodymium magnets embedded between silicone layers with only necessary magnetic force—overly strong magnets cause skin deformation</li>
+          <li><strong>Fiber reinforcement:</strong> Mesh at high-stress points (eyes, mouth) and magnet locations prevents tearing during repeated attachment/removal</li>
+        </ul>
+
+        <ProjectImage 
+          src="images/AnimatronicHead/first-skin.jpeg" 
+          alt="First skin casting attempt"
+          caption="First skin casting—too thick and inflexible for proper expression"
         />
 
         <ProjectImage 
-          src="AnimatronicHead/eye-mold.jpeg" 
-          alt="Eye area mold"
-          caption="Eye area mold"
+          src="images/AnimatronicHead/final-skin.jpeg" 
+          alt="Completed silicone skin"
+          caption="Completed silicone skin with embedded magnets ready for installation"
         />
 
-        <h4>Skin Casting Iterations</h4>
-
-        <ProjectImage 
-          src="AnimatronicHead/first-skin.jpeg" 
-          alt="First skin casting"
-          caption="First skin casting"
-        />
-
-        <ProjectImage 
-          src="AnimatronicHead/first-skin-no-eyes.jpeg" 
-          alt="Skin without eyes"
-          caption="Skin without eyes"
-        />
-
-        <ProjectImage 
-          src="AnimatronicHead/eye-skin-on-head.jpeg" 
-          alt="Eye skin integration"
-          caption="Eye skin integration"
-        />
-
-        <ProjectImage 
-          src="AnimatronicHead/drawn-eyebrows-final-skin.jpeg" 
-          alt="Final details"
-          caption="Final details"
-        />
+        <h4>Magnetic Attachment Strategy</h4>
+        <p>
+          18 strategically positioned magnets at: eyebrow regions, upper/lower lip sections, temple areas, nose bridge/tip, cheekbones, chin/jawline, and posterior points. This distribution maintains secure positioning during operation while allowing tool-free removal.
+        </p>
       </div>
 
       <div className={styles['content-card']}>
-        <h3>Speaker Placement</h3>
+        <h3>Software & Control System</h3>
+
+        <h4>Calibration</h4>
         <p>
-          The audio projection system was designed to simulate natural human speech patterns through 
-          strategic speaker positioning and acoustic engineering principles.
+          Each of 21 servos undergoes individual calibration establishing: neutral rest position, minimum safe position (preventing binding/interference), and maximum safe position (preventing over-extension). These limits are stored in non-volatile memory and actively enforced in real-time.
         </p>
+
+        <h4>Expression Choreography & Audio</h4>
         <ul>
-          <li>Primary speaker positioned in the posterior throat/mouth cavity to simulate natural voice projection and resonance</li>
-          <li>Placement strategically chosen to create realistic sound directionality while remaining hidden from view during normal operation</li>
-          <li>Internal acoustic cavity design enhances voice projection and provides natural reverb characteristics similar to human oral cavity resonance</li>
-          <li>Speaker mounting system isolates vibrations from the mechanical structure to prevent interference with servo operation</li>
+          <li>Facial expressions implemented as choreographed servo position sets with smooth interpolation between states</li>
+          <li>Custom MP3 files on microSD with phoneme-based synchronization mapping mouth/jaw/tongue movements to actual sounds</li>
+          <li>DFPlayer Mini handles audio independently of main processor</li>
         </ul>
       </div>
 
       <div className={styles['content-card']}>
-        <h3>Development Journey</h3>
-        <p>
-          The development of this animatronic head spanned several months and represented a comprehensive 
-          exploration of interdisciplinary engineering. The project evolved through multiple major iterations, 
-          each addressing fundamental challenges in mechanical design, electronics integration, and software 
-          control. This journey illustrates the iterative nature of complex system development and the 
-          importance of systematic testing and refinement.
-        </p>
+        <h3>Key Learnings</h3>
 
-        <h4>Project Conceptualization and Initial Planning</h4>
-        <p>
-          The project began with extensive research into existing animatronic systems, facial anatomy, and 
-          expression psychology. Initial sketches and mood boards helped establish the design philosophy of 
-          creating a visibly mechanical system that could nonetheless evoke genuine emotional responses 
-          through careful motion design.
-        </p>
-        <p>
-          Early planning sessions defined the core technical requirements:
-        </p>
+        <h4>Engineering Principles</h4>
         <ul>
-          <li>Comprehensive facial articulation covering all major expression muscles</li>
-          <li>Real-time control capability suitable for interactive demonstrations</li>
-          <li>Modular design enabling independent testing and refinement of subsystems</li>
-          <li>Robust construction suitable for extended operation and public demonstration</li>
-          <li>Aesthetic design balancing mechanical honesty with approachable character</li>
+          <li><strong>Modular design:</strong> Removable eyes, eyebrows, mouth enabled independent testing without disturbing other systems</li>
+          <li><strong>Breadboard first:</strong> Test electronics on breadboards before PCB fabrication—caught several power sequencing issues</li>
+          <li><strong>Import real component models:</strong> Using actual 3D models of servos, connectors prevented expensive "it should fit" disasters</li>
+          <li><strong>Keep early designs simple:</strong> Rectangular, functional geometry first; aesthetic refinement last</li>
+          <li><strong>Magnet strength matters:</strong> Overly strong magnets cause skin deformation—use only what's necessary</li>
+          <li><strong>Document continuously:</strong> Catching up on documentation at the end is painful; photograph and note decisions as they happen</li>
         </ul>
-      </div>
 
-      <div className={styles['content-card']}>
-        <h3>Assembly and Integration Process</h3>
-
-        <ProjectImage 
-          src="AnimatronicHead/first-version-head-and-skin.jpeg" 
-          alt="Early integration"
-          caption="Early integration"
-        />
-
-        <ProjectImage 
-          src="AnimatronicHead/first-assembled-head.jpeg" 
-          alt="First assembly"
-          caption="First assembly"
-        />
-
-        <ProjectImage 
-          src="AnimatronicHead/skin-and-head-iteration.jpeg" 
-          alt="Iterative refinement"
-          caption="Iterative refinement"
-        />
-
-        <ProjectImage 
-          src="AnimatronicHead/eye-skin-on-head.jpeg" 
-          alt="Eye integration"
-          caption="Eye integration"
-        />
-
-        <p>
-          The integration phase revealed numerous unforeseen challenges as individual subsystems were 
-          combined into a cohesive whole. Mechanical interference between adjacent systems required 
-          significant redesign of mounting strategies and linkage geometries. The first complete assembly 
-          highlighted the complexity of wire management and the need for systematic connector standardization.
-        </p>
-      </div>
-
-      <div className={styles['content-card']}>
-        <h3>Planning and Concept Refinement</h3>
-        <p>
-          Throughout development, the project scope was continuously refined based on technical discoveries 
-          and resource constraints:
-        </p>
-        <p>
-          Defined core project goals:
-        </p>
+        <h4>Fabrication Tips</h4>
         <ul>
-          <li>Primary objective: Animatronic head/bust capable of convincing facial expressions and basic speech simulation</li>
-          <li>Essential feature: Speaking capability with synchronized lip movement for demonstration purposes</li>
-          <li>Interface requirement: Browser-based control interface enabling real-time operation without specialized software</li>
-          <li>Stretch goal: Optional camera-based face tracking for eye movement synchronization (ultimately deprioritized due to complexity)</li>
-          <li>Key design feature: Removable silicone skin to expose internal mechanical structure for educational demonstrations</li>
-          <li>Operational requirement: Robust enough for classroom demonstrations and public exhibitions</li>
+          <li>Mesh reinforcement prevents silicone tearing at high-stress points and magnet locations</li>
+          <li>Hexagonal magnet holes with -0.1mm offset and 0.8mm chamfer create excellent press fits for neodymium magnets</li>
+          <li>Snap fits on 3D prints are unreliable—use screws or press fits instead</li>
+          <li>Standard metric screw holes everywhere make assembly and maintenance much easier</li>
         </ul>
-      </div>
 
-      <div className={styles['content-card']}>
-        <h3>CAD Modeling and Design Iteration</h3>
+        <h4>Reflection</h4>
         <p>
-          The mechanical design process involved extensive 3D modeling and virtual testing before any 
-          physical fabrication began. This approach proved essential for managing the geometric complexity 
-          of the multi-servo facial mechanism.
-        </p>
-        <ul>
-          <li>Comprehensive modeling of overall form and internal layout using Fusion 360 with full assembly constraints and motion studies</li>
-          <li>Iterative design of the internal skeleton structure to support mechanical loads while providing access for maintenance and adjustment</li>
-          <li>Detailed kinematic analysis of linkage systems to ensure smooth motion and avoid binding throughout the full range of expression</li>
-          <li>Virtual collision detection to identify and resolve mechanical interferences before physical assembly</li>
-          <li>Systematic revision of servo mounting strategies to optimize torque transmission and minimize backlash</li>
-        </ul>
-      </div>
-
-      <div className={styles['content-card']}>
-        <h3>Electronics Development and Testing</h3>
-        <p>
-          The electronic systems underwent extensive breadboard testing before PCB fabrication, revealing 
-          critical insights about power distribution, signal integrity, and system timing that significantly 
-          influenced the final architecture.
-        </p>
-        <ul>
-          <li>Comprehensive schematic design in KiCad with careful attention to power distribution, connector standardization, and signal routing</li>
-          <li>Systematic planning of power distribution networks to handle the substantial current demands of 21 simultaneous servo motors</li>
-          <li>Custom PCB manufacturing using the Bantam Tools desktop milling machine, enabling rapid iteration and modification</li>
-          <li>Extensive breadboard testing of all electronic subsystems prior to PCB fabrication, identifying critical power sequencing and timing requirements</li>
-          <li>Implementation of robust grounding strategies to prevent servo noise from interfering with microcontroller operation</li>
-          <li>Development of custom cable harnesses and connector systems for reliable, serviceable connections</li>
-        </ul>
-      </div>
-
-      <div className={styles['content-card']}>
-        <h3>Mechanical Fabrication and Iteration Cycles</h3>
-        <p>
-          The mechanical development phase involved numerous design-build-test cycles as theoretical models 
-          encountered real-world constraints and manufacturing limitations.
-        </p>
-        <p>
-          The iterative fabrication process focused on systematic refinement of:
-        </p>
-        <ul>
-          <li>Servo mounting systems with precise alignment and minimal mechanical play</li>
-          <li>Linkage geometries optimized for natural motion paths and adequate force transmission</li>
-          <li>Mechanical clearances ensuring full range of motion without interference or binding</li>
-          <li>Structural integrity under dynamic loading conditions during rapid expression changes</li>
-          <li>Component standardization using common metric fasteners wherever possible for simplified assembly and maintenance</li>
-          <li>Material selection balancing strength, weight, and fabrication constraints</li>
-        </ul>
-        <p>
-          The decision to maintain mechanically simple geometries during initial development proved crucial, 
-          allowing focus on functional performance before aesthetic refinement. Assembly verification in 
-          Fusion 360 helped identify potential motion conflicts before physical testing, significantly 
-          reducing fabrication waste and development time.
+          Creating systems that feel alive requires obsessive attention to motion design. The technology—servos, microcontrollers, PCBs—is relatively straightforward. The challenge is in the choreography: timing, coordination, smooth transitions. When those details are right, even visibly mechanical systems evoke genuine emotional responses.
         </p>
       </div>
 
       <div className={styles['content-card']}>
-        <h3>Silicone Skin Development Process</h3>
+        <h3>Final Result</h3>
         <p>
-          The creation of the silicone skin represented one of the most challenging aspects of the project, 
-          requiring the development of custom molding techniques and material formulations to achieve the 
-          desired aesthetic and functional properties.
+          The completed animatronic head successfully demonstrates coordinated movement of all 21 servo 
+          subsystems working together to create believable facial expressions. The browser-based control 
+          interface enables real-time operation from any device, and the removable silicone skin allows 
+          educational demonstrations of the internal mechanical systems.
         </p>
-        <ul>
-          <li>Design and fabrication of precision negative and positive molds using 3D printing and traditional sculpting techniques</li>
-          <li>Experimental determination of optimal skin thickness balancing flexibility for expression with durability for handling</li>
-          <li>Material selection process using Smooth-On Dragon Skin FX Pro silicone with custom flesh-toned pigment formulations</li>
-          <li>Development of techniques for embedding neodymium magnets between silicone layers without compromising material integrity</li>
-          <li>Iterative refinement of mold release procedures and curing protocols for consistent, bubble-free results</li>
-          <li>Integration of fiber reinforcement in high-stress areas to prevent tearing during repeated attachment/removal cycles</li>
-        </ul>
-      </div>
-
-      <div className={styles['content-card']}>
-        <h3>Software Development and Control System Architecture</h3>
         <p>
-          The software development process evolved from simple servo positioning sketches to a sophisticated 
-          control architecture capable of coordinating complex expressions and speech synchronization.
-        </p>
-        <ul>
-          <li>Initial development of calibration sketches in Arduino IDE to systematically discover safe operational ranges for each servo motor</li>
-          <li>Implementation of hierarchical expression systems using stored position sets for repeatable, natural-looking facial movements</li>
-          <li>Integration of WiFi control capabilities enabling wireless operation without dependence on existing network infrastructure</li>
-          <li>Development of browser-based user interface providing real-time control with immediate visual feedback</li>
-          <li>Iterative expansion of expression library through systematic testing and refinement of motion sequences</li>
-          <li>Implementation of safety systems preventing mechanical damage through software-enforced position limits</li>
-        </ul>
-      </div>
-
-      <div className={styles['content-card']}>
-        <h3>Audio Integration and Speech Synchronization</h3>
-        <p>
-          The development of convincing speech synthesis required careful coordination between audio playback 
-          timing and mechanical mouth movements, representing a significant software and mechanical 
-          coordination challenge.
-        </p>
-        <ul>
-          <li>Creation of custom MP3 audio library with carefully selected phrases for demonstration purposes</li>
-          <li>Development of phoneme-based mouth movement sequences synchronized to audio timing for realistic lip-sync</li>
-          <li>Systematic tuning of mouth, jaw, and tongue coordination to optimize speech clarity and visual believability</li>
-          <li>Integration of audio triggers into the main control system for seamless coordination between speech and expression</li>
-          <li>Calibration of speaker positioning and acoustic properties to simulate natural voice projection</li>
-        </ul>
-      </div>
-
-      <div className={styles['content-card']}>
-        <h3>System Integration and Final Assembly</h3>
-        <p>
-          The final integration phase brought together all subsystems and revealed the importance of 
-          systematic testing and documentation for complex mechatronic systems.
-        </p>
-        <ul>
-          <li>Comprehensive testing of individual subsystems before final assembly to isolate and resolve issues systematically</li>
-          <li>Development of assembly procedures and documentation to enable disassembly for maintenance and demonstration</li>
-          <li>Implementation of comprehensive safety testing to ensure reliable operation during public demonstrations</li>
-          <li>Creation of user operation guides and troubleshooting procedures for educational use</li>
-          <li>Final aesthetic refinement and finishing while maintaining access to critical adjustment points</li>
-        </ul>
-      </div>
-
-      <div className={styles['content-card']}>
-        <h3>Bill of Materials</h3>
-        <ul>
-          <li>ESP32 S3</li>
-          <li>6 SG90 micro servos</li>
-          <li>13 MG90S 9g metal geared servos</li>
-          <li>2 MG996R servos</li>
-          <li>2 Adafruit PCA9685 16 channel servo drivers</li>
-          <li>DFPlayer Mini MP3 audio module</li>
-          <li>Speaker</li>
-          <li>External 5V power supply</li>
-        </ul>
-      </div>
-
-      <div className={styles['content-card']}>
-        <h3>Tips and Lessons Learned</h3>
-        <ul>
-          <li>Design modular subsystems for iteration (eyes, eyebrows, mouth removable)</li>
-          <li>Test electronics on breadboards before PCB fabrication no matter how simple they might seem</li>
-          <li>Import 3D models of electronics into CAD whenever possible to design around real constraints</li>
-          <li>Keep early sketches and models as simple and rectangular as possible</li>
-          <li>Aesthetic adjustments are much easier to implement at the very end</li>
-          <li>Create BOM early with extra components to avoid last minute scrambling due to part failures</li>
-          <li>Mesh reinforcements can be used during silicon pours near high stress points (eyes and mouth) as well as magnet locations to avoid silicon tearing</li>
-          <li>Set an outer head boundary at the very beginning to prevent unrealistic proportions</li>
-          <li>When working with silicone, use magnets that are only as strong as necessary to reliably hold the silicone in place, since stronger magnets can cause tearing, deformation, or make removal difficult, especially in thin or soft sections</li>
-          <li>When inserting magnets into PLA, heating magnets to melt into PLA weakens strength</li>
-          <li>Opt for hexagonal holes with a -0.1mm offset from magnet diameter and a 0.8 chamfer to assist with press fit</li>
-          <li>Make sure servo screws aren't too long when attaching links to servos horns as they can actually block servo movement if driven too far into the servo</li>
-          <li>When importing meshes into Fusion, use the Generate Face Groups and then Modify to Covert Mesh to work on flat, editable faces</li>
-          <li>Snap fits on 3D prints are unreliable</li>
-          <li>Use standard metric screw holes wherever possible</li>
-          <li>Document continuously, even when things aren't working</li>
-          <li>Catching up and documenting at the end is actually terrible</li>
-          <li>Make your website as basic and standardized per week as possible</li>
-          <li>Documentation is incredibly difficult when focused on aesthetics over function</li>
-        </ul>
-      </div>
-
-      <div className={styles['content-card']}>
-        <h3>Final Demonstration</h3>
-        <p>
-          The completed robotic head demonstrates the culmination of weeks of iterative design, fabrication, 
-          and integration work. This final presentation showcases the coordinated movement of all facial 
-          subsystems working together to create believable expressions.
+          The project met all core objectives: convincing facial expressions, synchronized speech capability, 
+          modular design, browser-based control, and removable skin. While the stretch goal of camera-based 
+          face tracking was deprioritized due to time constraints, the system as built successfully demonstrates 
+          the intersection of mechanical design, electronics, and software in creating expressive robotic systems.
         </p>
       </div>
     </div>

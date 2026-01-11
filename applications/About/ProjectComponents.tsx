@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SubViewParams, SubViewNavigation } from './AboutView';
 import styles from './AboutView.module.css';
 
@@ -82,25 +82,79 @@ interface ProjectImageProps {
 }
 
 export function ProjectImage({ src, alt, caption, isVideo = false }: ProjectImageProps) {
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
   return (
-    <figure className="project-media">
-      {isVideo ? (
-        <video 
-          className="project-video" 
-          src={src} 
-          controls 
-          aria-label={alt}
+    <>
+      <figure className="project-media" onClick={() => !isVideo && setIsFullscreen(true)} style={{ cursor: !isVideo ? 'pointer' : 'default' }}>
+        {isVideo ? (
+          <video 
+            className="project-video" 
+            src={src} 
+            controls 
+            aria-label={alt}
+            style={{ maxHeight: '100vh', width: 'auto', display: 'block' }}
+          >
+            Your browser does not support the video tag.
+          </video>
+        ) : (
+          <img 
+            className="project-image" 
+            src={src} 
+            alt={alt}
+            style={{ maxHeight: '600px', width: 'auto', objectFit: 'contain' }}
+          />
+        )}
+        {caption && <figcaption>{caption}</figcaption>}
+      </figure>
+
+      {isFullscreen && !isVideo && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.9)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999,
+            padding: '2rem'
+          }}
+          onClick={() => setIsFullscreen(false)}
         >
-          Your browser does not support the video tag.
-        </video>
-      ) : (
-        <img 
-          className="project-image" 
-          src={src} 
-          alt={alt} 
-        />
+          <div style={{ position: 'relative', maxWidth: '90vw', maxHeight: '90vh' }}>
+            <img 
+              src={src} 
+              alt={alt}
+              style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
+              onClick={(e) => e.stopPropagation()}
+            />
+            <button
+              onClick={() => setIsFullscreen(false)}
+              style={{
+                position: 'absolute',
+                top: '-2.5rem',
+                right: '0',
+                backgroundColor: 'white',
+                border: 'none',
+                borderRadius: '50%',
+                width: '40px',
+                height: '40px',
+                fontSize: '24px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              ✕
+            </button>
+          </div>
+        </div>
       )}
-      {caption && <figcaption>{caption}</figcaption>}
-    </figure>
+    </>
   );
 }
