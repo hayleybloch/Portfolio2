@@ -15,13 +15,13 @@ export function ProjectAnimatronicHead(params: SubViewParams) {
       </p>
 
       <ProjectImage 
-        src="animatronic-head-hero.jpg" 
+        src="AnimatronicHead/me-with-final-head.jpeg" 
         alt="Final animatronic head with creator"
         caption="Final head with creator"
       />
 
       <ProjectImage 
-        src="animatronic-presentation.jpg" 
+        src="AnimatronicHead/presentation-day.jpeg" 
         alt="Presentation day"
         caption="Presentation day"
       />
@@ -52,7 +52,7 @@ export function ProjectAnimatronicHead(params: SubViewParams) {
         </ul>
 
         <ProjectImage 
-          src="animatronic-system-diagram.jpg" 
+          src="AnimatronicHead/final-system-diagram.JPG" 
           alt="System Architecture Diagram"
           caption="System Architecture Diagram"
         />
@@ -84,13 +84,13 @@ export function ProjectAnimatronicHead(params: SubViewParams) {
         </p>
 
         <ProjectImage 
-          src="animatronic-cad-assembly.jpg" 
+          src="AnimatronicHead/final-assembly-fusion.png" 
           alt="Final Assembly CAD"
           caption="Final Assembly CAD"
         />
 
         <ProjectImage 
-          src="animatronic-cad-detail.jpg" 
+          src="AnimatronicHead/final-fusion-assembly2.png" 
           alt="Final Assembly CAD Detail"
           caption="Final Assembly CAD Detail"
         />
@@ -113,37 +113,37 @@ export function ProjectAnimatronicHead(params: SubViewParams) {
         </ul>
 
         <ProjectImage 
-          src="animatronic-pcb-primary.jpg" 
+          src="AnimatronicHead/Final-pcb1.png" 
           alt="Primary PCB Design"
           caption="Primary PCB Design"
         />
 
         <ProjectImage 
-          src="animatronic-pcb-secondary.jpg" 
+          src="AnimatronicHead/final-pcb2.png" 
           alt="Secondary PCB Design"
           caption="Secondary PCB Design"
         />
 
         <ProjectImage 
-          src="animatronic-skeleton-early.jpg" 
+          src="AnimatronicHead/first-assembled-head.jpeg" 
           alt="Early skeleton assembly"
           caption="Early skeleton assembly"
         />
 
         <ProjectImage 
-          src="animatronic-skeleton-dev.jpg" 
+          src="AnimatronicHead/first-assembled-head2.jpeg" 
           alt="Skeleton development"
           caption="Skeleton development"
         />
 
         <ProjectImage 
-          src="animatronic-skeleton-complete.jpg" 
+          src="AnimatronicHead/final-skeleton.jpeg" 
           alt="Complete skeleton"
           caption="Complete skeleton"
         />
 
         <ProjectImage 
-          src="animatronic-wiring.jpg" 
+          src="AnimatronicHead/final-wiring.jpeg" 
           alt="Wiring integration"
           caption="Wiring integration"
         />
@@ -215,19 +215,19 @@ export function ProjectAnimatronicHead(params: SubViewParams) {
         </p>
 
         <ProjectImage 
-          src="animatronic-eyeball-plan.jpg" 
+          src="AnimatronicHead/eyeball-plan.JPG" 
           alt="Eyeball Plan"
           caption="Eyeball Plan"
         />
 
         <ProjectImage 
-          src="animatronic-eye-socket.jpg" 
+          src="AnimatronicHead/eye-socket-plan.JPG" 
           alt="Eye Socket Plan"
           caption="Eye Socket Plan"
         />
 
         <ProjectImage 
-          src="animatronic-eye-servo.jpg" 
+          src="AnimatronicHead/eye-servo-plan.JPG" 
           alt="Eye Servo Plan"
           caption="Eye Servo Plan"
         />
@@ -247,7 +247,7 @@ export function ProjectAnimatronicHead(params: SubViewParams) {
         </p>
 
         <ProjectImage 
-          src="animatronic-eyebrow-mechanism.jpg" 
+          src="AnimatronicHead/eyebrow-mechanism.png" 
           alt="Eyebrow Mechanism"
           caption="Eyebrow Mechanism"
         />
@@ -309,7 +309,7 @@ export function ProjectAnimatronicHead(params: SubViewParams) {
         </p>
 
         <ProjectImage 
-          src="animatronic-final-skin.jpg" 
+          src="AnimatronicHead/final-skin.jpeg" 
           alt="Final skin"
           caption="Final skin"
         />
@@ -319,25 +319,25 @@ export function ProjectAnimatronicHead(params: SubViewParams) {
         <h3>Silicone Skin Development Process</h3>
 
         <ProjectImage 
-          src="animatronic-plaster-mold.jpg" 
+          src="AnimatronicHead/plaster-mold.jpeg" 
           alt="Plaster mold"
           caption="Plaster mold"
         />
 
         <ProjectImage 
-          src="animatronic-positive-mold.jpg" 
+          src="AnimatronicHead/positive-mold.jpeg" 
           alt="Positive mold"
           caption="Positive mold"
         />
 
         <ProjectImage 
-          src="animatronic-complete-mold.jpg" 
+          src="AnimatronicHead/plaster-silicon-mold.jpeg" 
           alt="Complete mold system"
           caption="Complete mold system"
         />
 
         <ProjectImage 
-          src="animatronic-eye-mold.jpg" 
+          src="AnimatronicHead/eye-mold.jpeg" 
           alt="Eye area mold"
           caption="Eye area mold"
         />
@@ -345,25 +345,25 @@ export function ProjectAnimatronicHead(params: SubViewParams) {
         <h4>Skin Casting Iterations</h4>
 
         <ProjectImage 
-          src="animatronic-first-skin.jpg" 
+          src="AnimatronicHead/first-skin.jpeg" 
           alt="First skin casting"
           caption="First skin casting"
         />
 
         <ProjectImage 
-          src="animatronic-skin-no-eyes.jpg" 
+          src="AnimatronicHead/first-skin-no-eyes.jpeg" 
           alt="Skin without eyes"
           caption="Skin without eyes"
         />
 
         <ProjectImage 
-          src="animatronic-eye-integration.jpg" 
+          src="AnimatronicHead/eye-skin-on-head.jpeg" 
           alt="Eye skin integration"
           caption="Eye skin integration"
         />
 
         <ProjectImage 
-          src="animatronic-final-details.jpg" 
+          src="AnimatronicHead/drawn-eyebrows-final-skin.jpeg" 
           alt="Final details"
           caption="Final details"
         />
@@ -416,25 +416,25 @@ export function ProjectAnimatronicHead(params: SubViewParams) {
         <h3>Assembly and Integration Process</h3>
 
         <ProjectImage 
-          src="animatronic-early-integration.jpg" 
+          src="AnimatronicHead/first-version-head-and-skin.jpeg" 
           alt="Early integration"
           caption="Early integration"
         />
 
         <ProjectImage 
-          src="animatronic-first-assembly.jpg" 
+          src="AnimatronicHead/first-assembled-head.jpeg" 
           alt="First assembly"
           caption="First assembly"
         />
 
         <ProjectImage 
-          src="animatronic-iterative-refinement.jpg" 
+          src="AnimatronicHead/skin-and-head-iteration.jpeg" 
           alt="Iterative refinement"
           caption="Iterative refinement"
         />
 
         <ProjectImage 
-          src="animatronic-eye-integration-assembly.jpg" 
+          src="AnimatronicHead/eye-skin-on-head.jpeg" 
           alt="Eye integration"
           caption="Eye integration"
         />
