@@ -1,18 +1,20 @@
-import { ReactElement } from "react";
 import Head from "next/head";
+import dynamic from "next/dynamic";
 
-export default function Home(): ReactElement {
+const OperatingSystem = dynamic(
+  () => import("@/components/OperatingSystem").then(mod => mod.OperatingSystem),
+  { ssr: false }
+);
+
+export default function Home() {
   return (
     <>
       <Head>
         <title>Hayley Bloch - Desktop</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main style={{ height: "100vh", width: "100vw", margin: 0, padding: 0 }}>
-        <div style={{ padding: "20px", textAlign: "center", fontFamily: "Arial, sans-serif" }}>
-          <h1>{"Hayley Bloch's Portfolio"}</h1>
-          <p>Desktop application loading...</p>
-        </div>
+      <main className="Home_main__VkIEL">
+        <OperatingSystem />
       </main>
     </>
   );
