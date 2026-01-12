@@ -35,7 +35,7 @@ function Contact(props: { manager: BaseApplicationManager, language: string }) {
 
   function englishContent() {
     return (<>
-      <p>If you have any questions or comments, please contact me via the <a onClick={() => openContactApp()} href='#contact'>contact application</a> or shoot me an email at <a href="mailto:hayleybl@mit.edu">hayleybl@mit.edu</a></p>
+      <p>If you have any questions or comments, please contact me via the <a onClick={() => openContactApp()} href='#contact'>contact application</a> or shoot me an email at <a href="mailto:hayleybloch@college.harvard.edu">hayleybloch@college.harvard.edu</a></p>
     </>);
   }
 
@@ -52,7 +52,7 @@ function HomeSubView(params: SubViewParams) {
   return (<>
     <div className={styles['subpage-home']}>
       <h1 className={styles['home-title']}>Hayley Bloch</h1>
-      <h3 className={styles['home-subtitle']}>HTMAA Student, Fabrication Enthusiast</h3>
+      <h3 className={styles['home-subtitle']}>Harvard Student Class of 2027, Fabrication Enthusiast</h3>
 
       <div className={styles['home-button-container']}>
         <button className={`${styles['home-button']} system-button ${mobileClass}`} onClick={() => params.changeParent('about')}>{t("about.navigation.about")}</button>
@@ -111,10 +111,10 @@ function AboutSubView(params: SubViewParams) {
         <h1 className={styles['page-h1']}>Welcome</h1>
 
         <p>
-          I'm Hayley Bloch, an HTMAA student at MIT exploring digital fabrication, creative engineering, and interactive art.
+          I'm Hayley Bloch, an Harvard student cross regustered at MIT exploring digital fabrication, creative engineering, and interactive art.
         </p>
 
-        <p>Thanks for taking the time to explore my portfolio. I hope you enjoy it as much I did enjoy developing it. If you have any questions or comments, please contact me via the <a onClick={() => openContactApp()} href='#contact'>contact application</a> or shoot me an email at <a href="mailto:hayleybl@mit.edu">hayleybl@mit.edu</a></p>
+        <p>Thanks for taking the time to explore my portfolio. I hope you enjoy it as much I did enjoy developing it. If you have any questions or comments, please contact me via the <a onClick={() => openContactApp()} href='#contact'>contact application</a> or shoot me an email at <a href="mailto:hayleybloch@college.harvard.edu">hayleybloch@college.harvard.edu</a></p>
 
 
         <h2>About me</h2>

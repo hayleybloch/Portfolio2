@@ -57,8 +57,8 @@ async function sendEmailToMe(request: SendEmailRequestData): Promise<void> {
   console.log(request.message);
 
   await transporter.sendMail({
-    from: `"${request.email}" <hayleybl@mit.edu>`,
-    to: `hayleybl@mit.edu`,
+    from: `"${request.email}" <hayleybloch@college.harvard.edu>`,
+    to: `hayleybloch@college.harvard.edu`,
     subject,
     text: request.message
   });

@@ -50,7 +50,7 @@ export function ProjectPage({ title, content, params }: ProjectPageProps) {
 
           <div style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid #ddd' }}>
             <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Questions?</h3>
-            <p>If you have any questions or comments, feel free to reach out via <a href="mailto:hayleybl@mit.edu">hayleybl@mit.edu</a></p>
+            <p>If you have any questions or comments, feel free to reach out via <a href="mailto:hayleybloch@college.harvard.edu">hayleybloch@college.harvard.edu</a></p>
           </div>
 
           <button 

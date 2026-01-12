@@ -20,7 +20,7 @@ function EnglishContent() {
       I'm currently focused on my HTMAA studies at MIT, but I'm always interested in connecting with fellow makers, engineers, and artists! Whether you want to collaborate on a project, discuss fabrication techniques, or just chat about creative technology, feel free to reach out!
     </p>
 
-    <p><b>Email:&nbsp;</b><a href="mailto:hayleybl@mit.edu">hayleybl@mit.edu</a></p>
+    <p><b>Email:&nbsp;</b><a href="mailto:hayleybloch@college.harvard.edu">hayleybloch@college.harvard.edu</a></p>
     <p><b>Location:&nbsp;</b>Cambridge, MA</p>
     <p><b>Program:&nbsp;</b>MIT HTMAA, EECS Section, Fall 2025</p>
   </>);
