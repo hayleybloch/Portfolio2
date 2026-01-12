@@ -65,7 +65,7 @@ export default function TerminalApplicationView(props: WindowProps) {
   // But the browsers accept it anyway :ˆ)
   return (
     <>
-      <link rel="stylesheet" href="/xterm/xterm.css"/>
+      <link rel="stylesheet" href={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/xterm/xterm.css`}/>
       <div ref={terminalRef} style={{ height: '100%', width: '100%', background: '#000' }}></div>
     </>
   )

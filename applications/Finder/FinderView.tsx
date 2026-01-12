@@ -16,7 +16,7 @@ function getFileSystemDirectoryByPath(application: Application, path: string): R
 
   const node = application.apis.fileSystem.getNode(path);
 
-  if (!node.ok) { return node }
+  if (!node.isOk()) { return node }
   if (node.value.kind !== 'directory') { return err(Error("node type is not a directory")); }
 
   return ok(node.value);
