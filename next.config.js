@@ -1,13 +1,9 @@
 /** @type {import('next').NextConfig} */
-const repo = 'Portfolio2';
-const isGitHub = process.env.NODE_ENV === 'production';
 
 const nextConfig = {
-  basePath: isGitHub ? `/${repo}` : '',
-  assetPrefix: isGitHub ? `/${repo}/` : '',
   env: {
-    NEXT_PUBLIC_BASE_PATH: isGitHub ? `/${repo}` : '',
-    NEXT_PUBLIC_DESKTOP_BASE: isGitHub ? `/${repo}` : ''
+    NEXT_PUBLIC_BASE_PATH: '',
+    NEXT_PUBLIC_DESKTOP_BASE: ''
   },
   images: { 
     unoptimized: true,
@@ -43,16 +39,9 @@ const nextConfig = {
     isrMemoryCacheSize: 0,
   },
 
-  // Provide dev-only rewrites so hardcoded /Portfolio2/... paths work when running locally
+  // Provide dev-only rewrites
   async rewrites() {
-    if (isGitHub) { return [] }
-
-    return [
-      {
-        source: `/${repo}/:path*`,
-        destination: `/:path*`
-      }
-    ];
+    return [];
   }
 };
 
