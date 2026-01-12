@@ -4,7 +4,7 @@ import styles from './AboutView.module.css';
 import { BaseApplicationManager } from '../ApplicationManager';
 import { useTranslation } from 'react-i18next';
 import { TFunction } from 'i18next';
-import { ProjectAnimatronicHead, ProjectWoodenRecordPlayer, ProjectFlameThrowerGlove, ProjectRockPaperScissorsHand } from './Projects';
+import { ProjectAnimatronicHead, ProjectWoodenRecordPlayer, ProjectFlameThrowerGlove, ProjectRockPaperScissorsHand, ProjectTTrexRobot } from './Projects';
 import getPublicPath from '@/lib/getPublicPath';
 import { ScreenResolution } from '@/apis/Screen/ScreenService';
 
@@ -17,6 +17,7 @@ type SubView = (
   'project-record-player' |
   'project-flame-thrower' |
   'project-rock-paper-scissors' |
+  'project-t-trex-robot' |
   'contact'
 );
 
@@ -93,12 +94,10 @@ function AboutSubView(params: SubViewParams) {
   }
 
   function ImageOfMyself(props: { language: string }) {
-    const text = 'Me, Fall';
 
     return (<>
       <div className={styles['image-container']}>
         <img draggable={false} src={getPublicPath('/images/photo-of-me-min.jpg')} alt="Image of myself" />
-        <span>{text}</span>
       </div>
     </>);
   }
@@ -111,33 +110,66 @@ function AboutSubView(params: SubViewParams) {
         <h1 className={styles['page-h1']}>Welcome</h1>
 
         <p>
-          I'm Hayley Bloch, an Harvard student cross regustered at MIT exploring digital fabrication, creative engineering, and interactive art.
+          I'm Hayley Bloch, a Harvard student cross‑registered at MIT exploring mechanical engineering, creative fabrication, and interactive art.
         </p>
 
         <p>Thanks for taking the time to explore my portfolio. I hope you enjoy it as much I did enjoy developing it. If you have any questions or comments, please contact me via the <a onClick={() => openContactApp()} href='#contact'>contact application</a> or shoot me an email at <a href="mailto:hayleybloch@college.harvard.edu">hayleybloch@college.harvard.edu</a></p>
 
-
-        <h2>About me</h2>
-
-        <ImageOfMyself language='en'/>
-
-        <p>Before HTMAA, my background has been a mix of creative engineering projects, maker-space work, and entrepreneurship at Harvard. I've worked on wearable devices, robotic systems, and interactive art concepts, while also managing a university makerspace and organizing programs that connect students with innovation and design.</p>
-
-        <p>My experience combines hands-on building, CAD/CAM, electronics, and community-building around creative technology. This foundation has prepared me perfectly for MIT's "How to Make (Almost) Anything" program, where I'm now exploring the intersection of digital fabrication and artistic expression.</p>
-
-        <p>Through HTMAA, I'm learning to bridge the gap between traditional engineering and creative expression. Each week brings new challenges in fabrication, electronics, and design, pushing me to think beyond conventional boundaries and create meaningful, interactive experiences.</p>
-
-        <p>My final project vision is to create a humanoid robotic bust that blends sculpture, mechanics, and AI. The bust will be expressive both in movement and speech, designed to embody personality as an art-engineering project that explores how machines can convey humanlike presence and emotion.</p>
-
-        <h2>What I'm doing now</h2>
-        <p>I'm a Maker Studio Teaching Assistant at Harvard Innovation Labs, where I help manage the i‑Lab Maker Studio, train students, and build infrastructure for creative prototyping. I also support the Harvard LPCE program as a Fellow and Program Coordinator—working on courses, mentorship, and events like FounderCrush.</p>
-
-        <p>Beyond that, I build independent projects that combine AI, electronics, and design—from a health‑tracking wearable PCB and an AI record player to a robotic hand and a motion‑triggered flame glove. My work blends fabrication, embedded systems, and expressive interaction.</p>
-
+        <h2>About Me</h2>
+        <div className={styles['about-me-section']}>
+          <div className={styles['about-me-text']}>
+            <p>
+              I work at the intersection of creative engineering, hands-on making,
+              and entrepreneurship. At Harvard, I’ve built wearable devices,
+              robotic systems, and interactive art while working in makerspaces and
+              helping run programs that connect students with design, fabrication,
+              and emerging technology. I enjoy moving between mechanics,
+              electronics, and interaction design, always thinking about how people
+              actually experience the things they use.
+            </p>
+            <p>
+              My work is rooted in physical computing and mechatronics, combining
+              CAD and digital fabrication with embedded systems and software.
+              Alongside building, I’ve spent time managing shared fabrication
+              spaces and supporting other makers as they turn ideas into working
+              systems. That balance between making and community has shaped how I
+              approach engineering as both a technical and creative practice.
+            </p>
+            <p>
+              I’m especially drawn to projects that blur the line between function
+              and expression. Whether I’m reimagining how we interact with music,
+              designing gesture-driven wearables, or building machines that respond
+              to human motion, my focus is on making technology feel tangible,
+              legible, and human.
+            </p>
+          </div>
+          <div className={styles['about-me-image']}>
+            <ImageOfMyself language='en'/>
+          </div>
+        </div>
         <h2>Interests</h2>
-        <p>I’m passionate about creative practices that balance and inspire my engineering work. I love working with ceramics and sculpture, where the slow, tactile process offers a contrast to digital design. I also find rhythm and focus in spin classes, where music and movement come together in a meditative way.</p>
-
-        <p>When I’m not in the studio, I enjoy immersing myself in techno, exploring how sound and atmosphere create collective energy. Fashion and performance, especially through projects like Eleganza, give me another way to explore identity and expression. Travel and cultural exchange are also central to my interests, helping me connect with new communities and perspectives.</p>
+        <p>
+          Outside the studio, I’m drawn to practices that slow me down and
+          ground my work. I spend time with ceramics and sculpture, where the
+          process is physical, patient, and imperfect in a way that deeply
+          influences how I think about making.
+        </p>
+        <p>
+          Movement is another constant in my life. Soccer has long been an
+          anchor for teamwork and momentum, while spin classes offer a
+          rhythmic, meditative reset through music and repetition. Sound plays
+          a big role for me as well, especially techno and the culture
+          surrounding it in Berlin, where atmosphere, endurance, and
+          collective energy shape the experience.
+        </p>
+        <p>
+          Fashion and performance are another creative outlet, particularly
+          through my role as Executive Producer for Eleganza, Harvard’s largest
+          student-run production, where creativity becomes something shared
+          and lived. I also love traveling and immersing myself in new places
+          and cultures, experiences that continually feed back into how I
+          approach design, engineering, and creative work.
+        </p>
       </div>
     );
   }
@@ -156,65 +188,142 @@ function ExperienceSubView(params: SubViewParams) {
   const t = params.translate;
 
   function englishContent() {
+    const makerStudio = (
+      <>
+        <p>
+          In June 2025, I joined the Harvard Innovation Labs i-Lab Maker Studio team
+          as a Teaching Assistant. I provide training, mentorship, and technical
+          support for students building across digital fabrication and prototyping,
+          with a strong emphasis on safe equipment use and practical iteration.
+        </p>
 
-    const makerStudio = (<>
-      <p>In Summer 2025 I joined the i-Lab Maker Studio team as a Teaching Assistant. My role is to help manage the space, train students, and build out the infrastructure to support creative prototyping and entrepreneurship projects. This has involved building supply and equipment tracking systems, streamlining training workflows, and introducing new tools such as a Formlabs Form 4 resin printer and updated soldering setups.</p>
+        <p>
+          Day to day, I help students troubleshoot and move projects forward across
+          CAD, electronics, PCB design, 3D printing, and fabrication workflows.
+        </p>
 
-      <p>I also collaborate with students and teams directly on projects, providing guidance on CAD, PCB design, electronics, 3D printing, and fabrication methods. This role combines teaching, community-building, and hands-on technical expertise.</p>
+        <h3>Technologies and tools</h3>
+        <p>
+          Fusion 360, KiCad, SLA and FDM printing, soldering and electronics work,
+          PCB prototyping, digital fabrication workflows
+        </p>
+      </>
+    );
 
-      <h3>Technologies and tools</h3>
-      <p>Fusion 360, KiCad, SLA printers, FDM printers, soldering work, PCB prototyping, inventory management systems</p>
-    </>);
+    const lpce = (
+      <>
+        <p>
+          From January to October 2025, I supported entrepreneurship initiatives
+          across Harvard as a Fellow with the Lemann Program on Creativity and
+          Entrepreneurship (LPCE). My work spanned communications and production,
+          including website and social media management, newsletter production,
+          event communications, mentor relations, and support for key programs.
+        </p>
 
-    const lpce = (<>
-      <p>As a Fellow with the Lemann Program on Creativity and Entrepreneurship (LPCE), I have helped support courses (CE10, CE11), coordinate mentorship programs, and organize high-profile events like FounderCrush. My work spans social media design, mentor outreach, student advising, and creative storytelling (scripts, videos, newsletters).</p>
+        <h3>Technologies and tools</h3>
+        <p>Figma, Canva, Google Workspace, Mailchimp, HTML/CSS for newsletters</p>
+      </>
+    );
 
-      <h3>Technologies and tools</h3>
-      <p>Figma, Canva, Google Workspace, Mailchimp, HTML/CSS for newsletters</p>
-    </>);
+    const halo = (
+      <>
+        <p>
+          In April and May 2025, I worked at Halo as a Hardware Engineer focused on
+          Product and Operations. I led hardware development and helped shape
+          operational strategy for an early-stage wearable tech startup using facial
+          recognition, collaborating closely with the founders to build prototypes,
+          define product direction, and scale systems.
+        </p>
 
-    const projects = (<>
-      <p>Alongside my Harvard work, I have developed personal engineering projects that combine AI, electronics, and design. These include:</p>
+        <h3>Technologies and tools</h3>
+        <p>
+          Rapid prototyping, hardware iteration, product development, operations
+          systems, cross-functional collaboration
+        </p>
+      </>
+    );
 
-      <div>
-        - <b>Wearable Health-Tracking Disk:</b> a custom under-watch PCB integrating MAX30101 PPG, accelerometer, and nRF52832 BLE MCU.<br/>
-        - <b>AI Record Player:</b> a Raspberry Pi–based system that uses RFID-tagged wooden records to trigger Spotify playback with a servo-driven tonearm.<br/>
-        - <b>Rock-Paper-Scissors Robotic Hand:</b> Arduino-controlled servos and computer vision to play against humans with expressive gestures.<br/>
-        - <b>Flame Thrower Glove:</b> a wearable system combining a Savox SB-2290SG servo motor, MMA8452Q motion sensor, and an arc lighter ignition circuit. Designed to ignite and release butane on a punching gesture, the glove integrates Arduino Nano control, motion detection, and high-power actuation for a dramatic responsive effect.
-      </div>
+    const goBabyGo = (
+      <>
+        <p>
+          From August 2022 to August 2023, I was a Project Designer with the Go Baby
+          Go Powered Mobility Program. I collaborated with families to design and
+          retrofit ride-on toy cars for children with mobility impairments, creating
+          tailored mobility solutions that support independence and confidence.
+        </p>
 
-      <p>Each project required integrating CAD modeling, PCB design, embedded programming, and prototyping methods, bridging art, engineering, and AI.</p>
+        <h3>Technologies and tools</h3>
+        <p>Mechanical adaptation, user-centered design, prototyping, fabrication</p>
+      </>
+    );
 
-      <h3>Technologies and tools</h3>
-      <p>Arduino, Raspberry Pi, Python, C/C++, Fusion 360, KiCad, OpenCV, Spotify API, motion sensors, high-torque servos, laser cutting, 3D printing</p>
-    </>);
+    const research = (
+      <>
+        <p>
+          From December 2021 to May 2023, I was a Research Intern at the University
+          of North Texas in Professor Steven Jiang’s Mechanical Engineering lab. I
+          designed and tested 3D-modeled helicoidal structures to evaluate enhanced
+          support capabilities, bridging CAD modeling with experimental iteration.
+        </p>
 
-    return { makerStudio, lpce, projects }
+        <h3>Technologies and tools</h3>
+        <p>CAD modeling, prototyping, test planning, mechanical evaluation</p>
+      </>
+    );
+
+    const cleaverBrooks = (
+      <>
+        <p>
+          During Summers 2020 and 2021, I worked as a Summer Mechanical Engineering
+          Intern at Cleaver-Brooks. I used Autodesk Inventor to design and model
+          boiler rooms and parts, and I also designed a custom removable truck
+          liftgate to improve ergonomic efficiency.
+        </p>
+
+        <h3>Technologies and tools</h3>
+        <p>Autodesk Inventor, mechanical design, modeling, fabrication support</p>
+      </>
+    );
+
+    return { makerStudio, lpce, halo, goBabyGo, research, cleaverBrooks };
   }
 
   const content = englishContent();
 
-  return (<>
-    <div data-subpage className={styles['subpage']}>
-      { SubViewNavigation(params) }
-      <div data-subpage-content className={styles['subpage-content']}>
-        <h1 className={styles['page-h1']}>{t("about.navigation.experience")}</h1>
+  return (
+    <>
+      <div data-subpage className={styles["subpage"]}>
+        {SubViewNavigation(params)}
+        <div data-subpage-content className={`${styles["subpage-content"]} ${styles["experience-content"]}`}>
+          <h1 className={styles["page-h1"]}>{t("about.navigation.experience")}</h1>
 
-        <h2>2025 - Current - Maker Studio TA, Harvard Innovation Labs</h2>
-        { content.makerStudio }
-        
-        <h2>2023 - 2025 - Fellow & Program Coordinator, Harvard LPCE</h2>
-        { content.lpce }
-        
-        <h2>2022 - 2025 - Independent Maker & Engineer</h2>
-        { content.projects }
-        
+          <h2>June 2025 – Present, Teaching Assistant, Harvard Innovation Labs Maker Studio</h2>
+          {content.makerStudio}
 
-        <Contact manager={params.manager} language={params.language} />
+          <h2>January 2025 – October 2025, Fellow, Lemann Program on Creativity and Entrepreneurship</h2>
+          {content.lpce}
+
+          <h2>April 2025 – May 2025, Hardware Engineer (Product and Operations), Halo</h2>
+          {content.halo}
+
+          <h2>August 2022 – August 2023, Project Designer, Go Baby Go Powered Mobility Program</h2>
+          {content.goBabyGo}
+
+          <h2>December 2021 – May 2023, Research Intern, University of North Texas</h2>
+          {content.research}
+
+          <h2>Summers 2020 and 2021, Summer Mechanical Engineering Intern, Cleaver-Brooks</h2>
+          {content.cleaverBrooks}
+
+          <Contact manager={params.manager} language={params.language} />
+        </div>
       </div>
-    </div>
-  </>);
+    </>
+  );
 }
+
+export { ExperienceSubView };
+
 
 function ProjectsSubView(params: SubViewParams) {
   const t = params.translate;
@@ -236,12 +345,13 @@ function ProjectsSubView(params: SubViewParams) {
       <div data-subpage-content className={styles['subpage-content']}>
         <h1 className={styles['page-h1']}>{t("about.navigation.projects")}</h1>
 
-        <ul>
-          <li>{ProjectButton('Animatronic Humanoid Head', 'project-animatronic-head', '/icons/project-portfolio-2024.png')}</li>
-          <li>{ProjectButton('Wooden Record Player', 'project-record-player', '/icons/project-pcparts.png')}</li>
-          <li>{ProjectButton('Flame Thrower Glove', 'project-flame-thrower', '/icons/skills/soldering.svg')}</li>
-          <li>{ProjectButton('Rock-Paper-Scissors Hand', 'project-rock-paper-scissors', '/icons/project-t-bot.png')}</li>
-        </ul>
+        <div>
+          {ProjectButton('Animatronic Humanoid Head', 'project-animatronic-head', '/icons/icons8-robot-head-67.png')}
+          {ProjectButton('Wooden Record Player', 'project-record-player', '/icons/icons8-record-player-48.png')}
+          {ProjectButton('Flame Thrower Glove', 'project-flame-thrower', '/icons/icons8-flame-48.png')}
+          {ProjectButton('Rock-Paper-Scissors Hand', 'project-rock-paper-scissors', '/icons/icons8-hand-peace-50.png')}
+          {ProjectButton('T-TREX Robot', 'project-t-trex-robot', '/icons/icons8-dinosaur-80.png')}
+        </div>
       </div>
     </div>
   </>);
@@ -257,6 +367,7 @@ function RenderSubView(view: SubView, params: SubViewParams): JSX.Element {
     case 'project-record-player': return ProjectWoodenRecordPlayer(params);
     case 'project-flame-thrower': return ProjectFlameThrowerGlove(params);
     case 'project-rock-paper-scissors': return ProjectRockPaperScissorsHand(params);
+    case 'project-t-trex-robot': return ProjectTTrexRobot(params);
   }
   
   return <></>;

@@ -96,19 +96,6 @@ export function ProjectRockPaperScissorsHand(params: SubViewParams) {
         </ul>
       </div>
 
-      <ProjectImage 
-        src="rps-arm-internal.jpg" 
-        alt="Internal view showing servo routing and mechanical linkages"
-        caption="Mechanical hand showing servo placement and finger articulation system"
-      />
-
-      <ProjectImage 
-        src="rps-arm-pipeline-diagram.jpg" 
-        alt="Diagram showing vision processing pipeline"
-        caption="Visualization of the computer vision processing pipeline"
-      />
-
-
       <div className={styles['content-card']}>
         <h3>Game Logic & Flow</h3>
         
@@ -132,12 +119,6 @@ export function ProjectRockPaperScissorsHand(params: SubViewParams) {
           "cheating" by waiting to see the human choice.
         </p>
       </div>
-
-      <ProjectImage 
-        src="rps-arm-gestures.jpg" 
-        alt="Side-by-side comparison of all three mechanical gestures"
-        caption="The mechanical hand forming rock, paper, and scissors gestures"
-      />
 
       <div className={styles['content-card']}>
         <h3>Software Architecture</h3>
@@ -168,13 +149,6 @@ export function ProjectRockPaperScissorsHand(params: SubViewParams) {
       </div>
 
 
-      <ProjectImage 
-        src="rps-arm-setup.jpg" 
-        alt="Complete setup showing camera, hand, and mounting arrangement"
-        caption="Full system setup with camera positioning and mechanical hand mount"
-      />
-
-
       <div className={styles['content-card']}>
         <h3>Tools & Technologies</h3>
         <ul>
@@ -186,12 +160,6 @@ export function ProjectRockPaperScissorsHand(params: SubViewParams) {
           <li><strong>3D Printing</strong> - Fabrication of mechanical hand components</li>
         </ul>
       </div>
-
-      <ProjectImage 
-        src="rps-arm-code-diagram.jpg" 
-        alt="Software architecture diagram"
-        caption="High-level software architecture showing module interactions"
-      />
 
     </div>
   );

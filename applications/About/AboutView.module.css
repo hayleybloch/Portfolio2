@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   font-family: 'Century Schoolbook', serif;
-  font-size: 2rem;
+  font-size: 3rem;
   text-transform: uppercase;
   letter-spacing: -1px;
   font-weight: normal;
@@ -13,7 +13,7 @@
   display: flex;
   justify-content: center;
   font-family: 'Century Schoolbook', serif;
-  font-size: 1rem;
+  font-size: 1.4rem;
   text-transform: uppercase;
   font-weight: normal;
   margin-top: 0.5rem;
@@ -131,25 +131,27 @@
 }
 
 .home-button {
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+  padding: 16px 24px;
 }
 
 .home-button.mobile {
-  font-size: 1rem;
-  padding: 15px 10px;
+  font-size: 1.1rem;
+  padding: 16px 18px;
 }
 
 /* Project Buttons */
 .project-button {
-  border-radius: 8px;
+  border-radius: 12px;
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
-  padding: 16px 20px;
+  padding: 20px 24px;
   border: 1px solid #d0d0d0;
   color: #2c2c2c;
   background-color: #ffffff;
-  font-size: 1.1em;
+  font-size: 1.3em;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   user-select: none;
   cursor: pointer;
@@ -157,7 +159,7 @@
   font-family: 'Century Schoolbook', serif;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   transition: all 0.3s ease;
   width: 100%;
 }
@@ -180,11 +182,11 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
+  width: 46px;
+  height: 46px;
   background-color: #f0e8df;
-  border-radius: 6px;
-  padding: 6px;
+  border-radius: 8px;
+  padding: 7px;
 }
 
 .project-button span {
@@ -197,8 +199,8 @@
 
 .project-button img {
   image-rendering: pixelated;
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
 }
 
 /* Link Buttons */
@@ -244,8 +246,8 @@
   display: block;
   float: right;
   width: 33%;
-  padding: 5px;
-  margin: 5px;
+  padding: 14px;
+  margin: -10px 10px 10px 10px;
   background-color: silver;
   box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #c8c8c8, inset -2px -2px grey, inset 2px 2px #fff;
 }
@@ -380,7 +382,7 @@
 
 .project-content p {
   margin-bottom: 14px;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   line-height: 1.7;
   color: #333;
 }
@@ -393,9 +395,49 @@
 
 .project-content li {
   margin-bottom: 10px;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   line-height: 1.7;
   color: #333;
+}
+
+/* About Me layout */
+.about-me-section {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.about-me-text {
+  display: block;
+}
+
+.about-me-image {
+  align-self: center;
+}
+
+.about-me-image .image-container {
+  float: none;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Experience page tighter spacing */
+.experience-content h2 {
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.experience-content h3 {
+  margin-top: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.experience-content p {
+  margin-bottom: 0.1rem;
+  font-size: 1.05rem;
 }
 
 .project-content strong {

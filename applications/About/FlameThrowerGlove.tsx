@@ -103,12 +103,6 @@ export function ProjectFlameThrowerGlove(params: SubViewParams) {
         </ul>
       </div>
 
-      <ProjectImage 
-        src="flame-glove-internal.jpg" 
-        alt="Internal view showing electronics and fuel routing"
-        caption="Internal layout showing compact component integration and fuel line routing"
-      />
-
       <div className={styles['content-card']}>
         
         <h4>Motion Detection Algorithm</h4>
@@ -131,12 +125,6 @@ export function ProjectFlameThrowerGlove(params: SubViewParams) {
           actuation sequence with sub-100ms latency, creating the perception of instant response.
         </p>
       </div>
-
-      <ProjectImage 
-        src="flame-glove-gesture-diagram.jpg" 
-        alt="Diagram showing gesture detection parameters"
-        caption="Visualization of the multi-parameter gesture detection system"
-      />
 
       <div className={styles['content-card']}>
         <h3>Mechanical Design & Fabrication</h3>
@@ -163,12 +151,6 @@ export function ProjectFlameThrowerGlove(params: SubViewParams) {
           back of the hand. Adjustable straps ensure secure fit during rapid motion.
         </p>
       </div>
-
-      <ProjectImage 
-        src="flame-glove-cad.jpg" 
-        alt="CAD model of the glove structure"
-        caption="3D CAD model showing component placement and structural design"
-      />
 
 
       <div className={styles['content-card']}>
@@ -220,12 +202,6 @@ export function ProjectFlameThrowerGlove(params: SubViewParams) {
           </ul>
         </div>
       </div>
-
-      <ProjectImage 
-        src="flame-glove-testing.jpg" 
-        alt="Testing setup with safety equipment"
-        caption="Controlled testing environment with fire suppression equipment"
-      />
 
       <div className={styles['content-card']}>
         <h3>Engineering Philosophy</h3>

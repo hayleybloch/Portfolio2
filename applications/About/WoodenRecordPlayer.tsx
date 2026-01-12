@@ -101,12 +101,6 @@ export function ProjectWoodenRecordPlayer(params: SubViewParams) {
         </ul>
       </div>
 
-      <ProjectImage 
-        src="internal-electronics.jpg" 
-        alt="Internal electronics and wiring"
-        caption="Internal electronics showing Raspberry Pi, RFID reader, and power management"
-      />
-
       <div className={styles['content-card']}>
         <h3>Software Architecture</h3>
         
@@ -131,12 +125,6 @@ export function ProjectWoodenRecordPlayer(params: SubViewParams) {
         </ul>
       </div>
 
-      <ProjectImage 
-        src="tonearm-lcd-detail.jpg" 
-        alt="Tonearm mechanism and LCD display detail"
-        caption="Tonearm mechanism with LCD display showing track information"
-      />
-
       <div className={styles['content-card']}>
         <h3>Fabrication Process</h3>
         
@@ -160,12 +148,6 @@ export function ProjectWoodenRecordPlayer(params: SubViewParams) {
           hinge pattern allows flat wooden sheets to curve elegantly, while precise tolerances ensure smooth 
           disk rotation and reliable RFID detection.
         </p>
-
-        <ProjectImage 
-          src="wooden-disks-collection.jpg" 
-          alt="Collection of custom wooden record disks with different album artwork"
-          caption="Collection of custom laser-engraved disks, each representing a different album"
-        />
       </div>
 
       <div className={styles['content-card']}>
@@ -177,12 +159,6 @@ export function ProjectWoodenRecordPlayer(params: SubViewParams) {
           <li><strong>Glowforge / Epilog Laser Cutter</strong> - Cutting and engraving wooden components</li>
           <li><strong>ChatGPT</strong> - Vector file refinement and design assistance</li>
         </ul>
-
-        <ProjectImage 
-          src="laser-cutting-process.jpg" 
-          alt="Laser cutting process or design files"
-          caption="Laser cutting the wooden enclosure and record disks"
-        />
       </div>
 
       <div className={styles['card-grid']}>

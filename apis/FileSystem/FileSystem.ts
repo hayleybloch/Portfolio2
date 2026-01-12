@@ -311,11 +311,11 @@ export function createBaseFileSystem(): FileSystem {
   fileSystem.addHyperLink(desktop, applications, 'Applications', applicationFolderIcon, true);
 
 
-  const readmeText = `Hey, welcome to my HTMAA portfolio!
+  const readmeText = `Hey, welcome to my portfolio!
 
-This website documents my journey through MIT's "How to Make (Almost) Anything" program, showcasing my weekly assignments and projects in fabrication, electronics, and digital design.
+This website showcases my work in engineering, fabrication, electronics, and digital design.
 
-Explore my weekly progress as I learn to make almost anything.
+Explore my projects and experience to learn more about what I do.
 
 Please enjoy, and explore as much as you would like!
 `;
