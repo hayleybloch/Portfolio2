@@ -1,7 +1,7 @@
 import { ApplicationIcon, FileSystem, FileSystemApplication, FileSystemDirectory, FileSystemNode } from "@/apis/FileSystem/FileSystem";
 import { LocalWindowCompositor } from "@/components/WindowManagement/LocalWindowCompositor";
 import { WindowCompositor, WindowContext } from "@/components/WindowManagement/WindowCompositor";
-import { Err, Ok, Result } from "neverthrow";
+import { err, ok, Result } from "neverthrow";
 import { LocalApplicationManager } from "./LocalApplicationManager";
 import { ApplicationEvent, ApplicationWindowEvent, createApplicationOpenEvent, createApplicationQuitEvent } from "./ApplicationEvents";
 import { SystemAPIs } from "@/components/OperatingSystem";
@@ -187,16 +187,19 @@ export class ApplicationManager implements BaseApplicationManager {
   }
 
   private openApplication(application: FileSystemApplication, path: string, args: string): Result<number, Error> {
+    console.log('[ApplicationManager] openApplication called for:', path);
     const compositor = new LocalWindowCompositor(this.windowCompositor);
     const manager = new LocalApplicationManager(this.processId, this);
 
     const parent = this.processes.find(x => x?.context.path === path);
 
     if (parent) {
+      console.log('[ApplicationManager] Reusing existing process:', parent.processId);
       parent.application.on(createApplicationOpenEvent(false, args));
 
-      return Ok(parent.processId);
+      return ok(parent.processId);
     } else {
+      console.log('[ApplicationManager] Creating new process');
       const instance = {
         application: application.entrypoint(compositor, manager, this.apis),
         context: new ApplicationContext(path, compositor),
@@ -205,11 +208,12 @@ export class ApplicationManager implements BaseApplicationManager {
 
       this.processes.push(instance);
 
+      console.log('[ApplicationManager] Sending application-open event');
       instance.application.on(createApplicationOpenEvent(true, args));
 
       this.publishChanges({ kind: 'update'});
 
-      return Ok(this.processId++);
+      return ok(this.processId++);
     }
   }
 
@@ -239,19 +243,27 @@ export class ApplicationManager implements BaseApplicationManager {
 
         return this.openFileSystemNode(target, targetPath, args);
       };
-      default: return Err(Error("Not yet implemented"))
+      default: return err(Error("Not yet implemented"))
     }
   }
 
   open(argument: string): Result<number, Error> {
+    console.log('[ApplicationManager] open() called with argument:', argument);
     const parts = parseCommand(argument);
 
     const path = parts.splice(0, 1)[0] ?? '';
     const args = parts.join(' ') ?? '';
 
+    console.log('[ApplicationManager] Parsed path:', path, 'args:', args);
+
     const node = this.fileSystem.getNode(path);
 
-    if (!node.ok) { return Err(Error("File not found")); }
+    if (!node.isOk()) {
+      console.error('[ApplicationManager] File not found:', path, 'Error:', node.error);
+      return err(Error("File not found"));
+    }
+
+    console.log('[ApplicationManager] Node found:', node.value.kind);
 
     const value = node.value;
 

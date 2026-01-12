@@ -2,7 +2,7 @@ import { WindowProps } from "@/components/WindowManagement/WindowCompositor";
 import Image from 'next/image';
 import styles from './SkillsView.module.css';
 import getPublicPath from '@/lib/getPublicPath';
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 
 function SkillEntry(props: { skill: string, iconSrc?: string, iconAlt?: string }) {
   const { skill, iconSrc, iconAlt } = props;

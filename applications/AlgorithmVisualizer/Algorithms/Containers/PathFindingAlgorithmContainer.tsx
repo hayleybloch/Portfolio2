@@ -3,7 +3,7 @@ import styles from "./AlgorithmContainer.module.css";
 import { AreaGraph } from "@/components/GraphViewer/GraphViewer";
 import { Area, AreaView, generateMaze, generateOpenFieldArea, generatePipes } from "./AreaView";
 import { PathFindingAlgorithmContainerProps } from "./Containers";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import { PathFindingGenerationStrategyDropdown, DataGenerationEntriesInput } from "../../Home/Home";
 import { pointMagnitude } from "@/applications/math";
 

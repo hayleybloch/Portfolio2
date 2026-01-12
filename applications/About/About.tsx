@@ -43,7 +43,8 @@ export class AboutApplication extends Application {
     const height  = window.innerHeight * 0.85 - y;
     const x       = (window.innerWidth - width) / 2;
 
-    return this.compositor.open({
+    console.log('[About] Creating window with dimensions:', { x, y, width, height });
+    const win = this.compositor.open({
       x, y,
       height,
       width,
@@ -52,16 +53,21 @@ export class AboutApplication extends Application {
       args: event.args,
       generator: () => { return View; }
     });
+    console.log('[About] Window created:', win);
+    return win;
   }
 
   on(event: ApplicationEvent, windowContext?: WindowContext): void {
     this.baseHandler(event, windowContext);
+
+    console.log('[About] Event received:', event.kind);
 
     if (event.kind === 'about-open-contact-event') {
       this.manager.open('/Applications/Contact.app');
     }
 
     if (event.kind === 'application-open') {
+      console.log('[About] Opening About window...');
       this.createNewWindow(event);
     };
 

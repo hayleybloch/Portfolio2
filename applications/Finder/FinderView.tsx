@@ -6,9 +6,9 @@ import styles from './FinderView.module.css';
 import { Application } from "../ApplicationManager";
 import React from "react";
 import { Chain, Node } from "@/data/Chain";
-import { Err, Ok, Result } from "neverthrow";
+import { err, ok, Result } from "neverthrow";
 import { constructPath, generateUniqueNameForDirectory } from "@/apis/FileSystem/util";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import { ScreenResolution } from "@/apis/Screen/ScreenService";
 
 function getFileSystemDirectoryByPath(application: Application, path: string): Result<FileSystemDirectory, Error> {
@@ -17,9 +17,9 @@ function getFileSystemDirectoryByPath(application: Application, path: string): R
   const node = application.apis.fileSystem.getNode(path);
 
   if (!node.ok) { return node }
-  if (node.value.kind !== 'directory') { return Err(Error("node type is not a directory")); }
+  if (node.value.kind !== 'directory') { return err(Error("node type is not a directory")); }
 
-  return Ok(node.value);
+  return ok(node.value);
 }
 
 function buildPathNodesFromDirectoryEntry(node: FileSystemNode): FileSystemDirectory[] {

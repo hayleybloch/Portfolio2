@@ -4,7 +4,7 @@ import { TerminalConnector } from "./TerminalApplicationView";
 import ansiColors from "ansi-colors";
 import { parseCommand } from "@/apis/FileSystem/CommandEncoding";
 import { getAbsolutePathFromArgs, getFileNameParts } from "@/programs/Programs";
-import { Err, Ok, Result } from "neverthrow";
+import { err, ok, Result } from "neverthrow";
 import { FileSystem } from "@/apis/FileSystem/FileSystem";
 import { isUniqueFile, pathLastEntry, pathPop } from "@/apis/FileSystem/util";
 import { stripAnsi } from "./TerminalManager";
@@ -202,39 +202,39 @@ export class Shell {
       const rootPath = pathPop(path);
       const fileName = pathLastEntry(path);
 
-      if (!fileName) { return Err('output redirection: Invalid file name'); }
+      if (!fileName) { return err('output redirection: Invalid file name'); }
 
       const rootDirectoryResult = fs.getDirectory(rootPath);
-      if (!rootDirectoryResult.ok) { return Err(`output redirection: ${rootPath}: No such file or directory`);  }
+      if (!rootDirectoryResult.ok) { return err(`output redirection: ${rootPath}: No such file or directory`);  }
 
       const root = rootDirectoryResult.value;
 
       if (!root.editableContent) {
-        return Err(`output redirection: ${path}: Read-only file system`);
+        return err(`output redirection: ${path}: Read-only file system`);
       }
 
       if (!isUniqueFile(root, fileName)) {
-        return Err(`output redirection: ${fileName}: File exists`);
+        return err(`output redirection: ${fileName}: File exists`);
       }
 
       const { base, extension } = getFileNameParts(fileName);
 
       fs.addTextFile(root, base, content, true, extension);
 
-      return Ok(null);
+      return ok(null);
     }
 
     function appendToExistingOutputFile(fs: FileSystem, path: string, content: string): Result<null, string> {
       const nodeResult = fs.getNode(path);
-      if (!nodeResult.ok) { return Err('output redirection: Invalid file to append content to'); }
+      if (!nodeResult.ok) { return err('output redirection: Invalid file to append content to'); }
 
       const node = nodeResult.value;
 
-      if(node.kind !== 'textfile') { return Err('output redirection: Invalid file or directory it needs to be a text file')}
+      if(node.kind !== 'textfile') { return err('output redirection: Invalid file or directory it needs to be a text file')}
 
       node.content += content;
 
-      return Ok(null);
+      return ok(null);
     }
 
     function writeOutputToFile(shell: Shell, fileName: string, output: string[], fs: FileSystem): Result<null, string> {

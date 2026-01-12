@@ -7,7 +7,7 @@ import { Point, Rectangle, pointIndexInsideAnyRectangles, pointInsideAnyRectangl
 import { Chain } from '../../data/Chain';
 import { DragAndDropSession, FileSystemItemDragData, FileSystemItemDragDrop, FileSystemItemDragEnter, FileSystemItemDragEvent, FileSystemItemDragLeave, FileSystemItemDragMove } from '@/apis/DragAndDrop/DragAndDrop';
 import { clamp } from '../util';
-import { Err, Ok, Result } from "neverthrow";
+import { err, ok, Result } from "neverthrow";
 import { SystemAPIs } from '../OperatingSystem';
 import { constructPath, generateUniqueNameForDirectory } from '@/apis/FileSystem/util';
 
@@ -688,9 +688,9 @@ export function FolderView(props: FolderViewProps) {
     const first = evt.detail.nodes[0] ?? null;
 
     const dir = fs.getDirectory(currentDirectory.current);
-    if (!dir.ok) { return Err(Error("Unable to lookup currentDirectory")); }
+    if (!dir.ok) { return err(Error("Unable to lookup currentDirectory")); }
 
-    if (!first) { return Ok(dir.value); }
+    if (!first) { return ok(dir.value); }
 
     for (const node of evt.detail.nodes) {
       selectedFiles.add(node.item.id);
@@ -711,11 +711,11 @@ export function FolderView(props: FolderViewProps) {
       const hit = pointInsideAnyRectangles(pos, hitBox);
 
       if (hit) {
-        return Ok(file);
+        return ok(file);
       }
     }
     
-    return Ok(dir.value);
+    return ok(dir.value);
   }
 
   function onFileDrop(evt: FileSystemItemDragEvent) {

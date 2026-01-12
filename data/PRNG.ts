@@ -1,4 +1,4 @@
-import { Err, Ok, Result } from "neverthrow";
+import { err, ok, Result } from "neverthrow";
 
 function normalize(value: number, min: number, max: number): number {
   return min + value * (max - min);
@@ -12,10 +12,10 @@ export class PRNG {
   }
 
   public random(min: number = 0, max: number = 1): Result<number, Error> {
-    if (min > max) { return Err(Error('The minimum value must be below the maximum value')); }
-    if (min === max) { return Err(Error('The minimum value cannot equal the maximum value')); }
+    if (min > max) { return err(Error('The minimum value must be below the maximum value')); }
+    if (min === max) { return err(Error('The minimum value cannot equal the maximum value')); }
 
-    return Ok(normalize(this.sfc32(), min, max));
+    return ok(normalize(this.sfc32(), min, max));
   }
 
   // https://github.com/bryc/code/blob/master/jshash/PRNGs.md

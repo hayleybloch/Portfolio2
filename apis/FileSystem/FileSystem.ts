@@ -1,6 +1,6 @@
 import { Application, ApplicationConfig } from "@/applications/ApplicationManager";
 import { Action } from "../../components/util";
-import { Err, Ok, Result } from "neverthrow";
+import { err, ok, Result } from "neverthrow";
 import { debugConfig } from "@/applications/Debug/DebugApplication";
 import { aboutConfig } from "@/applications/About/About";
 import { LocalWindowCompositor } from "../../components/WindowManagement/LocalWindowCompositor";
@@ -276,18 +276,29 @@ export function getIconFromNode(node: FileSystemNode): ApplicationIcon {
 }
 
 export function createBaseFileSystem(): FileSystem {
+  console.log('[FileSystem] createBaseFileSystem() called');
   const fileSystem = new FileSystem();
+  console.log('[FileSystem] FileSystem instance created');
   const rootEntry = fileSystem.getDirectory('/');
 
-  if (!rootEntry.ok) { return fileSystem; }
+  if (!rootEntry.isOk()) {
+    console.error('[FileSystem] Root directory not found!');
+    return fileSystem;
+  }
   const root = rootEntry.value;
+  console.log('[FileSystem] Root directory found');
 
+  console.log('[FileSystem] About to initialize icons and directories');
   const applicationFolderIcon = { src: getPublicPath('/icons/icon-applications-folder.png'), alt: 'Application folder' };
   const documentsFolderIcon =  { src: getPublicPath('/icons/icon-documents-folder.png'), alt: 'Documents folder' };
+  console.log('[FileSystem] Icons initialized');
 
   // Create base file tree
+  console.log('[FileSystem] About to create Applications directory');
   const applications = fileSystem.addDirectory(root, 'Applications', false, false, applicationFolderIcon);
+  console.log('[FileSystem] Applications directory created:', applications.name);
 
+  console.log('[FileSystem] About to add applications');
   fileSystem.addApplication(finderConfig);
   fileSystem.addApplication(contactConfig);
   fileSystem.addApplication(aboutConfig);
@@ -358,7 +369,7 @@ export function addDebugAppToFileSystem(fs: FileSystem): void {
 export function removeDebugAppFromFileSystem(fs: FileSystem): void {
   const debugApplication = fs.getApplication('/Applications/Debug.app');
 
-  if (!debugApplication.ok) { return; }
+  if (!debugApplication.isOk()) { return; }
 
   fs.removeNodeFromDirectory(debugApplication.value);
 }
@@ -489,11 +500,11 @@ export function calculateNodePosition(
 export function findNodeInDirectoryChain(directory: FileSystemDirectory, node: FileSystemNode): Result<Node<DirectoryEntry>, Error> {
   for (const entry of directory.children.iterFromTail()) {
     if (entry.value.node.id === node.id) {
-      return Ok(entry);
+      return ok(entry);
     }
   }
 
-  return Err(Error("Unable to find node within the directory chain"));
+  return err(Error("Unable to find node within the directory chain"));
 }
 
 function isParentOfTargetDirectory(directory: FileSystemDirectory, node: FileSystemNode): boolean {
@@ -571,8 +582,11 @@ export class FileSystem {
   private nodeListeners: Record<number, (NodeListener)[]> = {};
 
   constructor() {
+    console.log('[FileSystem] Constructor called');
     this.root = createRootNode();
+    console.log('[FileSystem] Root node created:', this.root.kind, this.root.name);
     this.lookupTable['/'] = this.root;
+    console.log('[FileSystem] Root added to lookupTable, keys:', Object.keys(this.lookupTable));
     this.id = 1; // Root is already 0
   }
 
@@ -603,13 +617,18 @@ export class FileSystem {
   }
 
   public getNode(path: string): Result<FileSystemNode, Error> {
-    const node = this.lookupTable[getAbsolutePath(path)];
+    const absolutePath = getAbsolutePath(path);
+    console.log('[FileSystem] getNode called with path:', path, '-> absolute:', absolutePath);
+    console.log('[FileSystem] lookupTable has keys:', Object.keys(this.lookupTable));
+    const node = this.lookupTable[absolutePath];
 
     if (!node) {
-      return Err(Error("Node not found"));
+      console.error('[FileSystem] Node not found in lookupTable for path:', absolutePath);
+      return err(Error("Node not found"));
     }
 
-    return Ok(node);
+    console.log('[FileSystem] Node found:', node.kind, node.name);
+    return ok(node);
   }
 
   private updateLookupTableWithPrefix(prefix: string) {
@@ -617,25 +636,23 @@ export class FileSystem {
       .filter(([key]) => key.startsWith(prefix))
       .forEach(([path, node]) => {
         delete this.lookupTable[path];
-
         const newLookupPath = constructPath(node);
         this.lookupTable[newLookupPath] = node;
-
-        this.propagateNodeEvent(node, {kind: 'rename', path: newLookupPath});
+        this.propagateNodeEvent(node, { kind: 'rename', path: newLookupPath });
       });
   }
 
   public renameAndMove(node: FileSystemNode, name: string, directory: FileSystemDirectory): Result<DirectoryEntry, Error> {
     if (isParentOfTargetDirectory(directory, node)) {
-      return Err(Error("Node is a parent of the target directory"));
+      return err(Error("Node is a parent of the target directory"));
     }
 
     if (!isEditable(node)) {
-      return Err(Error("Node or target directory is not editable"));
+      return err(Error("Node or target directory is not editable"));
     }
 
     if (!targetDirectoryAllowsModification(directory)) {
-      return Err(Error("Target directory does not allow modification"));
+      return err(Error("Target directory does not allow modification"));
     }
 
     const oldLookupPath = constructPath(node);
@@ -656,23 +673,23 @@ export class FileSystem {
     this.propagateNodeEvent(node, { kind: 'rename', path: newLookupPath });
     this.propagateNodeEvent(node.parent!, { kind: 'update' });
 
-    return Ok(entry);
+     return ok(entry);
   }
 
   public renameNode(node: FileSystemNode, name: string): Result<FileSystemNode, Error> {
     // We only check for a duplicate names
     if (!node.parent) {
-      return Err(Error("A parent is required, to rename the directory"));
+      return err(Error("A parent is required, to rename the directory"));
     }
 
     // We allow any other name, like Apple's HFS+
     if (!isUniqueFile(node.parent, name)) {
-      return Err(Error("Duplicate filename"));
+      return err(Error("Duplicate filename"));
     }
 
     // We need the name to be at the very least 1 character
     if (name.length < 1) {
-      return Err(Error("The name is too short"));
+      return err(Error("The name is too short"));
     }
 
     const oldLookupPath = constructPath(node);
@@ -688,21 +705,21 @@ export class FileSystem {
     this.propagateNodeEvent(node, { kind: 'rename', path: newLookupPath });
     this.propagateNodeEvent(node.parent, { kind: 'update' });
 
-    return Ok(node);
+     return ok(node);
   }
 
   public moveNode(node: FileSystemNode, directory: FileSystemDirectory): Result<DirectoryEntry, Error> {
     // Check if the node was a parent of the target directory
     if (isParentOfTargetDirectory(directory, node)) {
-      return Err(Error("Node is a parent of the target directory"));
+      return err(Error("Node is a parent of the target directory"));
     }
 
     if (!isEditable(node)) {
-      return Err(Error("Node or target directory is not editable"));
+      return err(Error("Node or target directory is not editable"));
     }
 
     if (!targetDirectoryAllowsModification(directory)) {
-      return Err(Error("Target directory does not allow modification"));
+      return err(Error("Target directory does not allow modification"));
     }
 
     if (targetMovedInSameDirectory(directory, node)) {
@@ -712,10 +729,10 @@ export class FileSystem {
         .find((entry: DirectoryEntry) => { return entry.node.id === node.id; });
 
       if (!originalDirectoryEntry) {
-        return Err(Error("Parent moved in the same directory, but cannot be found in the directory listing"));
+        return err(Error("Parent moved in the same directory, but cannot be found in the directory listing"));
       }
 
-      return Ok(originalDirectoryEntry);
+      return ok(originalDirectoryEntry);
     }
 
     const oldLookupPath = constructPath(node);
@@ -736,60 +753,73 @@ export class FileSystem {
       this.updateLookupTableWithPrefix(oldLookupPath);
     }
 
-    return Ok(entry);
+    return ok(entry);
   }
 
   public getApplication(path: string): Result<FileSystemApplication, Error> {
     const node = this.getNode(path);
 
-    if (!node.ok) { return node; }
+    if (!node.isOk()) { return node; }
 
     if (node.value.kind !== 'application') {
-      return Err(Error("Node is not an application"))
+      return err(Error("Node is not an application"))
     }
 
-    return Ok(node.value);
+    return ok(node.value);
   }
 
   public getDirectory(path: string): Result<FileSystemDirectory, Error> {
+    console.log('[FileSystem] getDirectory called with path:', path);
     if (!path.endsWith('/')) { path += '/'; }
+    console.log('[FileSystem] getDirectory normalized path:', path);
 
     const node = this.getNode(path);
+    console.log('[FileSystem] getDirectory getNode result:', node.isOk(), node.isOk() ? node.value.kind : node.error);
 
-    if (!node.ok) { return node; }
+    if (!node.isOk()) { return node; }
 
     if (node.value.kind !== 'directory') {
-      return Err(Error("Node is not a directory"));
+      console.error('[FileSystem] Node is not a directory, kind:', node.value.kind);
+      return err(Error("Node is not a directory"));
     }
 
-    return Ok(node.value);
+    console.log('[FileSystem] getDirectory returning ok with directory');
+    return ok(node.value);
   }
 
   public getImage(path: string): Result<FileSystemImage, Error> {
     const node = this.getNode(path);
 
-    if (!node.ok) { return node; }
+    if (!node.isOk()) { return node; }
 
     if (node.value.kind !== 'image') {
-      return Err(Error("Node is not an image"))
+      return err(Error("Node is not an image"))
     }
 
-    return Ok(node.value);
+    return ok(node.value);
   }
 
   public addApplication(config: ApplicationConfig): Result<FileSystemApplication, Error> {
+    console.log('[FileSystem] addApplication called for:', config.appName, 'at path:', config.path);
+    console.log('[FileSystem] lookupTable keys:', Object.keys(this.lookupTable));
     const parent = this.lookupTable[config.path];
-    if (parent.kind !== 'directory') { return Err(Error("Parent is not a directory")); }
+    console.log('[FileSystem] parent found:', parent?.kind, parent?.name);
+    if (!parent || parent.kind !== 'directory') {
+      console.error('[FileSystem] Parent is not a directory or not found');
+      return err(Error("Parent is not a directory"));
+    }
 
     const application = createApplication(++this.id, parent, config.appName, config.appIcon, config.entrypoint);
 
     this.addNodeToDirectory(parent, application);
 
-    this.lookupTable[constructPath(application)] = application;
+    const appPath = constructPath(application);
+    console.log('[FileSystem] Application created at path:', appPath);
+    this.lookupTable[appPath] = application;
 
     this.propagateNodeEvent(parent, { kind: 'update' });
 
-    return Ok(application);
+    return ok(application);
   }
 
   public addProgram(parent: FileSystemDirectory, config: ProgramConfig): FileSystemProgram {
@@ -877,7 +907,7 @@ export class FileSystem {
     if (!parentDirectory) { return; }
 
     const chainNode = findNodeInDirectoryChain(parentDirectory, node);
-    if (!chainNode.ok) { return; }
+    if (!chainNode.isOk()) { return; }
 
     const result = chainNode.value;
     parentDirectory.children.unlink(result);

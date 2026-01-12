@@ -3,7 +3,7 @@ import { SortView, SortViewEntry, verifySort } from "./SortingView";
 import { BarGraph } from "@/components/GraphViewer/GraphViewer";
 import { DataGenerationEntriesInput, SortingGenerationStrategyDropdown } from "../../Home/Home";
 import styles from "./AlgorithmContainer.module.css";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import { SortingAlgorithmContainerProps } from "./Containers";
 
 export type SortingDataGenerationStrategy = 'randomly-distributed' | 'sorted-left-to-right' | 'sorted-right-to-left';

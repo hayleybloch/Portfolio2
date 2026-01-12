@@ -1,8 +1,8 @@
+import React, { useEffect, useRef, useState } from 'react';
 import { WindowProps } from '@/components/WindowManagement/WindowCompositor';
-import { useEffect, useRef, useState } from 'react';
 import styles from './AboutView.module.css';
 import { BaseApplicationManager } from '../ApplicationManager';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { TFunction } from 'i18next';
 import { ProjectAnimatronicHead, ProjectWoodenRecordPlayer, ProjectFlameThrowerGlove, ProjectRockPaperScissorsHand, ProjectTTrexRobot } from './Projects';
 import getPublicPath from '@/lib/getPublicPath';

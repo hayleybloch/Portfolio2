@@ -3,7 +3,7 @@ import { SystemAPIs } from "@/components/OperatingSystem";
 import { FileSystem, FileSystemDirectory } from "@/apis/FileSystem/FileSystem";
 import { ProgramConfig, getAbsolutePathFromArgs } from "../Programs";
 import { isUniqueFile, pathLastEntry, pathParts, pathPop } from "@/apis/FileSystem/util";
-import { unwrap } from "neverthrow";
+// Removed invalid neverthrow named import; use Result.unwrap() instance method instead
 
 function createDirectory(shell: Shell, fs: FileSystem, root: FileSystemDirectory, directory: string, path: string): boolean {
   if (!root.editableContent) {
@@ -47,7 +47,7 @@ function createIntermediateDirectory(shell: Shell, fs: FileSystem, path: string)
   if (!directory) { return; }
 
   let currentPath = '/';
-  let currentNode = unwrap(fs.getDirectory(currentPath))!;
+  let currentNode = fs.getDirectory(currentPath).unwrap();
 
   let part: string | undefined;
 
@@ -60,7 +60,7 @@ function createIntermediateDirectory(shell: Shell, fs: FileSystem, path: string)
       const createdDirectory = createDirectory(shell, fs, currentNode, part, path);
       if (!createdDirectory) { return; }
 
-      currentNode = unwrap(fs.getDirectory(currentPath))!;
+      currentNode = fs.getDirectory(currentPath).unwrap();
     } else {
       const node = nodeResult.value;
 

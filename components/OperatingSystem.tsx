@@ -75,11 +75,39 @@ function clickedInteractiveWindowElement(element: HTMLElement): boolean {
 }
 
 export const OperatingSystem = () => {
+  console.log('[OperatingSystem] Component rendering');
   const ref = useRef<HTMLDivElement>(null);
   const touchOrigin = useRef<TouchData | null>(null);
 
   const initialCamera = useRef<Camera | null>(null);
   const camera = useRef<Camera | null>(null);
+  const isEmbedded = typeof window !== 'undefined' && window.parent !== window;
+  console.log('[OperatingSystem] isEmbedded:', isEmbedded);
+
+  const sendToParent = (message: Parameters<typeof sendRequestToParent>[0]) => {
+    if (!isEmbedded) { return; }
+    sendRequestToParent(message);
+  };
+
+  const ensureDefaultCamera = () => {
+    if (initialCamera.current && camera.current) { return; }
+    const fallback = new Camera(1, 5, 3, 0, 2, 0, 2);
+    initialCamera.current = fallback;
+    camera.current = new Camera(
+      fallback.minZoom,
+      fallback.maxZoom,
+      fallback.currentZoom,
+      fallback.horizontalOffset,
+      fallback.maxHorizontalOffset,
+      fallback.verticalOffset,
+      fallback.maxVerticalOffset,
+    );
+  };
+
+  const setResolutionFromWindow = () => {
+    if (typeof window === 'undefined') { return; }
+    apis.screen.setResolution(window.innerWidth, window.innerHeight);
+  };
 
   function handleGestureStart(evt: Event): void {
     evt.preventDefault();
@@ -91,7 +119,7 @@ export const OperatingSystem = () => {
       if (target) { evt.preventDefault(); }
     }
 
-    sendRequestToParent({ method: 'camera_zoom_distance_request' });
+    sendToParent({ method: 'camera_zoom_distance_request' });
 
     if (evt.touches.length === 2) {
       touchOrigin.current = TouchData.fromTouchEvent('start', evt);
@@ -147,7 +175,7 @@ export const OperatingSystem = () => {
     }
 
     // Send *potential* camera state to parent
-    sendRequestToParent({
+    sendToParent({
       method: 'set_possible_camera_parameters_request',
       currentZoom: cam.currentZoom,
       horizontalOffset: cam.horizontalOffset,
@@ -161,7 +189,7 @@ export const OperatingSystem = () => {
 
     const cam = camera.current;
 
-    sendRequestToParent({
+    sendToParent({
       method: 'set_camera_parameters_request',
       currentZoom: cam.currentZoom,
       verticalOffset: cam.verticalOffset,
@@ -184,21 +212,30 @@ export const OperatingSystem = () => {
   }
 
   useEffect(() => {
+    console.log('[OperatingSystem] useEffect mounting...');
     system.init();
+    ensureDefaultCamera();
 
     if (system.isDebug()) { addDebugAppToFileSystem(fileSystem); }
 
+    console.log('[OperatingSystem] About to open Finder and About');
     applicationManager.open('/Applications/Finder.app');
     applicationManager.open('/Applications/About.app');
+    console.log('[OperatingSystem] Opened Finder and About');
 
     if (ref.current) {
       disableBrowserZoomTouchInteraction(ref.current)
     }
 
-    const handleParentEvent = handleParentResponsesClosure(initialCamera, camera, apis);
-    window.addEventListener('message', handleParentEvent, false);
+    setResolutionFromWindow();
+    const onResize = () => setResolutionFromWindow();
+    window.addEventListener('resize', onResize);
 
-    sendRequestToParent({ method: 'mounted' });
+    const handleParentEvent = handleParentResponsesClosure(initialCamera, camera, apis);
+    if (isEmbedded) {
+      window.addEventListener('message', handleParentEvent, false);
+      sendRequestToParent({ method: 'mounted' });
+    }
 
     return () => {
       // Needs to be done, due to this class also opening files in the application manager
@@ -211,7 +248,10 @@ export const OperatingSystem = () => {
         enableBrowserZoomTouchInteraction(ref.current);
       }
 
-      window.removeEventListener('message', handleParentEvent, false);
+      if (isEmbedded) {
+        window.removeEventListener('message', handleParentEvent, false);
+      }
+      window.removeEventListener('resize', onResize);
     }
   }, []);
 

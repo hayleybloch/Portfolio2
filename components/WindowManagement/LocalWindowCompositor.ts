@@ -13,7 +13,9 @@ export class LocalWindowCompositor {
   }
 
   public open(config: WindowConfig): Window {
+    console.log('[LocalWindowCompositor] Opening window:', config.title);
     const window = this.compositor.open(config);
+    console.log('[LocalWindowCompositor] Window opened with ID:', window.id);
 
     this.instances[window.id] = window;
 

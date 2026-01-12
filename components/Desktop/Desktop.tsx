@@ -86,7 +86,9 @@ export const Desktop = (props: { windowCompositor: WindowCompositor, manager: Ap
   }
 
   useEffect(() => {
+    console.log('[Desktop] Mounting, subscribing to window compositor');
     const unsubscribe = windowCompositor.subscribe((evt: WindowEvent) => {
+      console.log('[Desktop] Window event:', evt);
       dispatch(evt);
     });
 

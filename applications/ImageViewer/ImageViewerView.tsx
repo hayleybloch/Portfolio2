@@ -4,7 +4,7 @@ import { WindowProps } from "@/components/WindowManagement/WindowCompositor";
 import Image from 'next/image'
 import { useEffect, useState } from "react";
 import styles from './ImageViewerView.module.css';
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 
 function ErrorMessage(message: string) {
   return (

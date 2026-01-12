@@ -201,6 +201,8 @@ export class WindowCompositor {
       config.generator
     );
 
+    console.log('[WindowCompositor] Creating window:', { id, title: config.title, x, y, width, height });
+
     const node = this.windows.append(window);
     this.updateApplicationManager(node);
 
@@ -208,9 +210,12 @@ export class WindowCompositor {
 
     this.updateWindowOrder();
 
+    console.log('[WindowCompositor] Notifying application of window open');
     window.application.on(createWindowOpenEvent(id), { id });
 
+    console.log('[WindowCompositor] Publishing CreateWindowEvent');
     this.publish(CreateWindowEvent(window.id))
+    console.log('[WindowCompositor] Published CreateWindowEvent for window', window.id);
 
     return window;
   }

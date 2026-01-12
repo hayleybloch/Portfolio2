@@ -2,18 +2,18 @@ import { WindowProps } from "@/components/WindowManagement/WindowCompositor";
 import styles from './NotesView.module.css';
 import { useEffect, useRef, useState } from "react";
 import { Application } from "../ApplicationManager";
-import { Err, Ok, Result } from "neverthrow";
+import { err, ok, Result } from "neverthrow";
 import { FileSystemTextFile } from "@/apis/FileSystem/FileSystem";
 import { constructPath, generateUniqueNameForDirectory } from "@/apis/FileSystem/util";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 
 function getFileSystemTextNodeByPath(application: Application, path: string): Result<FileSystemTextFile, Error> {
   const node = application.apis.fileSystem.getNode(path);
 
   if (!node.ok) { return node }
-  if (node.value.kind !== 'textfile') { return Err(Error("node type is not a textfile")); }
+  if (node.value.kind !== 'textfile') { return err(Error("node type is not a textfile")); }
 
-  return Ok(node.value);
+  return ok(node.value);
 }
 
 export default function NotesApplicationView(props: WindowProps) {

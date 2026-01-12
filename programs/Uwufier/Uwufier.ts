@@ -2,7 +2,7 @@ import { Shell } from "@/applications/Terminal/Shell";
 import { SystemAPIs } from "@/components/OperatingSystem";
 import { ProgramConfig, getParameters } from "../Programs";
 import { PRNG } from "@/data/PRNG";
-import { unwrap } from "neverthrow";
+// Removed invalid neverthrow named import; use Result.unwrap() instance method instead
 import { isCapitalized, capitalize, isUpperCase, isLowerCase } from "./util";
 
 // Thresholds = 0 is never, 1 is always
@@ -67,7 +67,7 @@ function replaceWord(source: string, replacement: string, index: number, sliceLe
   return start + replacement + end;
 }
 function passesThreshold(rng: PRNG, threshold: number): boolean {
-  return unwrap(rng.random())! > (1 - threshold);
+  return rng.random().unwrap() > (1 - threshold);
 }
 
 function replaceWords(words: string[], changeTracker: Set<number>): string[] {
@@ -172,7 +172,7 @@ function emojify(words: string[], rng: PRNG): string[] {
   }
 
   function formatEmojify(word: string, rng: PRNG): string {
-    const index = Math.floor(unwrap(rng.random(0, emojiList.length))!);
+    const index = Math.floor(rng.random(0, emojiList.length).unwrap());
     const emoji = emojiList[index];
 
     const isNewLine = word[word.length - 1] === '\n';

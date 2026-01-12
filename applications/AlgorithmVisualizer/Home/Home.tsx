@@ -3,7 +3,7 @@ import { AlgorithmSubView, SubViewParams } from "../AlgorithmVisualizerView";
 
 import styles from './Home.module.css';
 import { SortingDataGenerationStrategy } from "../Algorithms/Containers/SortingAlgorithmContainer";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import { TFunction } from "i18next";
 import { AlgorithmOptions } from "../Algorithms/Containers/Containers";
 import { PathFindingDataGenerationStrategy } from "../Algorithms/Containers/PathFindingAlgorithmContainer";
