@@ -2,9 +2,10 @@
 
 const nextConfig = {
   output: 'export',
+  basePath: '/Portfolio2',
   env: {
-    NEXT_PUBLIC_BASE_PATH: '',
-    NEXT_PUBLIC_DESKTOP_BASE: ''
+    NEXT_PUBLIC_BASE_PATH: '/Portfolio2',
+    NEXT_PUBLIC_DESKTOP_BASE: '/Portfolio2'
   },
   images: { 
     unoptimized: true,
