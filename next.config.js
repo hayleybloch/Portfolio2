@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  output: 'export',
   env: {
     NEXT_PUBLIC_BASE_PATH: '',
     NEXT_PUBLIC_DESKTOP_BASE: ''
