@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  output: 'export',
-  basePath: '/Portfolio2',
+  output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
+  basePath: process.env.NODE_ENV === 'production' ? '/Portfolio2' : '',
   env: {
-    NEXT_PUBLIC_BASE_PATH: '/Portfolio2',
-    NEXT_PUBLIC_DESKTOP_BASE: '/Portfolio2'
+    NEXT_PUBLIC_BASE_PATH: process.env.NODE_ENV === 'production' ? '/Portfolio2' : '',
+    NEXT_PUBLIC_DESKTOP_BASE: process.env.NODE_ENV === 'production' ? '/Portfolio2' : ''
   },
   images: { 
     unoptimized: true,
