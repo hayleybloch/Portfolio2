@@ -115,6 +115,12 @@ function AboutSubView(params: SubViewParams) {
 
         <p>Thanks for taking the time to explore my portfolio. I hope you enjoy it as much I did enjoy developing it. If you have any questions or comments, please contact me via the <a onClick={() => openContactApp()} href='#contact'>contact application</a> or shoot me an email at <a href="mailto:hayleybloch@college.harvard.edu">hayleybloch@college.harvard.edu</a></p>
 
+        <p>
+          <a href="/Portfolio2/resume.pdf" download className="system-button" style={{display: 'inline-block', padding: '8px 16px', marginTop: '10px'}}>
+            Download Resume
+          </a>
+        </p>
+
         <h2>About Me</h2>
         <div className={styles['about-me-section']}>
           <div className={styles['about-me-text']}>
