@@ -3,7 +3,7 @@ import { SystemAPIs } from "@/components/OperatingSystem";
 import { FileSystem, FileSystemDirectory } from "@/apis/FileSystem/FileSystem";
 import { ProgramConfig, getAbsolutePathFromArgs } from "../Programs";
 import { isUniqueFile, pathLastEntry, pathParts, pathPop } from "@/apis/FileSystem/util";
-import { unwrap } from "result";
+import { unwrap } from "neverthrow";
 
 function createDirectory(shell: Shell, fs: FileSystem, root: FileSystemDirectory, directory: string, path: string): boolean {
   if (!root.editableContent) {

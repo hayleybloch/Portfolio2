@@ -2,7 +2,7 @@ import { WindowProps } from "@/components/WindowManagement/WindowCompositor";
 import styles from './NotesView.module.css';
 import { useEffect, useRef, useState } from "react";
 import { Application } from "../ApplicationManager";
-import { Err, Ok, Result } from "result";
+import { Err, Ok, Result } from "neverthrow";
 import { FileSystemTextFile } from "@/apis/FileSystem/FileSystem";
 import { constructPath, generateUniqueNameForDirectory } from "@/apis/FileSystem/util";
 import { useTranslation } from "react-i18next";

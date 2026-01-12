@@ -1,4 +1,4 @@
-import { Err, Ok, Result } from "result";
+import { Err, Ok, Result } from "neverthrow";
 
 function normalize(value: number, min: number, max: number): number {
   return min + value * (max - min);

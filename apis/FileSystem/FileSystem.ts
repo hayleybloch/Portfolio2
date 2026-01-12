@@ -1,6 +1,6 @@
 import { Application, ApplicationConfig } from "@/applications/ApplicationManager";
 import { Action } from "../../components/util";
-import { Err, Ok, Result } from "result";
+import { Err, Ok, Result } from "neverthrow";
 import { debugConfig } from "@/applications/Debug/DebugApplication";
 import { aboutConfig } from "@/applications/About/About";
 import { LocalWindowCompositor } from "../../components/WindowManagement/LocalWindowCompositor";

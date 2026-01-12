@@ -6,7 +6,7 @@ import styles from './FinderView.module.css';
 import { Application } from "../ApplicationManager";
 import React from "react";
 import { Chain, Node } from "@/data/Chain";
-import { Err, Ok, Result } from "result";
+import { Err, Ok, Result } from "neverthrow";
 import { constructPath, generateUniqueNameForDirectory } from "@/apis/FileSystem/util";
 import { useTranslation } from "react-i18next";
 import { ScreenResolution } from "@/apis/Screen/ScreenService";

@@ -4,7 +4,7 @@ import { TerminalConnector } from "./TerminalApplicationView";
 import ansiColors from "ansi-colors";
 import { parseCommand } from "@/apis/FileSystem/CommandEncoding";
 import { getAbsolutePathFromArgs, getFileNameParts } from "@/programs/Programs";
-import { Err, Ok, Result } from "result";
+import { Err, Ok, Result } from "neverthrow";
 import { FileSystem } from "@/apis/FileSystem/FileSystem";
 import { isUniqueFile, pathLastEntry, pathPop } from "@/apis/FileSystem/util";
 import { stripAnsi } from "./TerminalManager";

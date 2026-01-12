@@ -2,7 +2,7 @@ import { Shell } from "@/applications/Terminal/Shell";
 import { SystemAPIs } from "@/components/OperatingSystem";
 import { ProgramConfig, getParameters } from "../Programs";
 import { PRNG } from "@/data/PRNG";
-import { unwrap } from "result";
+import { unwrap } from "neverthrow";
 import { isCapitalized, capitalize, isUpperCase, isLowerCase } from "./util";
 
 // Thresholds = 0 is never, 1 is always

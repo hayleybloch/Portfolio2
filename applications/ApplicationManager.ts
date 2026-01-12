@@ -1,7 +1,7 @@
 import { ApplicationIcon, FileSystem, FileSystemApplication, FileSystemDirectory, FileSystemNode } from "@/apis/FileSystem/FileSystem";
 import { LocalWindowCompositor } from "@/components/WindowManagement/LocalWindowCompositor";
 import { WindowCompositor, WindowContext } from "@/components/WindowManagement/WindowCompositor";
-import { Err, Ok, Result } from "result";
+import { Err, Ok, Result } from "neverthrow";
 import { LocalApplicationManager } from "./LocalApplicationManager";
 import { ApplicationEvent, ApplicationWindowEvent, createApplicationOpenEvent, createApplicationQuitEvent } from "./ApplicationEvents";
 import { SystemAPIs } from "@/components/OperatingSystem";

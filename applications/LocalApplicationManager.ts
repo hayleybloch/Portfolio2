@@ -1,4 +1,4 @@
-import { Result } from "result";
+import { Result } from "neverthrow";
 import { ApplicationManager, BaseApplicationManager } from "./ApplicationManager";
 
 export class LocalApplicationManager implements BaseApplicationManager {

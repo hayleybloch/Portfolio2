@@ -7,7 +7,7 @@ import { Point, Rectangle, pointIndexInsideAnyRectangles, pointInsideAnyRectangl
 import { Chain } from '../../data/Chain';
 import { DragAndDropSession, FileSystemItemDragData, FileSystemItemDragDrop, FileSystemItemDragEnter, FileSystemItemDragEvent, FileSystemItemDragLeave, FileSystemItemDragMove } from '@/apis/DragAndDrop/DragAndDrop';
 import { clamp } from '../util';
-import { Err, Ok, Result } from "result";
+import { Err, Ok, Result } from "neverthrow";
 import { SystemAPIs } from '../OperatingSystem';
 import { constructPath, generateUniqueNameForDirectory } from '@/apis/FileSystem/util';
 

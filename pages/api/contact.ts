@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { Ok, Result } from 'result';
+import { Ok, Result } from 'neverthrow';
 import { z } from "zod";
 import nodemailer from "nodemailer";
 
