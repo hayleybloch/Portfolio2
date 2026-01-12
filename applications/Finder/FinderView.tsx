@@ -16,10 +16,10 @@ function getFileSystemDirectoryByPath(application: Application, path: string): R
 
   const node = application.apis.fileSystem.getNode(path);
 
-  if (!node.isOk()) { return node }
+  if (!node.isOk()) { return err(node.error); }
   if (node.value.kind !== 'directory') { return err(Error("node type is not a directory")); }
 
-  return ok(node.value);
+  return ok(node.value as FileSystemDirectory);
 }
 
 function buildPathNodesFromDirectoryEntry(node: FileSystemNode): FileSystemDirectory[] {
@@ -108,7 +108,7 @@ export default function FinderView(props: WindowProps) {
     if (!canEdit) { return; }
 
     const dir = fs.getDirectory(path);
-    if (!dir.ok) { return; }
+    if (!dir.isOk()) { return; }
 
     const template = t('filesystem.new_directory');
     const name = generateUniqueNameForDirectory(dir.value, template);
@@ -117,7 +117,7 @@ export default function FinderView(props: WindowProps) {
 
     application.compositor.prompt(windowContext.id, t('finder.create_directory_instructions'), name)
       .then((name) => {
-        if (fs.getDirectory(`${path}${name}`).ok) {
+        if (fs.getDirectory(`${path}${name}`).isOk()) {
           application.compositor.alert(windowContext.id, t('finder.create_directory_duplicated_name')).catch(noop);
           return;
         }
@@ -131,7 +131,7 @@ export default function FinderView(props: WindowProps) {
     if (!canEdit) { return; }
 
     const dir = fs.getDirectory(path);
-    if (!dir.ok) { return; }
+    if (!dir.isOk()) { return; }
 
     const template = t('filesystem.new_file');
     const name = generateUniqueNameForDirectory(dir.value, template);
@@ -140,7 +140,7 @@ export default function FinderView(props: WindowProps) {
 
     application.compositor.prompt(windowContext.id, t('finder.create_text_file_instructions'), name)
       .then((name) => {
-        if (fs.getNode(`${path}${name}.txt`).ok) {
+        if (fs.getNode(`${path}${name}.txt`).isOk()) {
           application.compositor.alert(windowContext.id, t('finder.create_text_file_duplicated_name')).catch(noop);
           return;
         }
@@ -191,7 +191,7 @@ export default function FinderView(props: WindowProps) {
     const resolution = apis.screen.getResolution();
     if (resolution) { onScreenChangeListener(resolution); }
 
-    if (directory.ok) {
+    if (directory.isOk()) {
       changeDirectory(directory.value);
       recordHistory(directory.value);
     }
@@ -212,7 +212,7 @@ export default function FinderView(props: WindowProps) {
 
   function onClickLocation(path: string) {
     const directory = getFileSystemDirectoryByPath(application, path);
-    if (directory.ok) {
+    if (directory.isOk()) {
       changeDirectory(directory.value);
       recordHistory(directory.value);
     }

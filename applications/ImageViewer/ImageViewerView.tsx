@@ -38,7 +38,7 @@ export default function ImageViewerView(props: WindowProps) {
 
   useEffect(() => {
     const imageNode = fs.getImage(path);
-    if (!imageNode.ok) { return; }
+    if (!imageNode.isOk()) { return; }
     const image = imageNode.value;
     
     const unsubscribe = fs.subscribe(image, (evt) => {

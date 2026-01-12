@@ -605,7 +605,7 @@ export function FolderView(props: FolderViewProps) {
   function reloadRenamedDirectory(event: NodeRenameEvent) {
     const dir = fs.getDirectory(event.path);
 
-    if (dir.ok) {
+    if (dir.isOk()) {
       onFileOpen(dir.value, true);
     }
   }
@@ -618,7 +618,7 @@ export function FolderView(props: FolderViewProps) {
     }
 
     const dir = fs.getDirectory(directory);
-    if (!dir.ok) { return null; }
+    if (!dir.isOk()) { return null; }
 
     currentDirectory.current = constructPath(dir.value);
 
@@ -688,7 +688,7 @@ export function FolderView(props: FolderViewProps) {
     const first = evt.detail.nodes[0] ?? null;
 
     const dir = fs.getDirectory(currentDirectory.current);
-    if (!dir.ok) { return err(Error("Unable to lookup currentDirectory")); }
+    if (!dir.isOk()) { return err(Error("Unable to lookup currentDirectory")); }
 
     if (!first) { return ok(dir.value); }
 
@@ -726,7 +726,7 @@ export function FolderView(props: FolderViewProps) {
     const folder = ref.current;
 
     const dir = fileDropGetTargetDirectory(files, evt);
-    if (!dir.ok) { return };
+    if (!dir.isOk()) { return };
 
     const placingInLocalDirectory = constructPath(dir.value) === currentDirectory.current;
     let forceUpdate = !placingInLocalDirectory;
@@ -753,7 +753,7 @@ export function FolderView(props: FolderViewProps) {
       let others: Point[] = placingInLocalDirectory ? [] : dir.value.children.toArray();
       const result = fs.moveNode(node.item, dir.value);
 
-      if (!result.ok) { continue; }
+      if (!result.isOk()) { continue; }
       const directoryEntry = result.value;
 
       let positionX: number, positionY: number;
@@ -812,7 +812,7 @@ export function FolderView(props: FolderViewProps) {
     if (!currentDirectory.current) { return; }
 
     const dir = fs.getDirectory(currentDirectory.current);
-    if (!dir.ok) { return; }
+    if (!dir.isOk()) { return; }
 
     const container = iconContainer.current;
     

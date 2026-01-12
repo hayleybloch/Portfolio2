@@ -180,7 +180,7 @@ export class Shell {
 
       // Get a program from the /bin directory
       const binaryDirResult = apis.fileSystem.getDirectory('/bin');
-      if (!binaryDirResult.ok) { return; }
+      if (!binaryDirResult.isOk()) { return; }
 
       const binaryDir = binaryDirResult.value;
 
@@ -205,7 +205,7 @@ export class Shell {
       if (!fileName) { return err('output redirection: Invalid file name'); }
 
       const rootDirectoryResult = fs.getDirectory(rootPath);
-      if (!rootDirectoryResult.ok) { return err(`output redirection: ${rootPath}: No such file or directory`);  }
+      if (!rootDirectoryResult.isOk()) { return err(`output redirection: ${rootPath}: No such file or directory`);  }
 
       const root = rootDirectoryResult.value;
 
@@ -226,7 +226,7 @@ export class Shell {
 
     function appendToExistingOutputFile(fs: FileSystem, path: string, content: string): Result<null, string> {
       const nodeResult = fs.getNode(path);
-      if (!nodeResult.ok) { return err('output redirection: Invalid file to append content to'); }
+      if (!nodeResult.isOk()) { return err('output redirection: Invalid file to append content to'); }
 
       const node = nodeResult.value;
 
@@ -243,7 +243,7 @@ export class Shell {
 
       const content = output.map(stripAnsi).join('\r\n');
 
-      if (!nodeResult.ok) {
+      if (!nodeResult.isOk()) {
         return createNewOutputFile(fs, path, content);
       } else {
         return appendToExistingOutputFile(fs, path, content);
@@ -308,9 +308,9 @@ export class Shell {
         const outputFile = getAbsolutePathFromArgs(part.output.filename, this);
         const result = writeOutputToFile(this, outputFile, this.terminal.getResponseLines(), fs);
 
-        if (!result.ok) {
+        if (!result.isOk()) {
           this.terminal.enableOutput();
-          this.getTerminal().writeResponse(result.value);
+          this.getTerminal().writeResponse(result.error);
         }
       }
     }

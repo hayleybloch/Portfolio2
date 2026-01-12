@@ -10,10 +10,10 @@ import { useTranslation } from "next-i18next";
 function getFileSystemTextNodeByPath(application: Application, path: string): Result<FileSystemTextFile, Error> {
   const node = application.apis.fileSystem.getNode(path);
 
-  if (!node.ok) { return node }
+  if (!node.isOk()) { return err(node.error); }
   if (node.value.kind !== 'textfile') { return err(Error("node type is not a textfile")); }
 
-  return ok(node.value);
+  return ok(node.value as FileSystemTextFile);
 }
 
 export default function NotesApplicationView(props: WindowProps) {
@@ -31,7 +31,7 @@ export default function NotesApplicationView(props: WindowProps) {
     const path = '/Users/hayley/Documents/';
 
     const documentsDirectory = fs.getDirectory(path);
-    if (!documentsDirectory.ok) { return; }
+    if (!documentsDirectory.isOk()) { return; }
 
     const template = t('filesystem.new_file');
     const title = generateUniqueNameForDirectory(documentsDirectory.value, template);
@@ -40,7 +40,7 @@ export default function NotesApplicationView(props: WindowProps) {
 
     application.compositor.prompt(windowContext.id, t('notes.create_file_instructions'), title)
       .then((title) => {
-        if (fs.getNode(`${path}${title}.txt`).ok) {
+        if (fs.getNode(`${path}${title}.txt`).isOk()) {
           application.compositor.alert(windowContext.id, t('notes.create_file_duplicated_name')).catch(noop);
           return;
         }
@@ -60,7 +60,7 @@ export default function NotesApplicationView(props: WindowProps) {
   function loadFile(path: string): Result<FileSystemTextFile, Error> {
     const file = getFileSystemTextNodeByPath(application, path);
 
-    if (!file.ok) { return file; }
+    if (!file.isOk()) { return file; }
     const value = file.value;
 
     setContent(value.content);
@@ -83,7 +83,7 @@ export default function NotesApplicationView(props: WindowProps) {
   useEffect(() => {
     const file = loadFile(path);
 
-    if (!file.ok) { return; }
+    if (!file.isOk()) { return; }
 
     const unsubscribe = fs.subscribe(file.value, (evt) => {
       updateWindowTitle(file.value);
