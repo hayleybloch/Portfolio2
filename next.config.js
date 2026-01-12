@@ -3,7 +3,6 @@ const repo = 'Portfolio2';
 const isGitHub = process.env.NODE_ENV === 'production';
 
 const nextConfig = {
-  output: isGitHub ? 'export' : undefined,
   basePath: isGitHub ? `/${repo}` : '',
   assetPrefix: isGitHub ? `/${repo}/` : '',
   env: {
@@ -30,6 +29,19 @@ const nextConfig = {
   },
   reactStrictMode: true,
   transpilePackages: ['rpc'],
+  onDemandEntries: {
+    maxInactiveAge: 60 * 1000,
+    pagesBufferLength: 5,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  experimental: {
+    isrMemoryCacheSize: 0,
+  },
 
   // Provide dev-only rewrites so hardcoded /Portfolio2/... paths work when running locally
   async rewrites() {

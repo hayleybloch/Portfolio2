@@ -195,7 +195,7 @@ export function ProjectAnimatronicHead(params: SubViewParams) {
           <li>2 upper eyelid servos (left/right) for asymmetric blinking</li>
           <li>2 lower eyelid servos (left/right) for complete eye aperture control</li>
         </ul>
-        <p><strong>Why this design?</strong> Linking both eyeballs to one servo ensures natural movement; humans can't independently control each eye. Separate eyelid servos enable expressions like winking. SG90 micro servos fit the constrained eye socket space.</p>
+        <p><strong>Why this design?</strong> Linking both eyeballs to one servo ensures natural movement; humans can&apos;t independently control each eye. Separate eyelid servos enable expressions like winking. SG90 micro servos fit the constrained eye socket space.</p>
 
         <h4>Eyebrows (4 Servos)</h4>
         <ul>
