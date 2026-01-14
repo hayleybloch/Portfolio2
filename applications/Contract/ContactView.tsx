@@ -16,7 +16,7 @@ export default function ContactApplicationView(props: WindowProps) {
             </div>
             
             <p className={styles['contact-info']}>
-              I'm currently a Junior at Harvard, but I'm always interested in connecting with fellow makers, engineers, and artists! Whether you want to collaborate on a project, discuss fabrication techniques, or just chat about creative technology, feel free to reach out!
+              I'm currently a Junior at Harvard pursuing my undergraduate degree, but I'm always interested in connecting with fellow makers, engineers, and artists! Whether you want to collaborate on a project, discuss fabrication techniques, or just chat about creative technology, feel free to reach out!
             </p>
 
             <div className={styles['contact-details']}>

@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "PORT=${PORT:-3001} next start",
     "lint": "next lint",
-    "build:static": "BUILD_FOR_GITHUB=true NODE_ENV=production next build"
+    "build:static": "BUILD_FOR_GITHUB=true NODE_ENV=production next build",
+    "compress": "chmod +x compress-assets.sh && ./compress-assets.sh"
   },
   "devDependencies": {
     "@types/node": "^22.7.6",

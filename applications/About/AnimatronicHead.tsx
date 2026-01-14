@@ -10,16 +10,19 @@ export function ProjectAnimatronicHead(params: SubViewParams) {
         Design and build an expressive animatronic head that demonstrates the integration of mechanical design, embedded electronics, and software control. The challenge: create a system where minimal but deliberate movements evoke genuine emotion and presence through carefully choreographed motion—proving that mechanical systems can feel alive when their behavior is designed with intention.
       </p>
 
-      <div style={{ marginBottom: '2rem' }}>
-        <video controls style={{ maxHeight: '100vh', width: 'auto', display: 'block', marginBottom: '1rem' }}>
-          <source src="images/AnimatronicHead/eyes-moving-with-skin-attached.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <video controls style={{ maxHeight: '100vh', width: 'auto', display: 'block' }}>
-          <source src="images/AnimatronicHead/Final-presenation-video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+      <ProjectImage 
+        src="images/AnimatronicHead/eyes-moving-with-skin-attached.mp4" 
+        alt="Eyes moving with skin attached"
+        caption="Eyes movement with silicone skin"
+        isVideo
+      />
+
+      <ProjectImage 
+        src="images/AnimatronicHead/Final-presenation-video.mp4" 
+        alt="Final presentation video"
+        caption="Final presentation demonstration"
+        isVideo
+      />
 
       <h3>Key Features</h3>
       <ul>

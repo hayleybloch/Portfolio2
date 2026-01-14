@@ -19,6 +19,12 @@ export function ProjectTTrexRobot(params: SubViewParams) {
         isVideo
       />
 
+      <ProjectImage 
+        src="images/TTrexRobot/final-ttrex.jpeg" 
+        alt="Final T-TREX robot"
+        caption="The completed T-TREX robot"
+      />
+
       <div className={styles['content-card']}>
         <h3>Context</h3>
         <p>
@@ -138,6 +144,20 @@ export function ProjectTTrexRobot(params: SubViewParams) {
           src="images/TTrexRobot/legs-test-2.mov" 
           alt="Refined legs test"
           caption="Improved leg mechanism test with better balance"
+          isVideo
+        />
+
+        <ProjectImage 
+          src="images/TTrexRobot/waling-ttrex.MOV" 
+          alt="Robot walking motion"
+          caption="Walking motion of the completed robot"
+          isVideo
+        />
+
+        <ProjectImage 
+          src="images/TTrexRobot/turning-movement.MOV" 
+          alt="Robot turning motion"
+          caption="Turning and rotational movement"
           isVideo
         />
 

@@ -4,7 +4,7 @@ import styles from './AboutView.module.css';
 import { BaseApplicationManager } from '../ApplicationManager';
 import { useTranslation } from 'next-i18next';
 import { TFunction } from 'i18next';
-import { ProjectAnimatronicHead, ProjectWoodenRecordPlayer, ProjectFlameThrowerGlove, ProjectRockPaperScissorsHand, ProjectTTrexRobot } from './Projects';
+import { ProjectAnimatronicHead, ProjectWoodenRecordPlayer, ProjectFlameThrowerGlove, ProjectRockPaperScissorsHand, ProjectTTrexRobot, ProjectPottery } from './Projects';
 import getPublicPath from '@/lib/getPublicPath';
 import { ScreenResolution } from '@/apis/Screen/ScreenService';
 
@@ -18,6 +18,7 @@ type SubView = (
   'project-flame-thrower' |
   'project-rock-paper-scissors' |
   'project-t-trex-robot' |
+  'project-pottery' |
   'contact'
 );
 
@@ -125,7 +126,7 @@ function AboutSubView(params: SubViewParams) {
         <div className={styles['about-me-section']}>
           <div className={styles['about-me-text']}>
             <p>
-              I work at the intersection of creative engineering, hands-on making,
+              I work at the intersection of mechanical engineering, creative fabrication,
               and entrepreneurship. At Harvard, I’ve built wearable devices,
               robotic systems, and interactive art while working in makerspaces and
               helping run programs that connect students with design, fabrication,
@@ -197,8 +198,8 @@ function ExperienceSubView(params: SubViewParams) {
     const makerStudio = (
       <>
         <p>
-          In June 2025, I joined the Harvard Innovation Labs i-Lab Maker Studio team
-          as a Teaching Assistant. I provide training, mentorship, and technical
+          In June 2025, I joined the Harvard Innovation Labs i-Lab team as the sole
+          Teaching Assistant at the Maker Studio. I provide training, mentorship, and technical
           support for students building across digital fabrication and prototyping,
           with a strong emphasis on safe equipment use and practical iteration.
         </p>
@@ -306,7 +307,7 @@ function ExperienceSubView(params: SubViewParams) {
           <h2>June 2025 – Present, Teaching Assistant, Harvard Innovation Labs Maker Studio</h2>
           {content.makerStudio}
 
-          <h2>January 2025 – October 2025, Fellow, Lemann Program on Creativity and Entrepreneurship</h2>
+          <h2>January 2025 – October 2025, Fellowship, Lemann Program on Creativity and Entrepreneurship at Harvard</h2>
           {content.lpce}
 
           <h2>April 2025 – May 2025, Hardware Engineer (Product and Operations), Halo</h2>
@@ -357,6 +358,7 @@ function ProjectsSubView(params: SubViewParams) {
           {ProjectButton('Flame Thrower Glove', 'project-flame-thrower', '/icons/icons8-flame-48.png')}
           {ProjectButton('Rock-Paper-Scissors Hand', 'project-rock-paper-scissors', '/icons/icons8-hand-peace-50.png')}
           {ProjectButton('T-TREX Robot', 'project-t-trex-robot', '/icons/icons8-dinosaur-80.png')}
+          {ProjectButton('Pottery & Ceramics', 'project-pottery', '/icons/icons8-pottery-48.png')}
         </div>
       </div>
     </div>
@@ -374,6 +376,7 @@ function RenderSubView(view: SubView, params: SubViewParams): JSX.Element {
     case 'project-flame-thrower': return ProjectFlameThrowerGlove(params);
     case 'project-rock-paper-scissors': return ProjectRockPaperScissorsHand(params);
     case 'project-t-trex-robot': return ProjectTTrexRobot(params);
+    case 'project-pottery': return ProjectPottery(params);
   }
   
   return <></>;
