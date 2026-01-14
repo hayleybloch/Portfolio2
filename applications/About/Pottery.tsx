@@ -166,5 +166,5 @@ export function ProjectPottery(params: SubViewParams) {
     </div>
   );
 
-  return <ProjectPage title="Pottery & Ceramics" content={content} params={params} />;
+  return <ProjectPage title="For Fun: Pottery & Ceramics" content={content} params={params} />;
 }

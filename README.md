@@ -62,7 +62,7 @@ This project is configured for automatic deployment to **GitHub Pages** using Gi
      - `output: 'export'` for static site generation
      - `basePath: '/Portfolio2'` for GitHub Pages subdirectory
 3. **Deploy**: The `out/` directory is deployed to the `gh-pages` branch
-4. **Live Site**: Changes appear at https://yourusername.github.io/Portfolio2/
+4. **Live Site**: Changes appear at https://hayleybloch.github.io/Portfolio2/
 
 ### Manual Deployment
 

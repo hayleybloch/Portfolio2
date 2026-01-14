@@ -358,7 +358,7 @@ function ProjectsSubView(params: SubViewParams) {
           {ProjectButton('Flame Thrower Glove', 'project-flame-thrower', '/icons/icons8-flame-48.png')}
           {ProjectButton('Rock-Paper-Scissors Hand', 'project-rock-paper-scissors', '/icons/icons8-hand-peace-50.png')}
           {ProjectButton('T-TREX Robot', 'project-t-trex-robot', '/icons/icons8-dinosaur-80.png')}
-          {ProjectButton('Pottery & Ceramics', 'project-pottery', '/icons/icons8-pottery-48.png')}
+          {ProjectButton('For Fun: Pottery & Ceramics', 'project-pottery', '/icons/icons8-pottery-48.png')}
         </div>
       </div>
     </div>
