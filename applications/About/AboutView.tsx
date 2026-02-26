@@ -195,6 +195,31 @@ function ExperienceSubView(params: SubViewParams) {
   const t = params.translate;
 
   function englishContent() {
+    const cba = (
+      <>
+        <p>
+          Since January 2026, I've been working as an Undergraduate Researcher at the Center 
+          for Bits and Atoms at the MIT Media Lab. I assist the CBA team with collaborative 
+          projects while developing my own research on rapid prototyping mechanisms and 
+          motion systems.
+        </p>
+
+        <p>
+          My primary project focuses on advancing the coreXYZ mechanism, an open-source system 
+          that enables 3D motion from three fixed motors. By reducing the weight of moving parts, 
+          the mechanism achieves faster accelerations across all three axes. I'm working to improve 
+          the existing prototype and explore belt drive alternatives to cable systems, making the 
+          mechanism more accessible for replication and wider adoption in the maker community.
+        </p>
+
+        <h3>Technologies and tools</h3>
+        <p>
+          Rapid prototyping, mechanical design, motion systems, belt and cable drive mechanisms, 
+          open-source hardware development
+        </p>
+      </>
+    );
+
     const makerStudio = (
       <>
         <p>
@@ -292,7 +317,7 @@ function ExperienceSubView(params: SubViewParams) {
       </>
     );
 
-    return { makerStudio, lpce, halo, goBabyGo, research, cleaverBrooks };
+    return { cba, makerStudio, lpce, halo, goBabyGo, research, cleaverBrooks };
   }
 
   const content = englishContent();
@@ -303,6 +328,9 @@ function ExperienceSubView(params: SubViewParams) {
         {SubViewNavigation(params)}
         <div data-subpage-content className={`${styles["subpage-content"]} ${styles["experience-content"]}`}>
           <h1 className={styles["page-h1"]}>{t("about.navigation.experience")}</h1>
+
+          <h2>January 2026 – Present, Undergraduate Researcher, Center for Bits and Atoms, MIT Media Lab</h2>
+          {content.cba}
 
           <h2>June 2025 – Present, Teaching Assistant, Harvard Innovation Labs Maker Studio</h2>
           {content.makerStudio}
