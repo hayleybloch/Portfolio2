@@ -189,7 +189,7 @@ export function ProjectImage({ src, alt, caption, isVideo = false }: ProjectImag
               onPlay={handlePlay}
               onPause={handlePause}
               onEnded={handleEnded}
-              style={isVertical === false ? { width: '100%', height: 'auto', display: 'block' } : { position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+              style={isVertical === false ? { width: '100%', height: 'auto', display: 'block' } : { position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'contain' }}
             >
               Your browser does not support the video tag.
             </video>
