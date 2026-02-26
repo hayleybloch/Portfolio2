@@ -218,7 +218,7 @@ export function ProjectImage({ src, alt, caption, isVideo = false }: ProjectImag
               className="project-image" 
               src={src} 
               alt={alt}
-              style={isVertical === false ? { width: '100%', height: 'auto', display: 'block' } : { position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              style={isVertical === false ? { width: '100%', height: 'auto', display: 'block' } : { position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
             />
           </div>
         )}
@@ -242,11 +242,11 @@ export function ProjectImage({ src, alt, caption, isVideo = false }: ProjectImag
           }}
           onClick={() => setIsFullscreen(false)}
         >
-          <div style={{ position: 'relative', maxWidth: '90vw', maxHeight: '90vh' }}>
+          <div style={{ position: 'relative', width: 'auto', height: 'auto', maxWidth: '90vw', maxHeight: '90vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <img 
               src={src} 
               alt={alt}
-              style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
+              style={{ maxWidth: '90vw', maxHeight: '90vh', width: 'auto', height: 'auto', objectFit: 'contain' }}
               onClick={(e) => e.stopPropagation()}
             />
             <button
