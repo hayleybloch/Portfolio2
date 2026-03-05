@@ -620,10 +620,44 @@
    ======================================== */
 
 @media (max-width: 768px) {
+  .subpage-home {
+    justify-content: center;
+    padding: 0.75rem 0.5rem;
+    overflow: auto;
+  }
+
+  .home-title {
+    font-size: 2.15rem;
+    text-align: center;
+    width: 100%;
+  }
+
   .home-subtitle {
     width: 100%;
     text-align: center;
     justify-content: center;
+    font-size: 1rem;
+    line-height: 1.25;
+    padding: 0 0.4rem;
+  }
+
+  .home-button-container {
+    width: 100%;
+    padding: 0 0.75rem;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .home-button,
+  .home-button.mobile {
+    margin: 0;
+    flex: 1 1 calc(50% - 0.5rem);
+    min-width: 0;
+    padding: 12px 10px;
+    font-size: 0.95rem;
+    white-space: normal;
+    word-break: break-word;
   }
 
   .subpage {
@@ -633,33 +667,33 @@
   .navigation {
     width: 100%;
     min-width: 0;
-    padding: 0.5rem 0.75rem 0.4rem 0.75rem;
+    padding: 0.35rem 0.6rem 0.3rem 0.6rem;
     border-bottom: 1px solid #d9d2c8;
   }
 
   .logo-part {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     line-height: 1.05;
   }
 
   .navigation-button-container {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 0.3rem;
-    margin-top: 0.45rem;
+    gap: 0.25rem;
+    margin-top: 0.35rem;
   }
 
   .navigation-button-container button {
     margin: 0;
     flex: 1 1 calc(50% - 0.4rem);
-    min-width: 120px;
-    padding: 6px 8px;
-    font-size: 0.82rem;
+    min-width: 0;
+    padding: 5px 6px;
+    font-size: 0.74rem;
     line-height: 1.1;
   }
 
   .subpage-content {
-    padding: 1.25rem;
+    padding: 1rem;
   }
 
   .project-page {
@@ -718,20 +752,117 @@
   }
 }
 
-@media (max-width: 480px) {
+/* Tablets / iPad sizes */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .subpage {
+    flex-direction: column;
+  }
+
   .navigation {
-    padding: 0.4rem 0.6rem 0.35rem 0.6rem;
+    width: 100%;
+    min-width: 0;
+    padding: 0.7rem 1rem 0.6rem 1rem;
+    border-bottom: 1px solid #d9d2c8;
   }
 
   .logo-part {
-    font-size: 0.95rem;
+    font-size: 1.15rem;
+    line-height: 1.1;
+  }
+
+  .navigation-button-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.5rem;
   }
 
   .navigation-button-container button {
-    flex-basis: 100%;
+    margin: 0;
+    flex: 1 1 calc(20% - 0.45rem);
+    min-width: 128px;
+    padding: 7px 10px;
+    font-size: 0.84rem;
+    line-height: 1.15;
+  }
+
+  .subpage-content {
+    padding: 1.5rem;
+  }
+
+  .home-title {
+    font-size: 2.35rem;
+    text-align: center;
+  }
+
+  .home-subtitle {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    line-height: 1.25;
+  }
+
+  .home-button-container {
+    width: 100%;
+    padding: 0 1rem;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .home-button,
+  .home-button.mobile {
+    margin: 0;
+    flex: 1 1 calc(50% - 0.6rem);
     min-width: 0;
-    padding: 6px 8px;
-    font-size: 0.78rem;
+    max-width: 320px;
+    padding: 13px 12px;
+    font-size: 0.95rem;
+    white-space: normal;
+    word-break: break-word;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-title {
+    font-size: 1.65rem;
+  }
+
+  .home-subtitle {
+    font-size: 0.85rem;
+    padding: 0 0.25rem;
+  }
+
+  .navigation {
+    padding: 0.3rem 0.45rem 0.25rem 0.45rem;
+  }
+
+  .logo-part {
+    font-size: 0.85rem;
+  }
+
+  .home-button-container {
+    padding: 0 0.5rem;
+    gap: 0.4rem;
+  }
+
+  .home-button,
+  .home-button.mobile {
+    flex-basis: calc(50% - 0.4rem);
+    padding: 10px 8px;
+    font-size: 0.82rem;
+  }
+
+  .navigation-button-container button {
+    flex-basis: calc(50% - 0.25rem);
+    min-width: 0;
+    padding: 4px 6px;
+    font-size: 0.68rem;
+  }
+
+  .subpage-content {
+    padding: 0.85rem;
   }
 
   .project-header h1 {
@@ -753,6 +884,51 @@
   .back-button {
     font-size: 0.85rem;
     padding: 10px 16px;
+  }
+}
+
+/* Very narrow devices */
+@media (max-width: 360px) {
+  .navigation-button-container button {
+    font-size: 0.62rem;
+    padding: 4px 4px;
+  }
+
+  .home-button,
+  .home-button.mobile {
+    font-size: 0.75rem;
+    padding: 9px 6px;
+  }
+}
+
+/* Landscape phones and short-height device views */
+@media (max-width: 932px) and (orientation: landscape), (max-height: 500px) {
+  .navigation {
+    padding: 0.25rem 0.45rem;
+  }
+
+  .navigation-button-container {
+    margin-top: 0.2rem;
+    gap: 0.2rem;
+  }
+
+  .navigation-button-container button {
+    flex: 1 1 calc(25% - 0.2rem);
+    font-size: 0.66rem;
+    padding: 4px 5px;
+  }
+
+  .subpage-home {
+    justify-content: flex-start;
+    padding-top: 0.5rem;
+  }
+
+  .home-title {
+    font-size: 1.6rem;
+  }
+
+  .home-subtitle {
+    font-size: 0.82rem;
   }
 }
 
