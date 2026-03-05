@@ -7,6 +7,11 @@
   box-shadow: inset -1px -1px #0a0a0a,inset 1px 1px #c8c8c8,inset -2px -2px grey,inset 2px 2px #fff;
 }
 
+.appEntries {
+  display: flex;
+  min-width: 0;
+}
+
 .spacer {
   flex: 1;
 }
@@ -63,4 +68,48 @@
 .menuContent button {
   display: block;
   white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .menuBar {
+    height: 40px;
+    padding-top: env(safe-area-inset-top);
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+
+  .appEntries {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .appEntries::-webkit-scrollbar {
+    display: none;
+  }
+
+  .menuEntry {
+    padding: 0 3px;
+  }
+
+  .menuEntry > button {
+    font-size: 0.85rem;
+    padding: 6px 7px;
+  }
+
+  .utility {
+    margin: 3px;
+    min-width: max-content;
+  }
+
+  .date {
+    padding: 0 6px;
+    font-size: 0.8rem;
+  }
+
+  .weekday,
+  .month {
+    display: none;
+  }
 }

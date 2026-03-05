@@ -4,6 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         {/* Provide CSS variables for public path and commonly-used asset URLs so CSS can reference assets consistently */}
         <style
           dangerouslySetInnerHTML={{

@@ -10,7 +10,19 @@ const calculateWindowZIndex = (order: number): number => {
   return 1000 + order * 10;
 }
 
-const calculateStyle = (window: Window): React.CSSProperties => {
+const calculateStyle = (window: Window, mobileView: boolean): React.CSSProperties => {
+  if (mobileView) {
+    return {
+      position: 'absolute',
+      display: !window.minimized ? 'block' : 'none',
+      top: `0px`,
+      left: `0px`,
+      width: `100%`,
+      height: `100%`,
+      zIndex: calculateWindowZIndex(window.order),
+    };
+  }
+
   return {
     position: 'absolute',
     display: !window.minimized ? 'block' : 'none',
@@ -578,13 +590,30 @@ export default function WindowContainer(props: { window: Window, WindowApp: Wind
   const { window, WindowApp, windowCompositor } = props;
 
   const maximized = useRef(false);
+  const [needsMobileView, setNeedsMobileView] = useState(false);
+
+  function focus() { windowCompositor.focus(window.id); }
+
+  useEffect(() => {
+    const screenApi = window.application.apis.screen;
+
+    const onScreenChangeListener = (resolution: ScreenResolution): void => {
+      setNeedsMobileView(resolution.isMobileDevice());
+    };
+
+    const unsubscribe = screenApi.subscribe(onScreenChangeListener);
+    const resolution = screenApi.getResolution();
+    if (resolution) { onScreenChangeListener(resolution); }
+
+    return () => {
+      unsubscribe();
+    };
+  }, [window.application.apis.screen]);
 
   if (props.parent === null) { return <></>; }
   const parent = props.parent;
 
-  function focus() { windowCompositor.focus(window.id); }
-
-  const style = calculateStyle(window);
+  const style = calculateStyle(window, needsMobileView);
   const header = WindowHeader(window, windowCompositor, parent, maximized);
 
   const focusedClass = window.focused ? styles.focused : '';
@@ -598,7 +627,7 @@ export default function WindowContainer(props: { window: Window, WindowApp: Wind
     <div style={style} data-window-root="true">
       <div className={styles.container}>
         {!window.focused && <div onPointerDown={focus} className={styles['focus-layer']}></div>}
-        {window.focused && <Resizable
+        {window.focused && !needsMobileView && <Resizable
           windowData={window}
           windowCompositor={windowCompositor}
           parent={parent}

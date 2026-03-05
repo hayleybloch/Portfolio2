@@ -10,6 +10,7 @@
   bottom: 0;
   pointer-events: none;
   justify-content: center;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .dockContainer {
@@ -19,6 +20,15 @@
   margin: 4px;
   background-color: #c0c0c0;
   pointer-events: all;
+  max-width: calc(100vw - 8px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.dockContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .dock-application {
@@ -68,4 +78,37 @@
 .separator {
   border-left: 1px solid black;
   margin: 7px;
+}
+
+@media (max-width: 768px) {
+  .dockContainer {
+    padding: 3px;
+    margin: 2px;
+  }
+
+  .dock-application {
+    width: 50px;
+    height: 60px;
+    margin: 0 2px;
+  }
+
+  .dock-application .dock-app-image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .dock-application .status {
+    height: 8px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+
+  .separator {
+    margin: 4px;
+  }
+
+  .dock-application:hover::after,
+  .dock-application.hovered::after {
+    display: none;
+  }
 }

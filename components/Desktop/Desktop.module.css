@@ -16,10 +16,16 @@
   
   pointer-events: none;
   width: 100%;
-  /* TODO: Change this to the eventual height of the dock */
-  height: calc(100% - 90px);
+  --dock-height: 90px;
+  height: calc(100% - var(--dock-height));
 }
 
 .applicationContainer > * {
   pointer-events: initial;
+}
+
+@media (max-width: 768px) {
+  .applicationContainer {
+    --dock-height: 76px;
+  }
 }

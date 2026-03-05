@@ -171,3 +171,21 @@
 .action-buttons button {
   margin-left: 3px;
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1px;
+  }
+
+  .content {
+    margin: 1px;
+  }
+
+  .header {
+    padding: 0 4px;
+  }
+
+  .header-title {
+    max-width: 45vw;
+  }
+}
