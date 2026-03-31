@@ -363,14 +363,21 @@ export { ExperienceSubView };
 function ProjectsSubView(params: SubViewParams) {
   const t = params.translate;
 
-  function ProjectButton(name: string, target: SubView, imageUrl: string) {
+  function ProjectButton(name: string, target: SubView, imageUrl: string, slug: string) {
+    const projectUrl = getPublicPath(`/projects/${slug}`);
+
     return (<>
-      <button className={styles['project-button']} onClick={() => params.changeParent(target) }>
-        <div>
-          <img src={getPublicPath(imageUrl)} alt={`${target} thumbnail`} width={25} height={25} />
+      <div style={{ marginBottom: '0.5rem' }}>
+        <button className={styles['project-button']} onClick={() => params.changeParent(target) }>
+          <div>
+            <img src={getPublicPath(imageUrl)} alt={`${target} thumbnail`} width={25} height={25} />
+          </div>
+          <span>{name}</span>
+        </button>
+        <div style={{ marginLeft: '0.5rem', marginTop: '0.15rem' }}>
+          <a href={projectUrl} target="_blank" rel="noreferrer">Shareable link</a>
         </div>
-        <span>{name}</span>
-      </button>
+      </div>
     </>);
   }
 
@@ -381,12 +388,12 @@ function ProjectsSubView(params: SubViewParams) {
         <h1 className={styles['page-h1']}>{t("about.navigation.projects")}</h1>
 
         <div>
-          {ProjectButton('Animatronic Humanoid Head', 'project-animatronic-head', '/icons/icons8-robot-head-67.png')}
-          {ProjectButton('Wooden Record Player', 'project-record-player', '/icons/icons8-record-player-48.png')}
-          {ProjectButton('Flame Thrower Glove', 'project-flame-thrower', '/icons/icons8-flame-48.png')}
-          {ProjectButton('Rock-Paper-Scissors Hand', 'project-rock-paper-scissors', '/icons/icons8-hand-peace-50.png')}
-          {ProjectButton('T-TREX Robot', 'project-t-trex-robot', '/icons/icons8-dinosaur-80.png')}
-          {ProjectButton('For Fun: Pottery & Ceramics', 'project-pottery', '/icons/icons8-pottery-48.png')}
+          {ProjectButton('Animatronic Humanoid Head', 'project-animatronic-head', '/icons/icons8-robot-head-67.png', 'animatronic-head')}
+          {ProjectButton('Wooden Record Player', 'project-record-player', '/icons/icons8-record-player-48.png', 'wooden-record-player')}
+          {ProjectButton('Flame Thrower Glove', 'project-flame-thrower', '/icons/icons8-flame-48.png', 'flame-thrower-glove')}
+          {ProjectButton('Rock-Paper-Scissors Hand', 'project-rock-paper-scissors', '/icons/icons8-hand-peace-50.png', 'rock-paper-scissors-hand')}
+          {ProjectButton('T-TREX Robot', 'project-t-trex-robot', '/icons/icons8-dinosaur-80.png', 't-trex-robot')}
+          {ProjectButton('For Fun: Pottery & Ceramics', 'project-pottery', '/icons/icons8-pottery-48.png', 'pottery')}
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SubViewParams, SubViewNavigation } from './AboutView';
 import styles from './AboutView.module.css';
+import getPublicPath from '@/lib/getPublicPath';
 
 // Component to detect aspect ratio and apply appropriate container style
 export function AspectRatioAwareImageContainer({ children, src, isVideo }: { children: React.ReactNode, src: string, isVideo?: boolean }) {
@@ -134,6 +135,8 @@ export function ProjectImage({ src, alt, caption, isVideo = false }: ProjectImag
   const [showLabel, setShowLabel] = useState(true);
   const [isVertical, setIsVertical] = useState<boolean | null>(null);
   const videoRef = React.useRef<HTMLVideoElement>(null);
+  const normalizedSrc = src.startsWith('/') ? src : `/${src}`;
+  const resolvedSrc = getPublicPath(normalizedSrc);
 
   React.useEffect(() => {
     if (isVideo) {
@@ -142,15 +145,15 @@ export function ProjectImage({ src, alt, caption, isVideo = false }: ProjectImag
       video.onloadedmetadata = () => {
         setIsVertical(video.videoHeight > video.videoWidth);
       };
-      video.src = src;
+      video.src = resolvedSrc;
     } else {
       const img = new Image();
       img.onload = () => {
         setIsVertical(img.naturalHeight > img.naturalWidth);
       };
-      img.src = src;
+      img.src = resolvedSrc;
     }
-  }, [src, isVideo]);
+  }, [resolvedSrc, isVideo]);
 
   const handlePlay = () => {
     setShowLabel(false);
@@ -182,8 +185,8 @@ export function ProjectImage({ src, alt, caption, isVideo = false }: ProjectImag
           <div style={containerStyle}>
             <video 
               ref={videoRef}
-              className="project-video" 
-              src={src} 
+              className="project-video"
+              src={resolvedSrc}
               controls 
               aria-label={alt}
               onPlay={handlePlay}
@@ -216,7 +219,7 @@ export function ProjectImage({ src, alt, caption, isVideo = false }: ProjectImag
           <div style={containerStyle}>
             <img 
               className="project-image" 
-              src={src} 
+              src={resolvedSrc}
               alt={alt}
               style={isVertical === false ? { width: '100%', height: 'auto', display: 'block' } : { position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
             />
@@ -244,7 +247,7 @@ export function ProjectImage({ src, alt, caption, isVideo = false }: ProjectImag
         >
           <div style={{ position: 'relative', width: 'auto', height: 'auto', maxWidth: '90vw', maxHeight: '90vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <img 
-              src={src} 
+              src={resolvedSrc}
               alt={alt}
               style={{ maxWidth: '90vw', maxHeight: '90vh', width: 'auto', height: 'auto', objectFit: 'contain' }}
               onClick={(e) => e.stopPropagation()}
