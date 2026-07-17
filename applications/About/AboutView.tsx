@@ -22,6 +22,8 @@ type SubView = (
   'contact'
 );
 
+type AnimatronicHeadVersion = 'v1' | 'v2' | 'v3';
+
 export type SubViewParams = {
   needsMobileView: boolean,
   manager: BaseApplicationManager,
@@ -400,13 +402,13 @@ function ProjectsSubView(params: SubViewParams) {
   </>);
 }
 
-function RenderSubView(view: SubView, params: SubViewParams): JSX.Element {
+function RenderSubView(view: SubView, params: SubViewParams, animatronicHeadVersion: AnimatronicHeadVersion, setAnimatronicHeadVersion: (version: AnimatronicHeadVersion) => void): JSX.Element {
   switch (view) {
     case 'home': return HomeSubView(params);
     case 'about': return AboutSubView(params);
     case 'experience': return ExperienceSubView(params);
     case 'projects': return ProjectsSubView(params);
-    case 'project-animatronic-head': return ProjectAnimatronicHead(params);
+    case 'project-animatronic-head': return ProjectAnimatronicHead(params, animatronicHeadVersion, setAnimatronicHeadVersion);
     case 'project-record-player': return ProjectWoodenRecordPlayer(params);
     case 'project-flame-thrower': return ProjectFlameThrowerGlove(params);
     case 'project-rock-paper-scissors': return ProjectRockPaperScissorsHand(params);
@@ -422,6 +424,7 @@ export default function AboutApplicationView(props: WindowProps) {
 
   const [subView, setSubView] = useState<SubView>('home');
   const [needsMobileView, setNeedsMobileView] = useState<boolean>(false);
+  const [animatronicHeadVersion, setAnimatronicHeadVersion] = useState<AnimatronicHeadVersion>('v1');
   const { t, i18n } = useTranslation("common");
 
   const apis = application.apis;
@@ -465,6 +468,10 @@ export default function AboutApplicationView(props: WindowProps) {
   }, [subView]);
 
   function changeParent(view: SubView) {
+    if (view === 'project-animatronic-head') {
+      setAnimatronicHeadVersion('v2');
+    }
+
     if (view === 'contact') {
       application.on({ kind: 'about-open-contact-event' }, windowContext);
       return;
@@ -477,15 +484,14 @@ export default function AboutApplicationView(props: WindowProps) {
     <div className="content-outer">
       <div className="content">
         <div className='content-inner' ref={contentParent}>
-          { RenderSubView(subView,
-            {
+          { RenderSubView(subView, {
               needsMobileView,
               manager: application.manager,
               changeParent,
               translate: t,
               language: i18n.language
-            }
-          ) }
+            }, animatronicHeadVersion, setAnimatronicHeadVersion)
+          }
         </div>
       </div>
     </div>

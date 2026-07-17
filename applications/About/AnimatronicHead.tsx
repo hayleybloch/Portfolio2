@@ -1,9 +1,11 @@
+'use client';
+
 import { SubViewParams } from "./AboutView";
 import { ProjectPage, ProjectImage } from "./ProjectComponents";
 import styles from "./AboutView.module.css";
 
-export function ProjectAnimatronicHead(params: SubViewParams) {
-  const content = (
+function AnimatronicHeadV1Content() {
+  return (
     <div>
       <h3>Project Goal</h3>
       <p>
@@ -338,6 +340,204 @@ export function ProjectAnimatronicHead(params: SubViewParams) {
           the intersection of mechanical design, electronics, and software in creating expressive robotic systems.
         </p>
       </div>
+    </div>
+  );
+}
+
+function AnimatronicHeadV2Content() {
+  return (
+    <div>
+      <h3>Version 2 - Personal Design & Accessibility Focus</h3>
+      <p>
+        Where Version 1 drew heavily on Will Cogley's open-source animatronic project as I was first 
+        learning about animatronics, Version 2 represented the transition to complete independent design. 
+        This iteration was driven by two core goals: create designs entirely from scratch and dramatically 
+        reduce the servo count to make animatronic head projects accessible to the everyday maker.
+      </p>
+
+      <ProjectImage 
+        src="images/AnimatronicHead/headv2.0.jpg" 
+        alt="Version 2 head front view"
+        caption="Version 2 animatronic head - front view"
+      />
+
+      <ProjectImage 
+        src="images/AnimatronicHead/headv2vid2.0.mp4" 
+        alt="Version 2 demonstration video"
+        caption="Version 2 in action - speech and expression sync"
+        isVideo
+      />
+
+      <ProjectImage 
+        src="images/AnimatronicHead/headv2.1.jpg" 
+        alt="Version 2 head side view"
+        caption="Version 2 head - side profile"
+      />
+
+      <ProjectImage 
+        src="images/AnimatronicHead/headv2vid2.1.mp4" 
+        alt="Version 2 expression demonstration"
+        caption="Expression and movement capabilities"
+        isVideo
+      />
+
+      <ProjectImage 
+        src="images/AnimatronicHead/headv2.2.jpg" 
+        alt="Version 2 head detail"
+        caption="Version 2 mechanical detail"
+      />
+
+      <ProjectImage 
+        src="images/AnimatronicHead/headv2vid2.2.mp4" 
+        alt="Version 2 presentation sync"
+        caption="Synchronized with class presentation"
+        isVideo
+      />
+
+      <ProjectImage 
+        src="images/AnimatronicHead/headv2.3.jpg" 
+        alt="Version 2 complete assembly"
+        caption="Complete Version 2 assembly"
+      />
+
+      <ProjectImage 
+        src="images/AnimatronicHead/headv2vid2.3.mp4" 
+        alt="Version 2 final demonstration"
+        caption="Final version demonstration"
+        isVideo
+      />
+
+      <div className={styles['content-card']}>
+        <h3>Design Philosophy</h3>
+        <p>
+          Rather than attempting to replicate human anatomy exactly, Version 2 pursued a "loosely inspired" 
+          approach: I modeled the structure after my own head's proportions and features. However, since 
+          mechanical constraints prevented fitting everything into a true 1:1 scale while maintaining 
+          functionality, the final design is <strong>120% the size of my head</strong>. This scaling decision 
+          actually improved accessibility—the larger form factor made internal mechanisms easier to work with 
+          during development.
+        </p>
+      </div>
+
+      <div className={styles['content-card']}>
+        <h3>Servo Reduction for Accessibility</h3>
+        <p>
+          Version 1 used 21 servos to achieve high fidelity expressions. Version 2 challenged that assumption: 
+          could meaningful expressions be achieved with significantly fewer actuators?
+        </p>
+        <ul>
+          <li><strong>Reduced servo count:</strong> Cut to approximately 12 servos through careful mechanism design</li>
+          <li><strong>Mechanical linkages:</strong> Designed passive linkages that coordinate multiple features from single servo control points</li>
+          <li><strong>Simplified mounting:</strong> Custom designs enabled faster assembly and easier troubleshooting</li>
+          <li><strong>Lower cost barrier:</strong> Fewer servos meant the project became genuinely accessible to makers with limited budgets</li>
+        </ul>
+      </div>
+
+      <div className={styles['content-card']}>
+        <h3>Speech & Presentation Synchronization</h3>
+        <p>
+          Version 2's primary purpose was demonstration through a prerecorded presentation given for a class. 
+          The head performed lip-sync'd speech with coordinated facial expressions:
+        </p>
+        <ul>
+          <li><strong>Recorded audio:</strong> Class presentation audio was processed to extract timing information</li>
+          <li><strong>Lip-sync choreography:</strong> Mouth and jaw movements triggered at precise audio timestamps</li>
+          <li><strong>Expression timing:</strong> Eyebrow, eye, and head movements choreographed to emphasize key presentation moments</li>
+          <li><strong>Demonstration impact:</strong> The synchronized presentation created an engaging demo that illustrated the intersection of mechanical design and real-time control</li>
+        </ul>
+      </div>
+
+      <div className={styles['content-card']}>
+        <h3>From Learn-By-Doing to Independent Creator</h3>
+        <p>
+          Version 2 marked the critical transition in my engineering journey. By designing every mechanism 
+          from scratch—mechanical layouts, linkage geometry, servo mounting systems, control logic—I gained 
+          deep understanding of the design tradeoffs in animatronic systems. The constraint of reducing servo 
+          count forced creative engineering solutions rather than brute-force complexity.
+        </p>
+      </div>
+
+      <div className={styles['content-card']}>
+        <h3>Key Learnings from V2</h3>
+        <ul>
+          <li><strong>Constraint breeds creativity:</strong> Working within a reduced servo budget led to more elegant mechanical solutions than the component-heavy approach of V1</li>
+          <li><strong>Scaling considerations:</strong> 120% scale proved ideal—not so large as to be unwieldy, not so small that assembly became frustrating</li>
+          <li><strong>Personal customization:</strong> Modeling after my own head created a more intuitive design process and better final proportions</li>
+          <li><strong>Synchronization challenges:</strong> Audio-driven expression timing requires careful planning but creates powerful demonstrations</li>
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+function AnimatronicHeadV3Content() {
+  return (
+    <div>
+      <p>Full demo coming soon at Open Sauce 2026!</p>
+
+      <ProjectImage 
+        src="images/AnimatronicHead/headv3.0.jpg" 
+        alt="Animatronic head version 3 preview"
+      />
+
+      <ProjectImage 
+        src="images/AnimatronicHead/headv3.1.jpg" 
+        alt="Animatronic head version 3 second preview"
+      />
+    </div>
+  );
+}
+
+export function ProjectAnimatronicHead(
+  params: SubViewParams,
+  activeVersion: 'v1' | 'v2' | 'v3',
+  setActiveVersion: (version: 'v1' | 'v2' | 'v3') => void
+) {
+  const tabStyles = {
+    tabContainer: {
+      display: 'flex',
+      gap: '1rem',
+      marginBottom: '2rem',
+      borderBottom: '2px solid #e0e0e0',
+      paddingBottom: '1rem'
+    },
+    tabButton: (isActive: boolean) => ({
+      padding: '0.5rem 1.5rem',
+      fontSize: '1rem',
+      fontWeight: isActive ? 'bold' : 'normal',
+      color: isActive ? '#8b6f47' : '#666',
+      backgroundColor: 'transparent',
+      border: 'none',
+      borderBottom: isActive ? '3px solid #8b6f47' : 'none',
+      cursor: 'pointer',
+      transition: 'all 0.2s ease'
+    })
+  };
+
+  const content = (
+    <div>
+      <div style={tabStyles.tabContainer}>
+        <button
+          style={tabStyles.tabButton(activeVersion === 'v1')}
+          onClick={() => setActiveVersion('v1')}
+        >
+          Version 1 (Original)
+        </button>
+        <button
+          style={tabStyles.tabButton(activeVersion === 'v2')}
+          onClick={() => setActiveVersion('v2')}
+        >
+          Version 2 (Next Gen)
+        </button>
+        <button
+          style={tabStyles.tabButton(activeVersion === 'v3')}
+          onClick={() => setActiveVersion('v3')}
+        >
+          Version 3 (Research)
+        </button>
+      </div>
+
+      {activeVersion === 'v1' ? <AnimatronicHeadV1Content /> : activeVersion === 'v2' ? <AnimatronicHeadV2Content /> : <AnimatronicHeadV3Content />}
     </div>
   );
   
