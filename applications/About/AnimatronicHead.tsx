@@ -473,16 +473,59 @@ function AnimatronicHeadV2Content() {
 function AnimatronicHeadV3Content() {
   return (
     <div>
-      <p>Full demo coming soon at Open Sauce 2026!</p>
+      <h3>Animatronic Head V3</h3>
+      <p>
+        Animatronic Head V3 is a fully open source, expressive robotic face designed to make animatronics
+        more accessible to makers, students, and educators. The entire system is 3D printable, uses off the
+        shelf components costing around $50, and includes complete CAD files, electronics, firmware, and
+        step by step assembly instructions.
+      </p>
+
+      <p>
+        The head features independently actuated eyebrows, eyelids, eyes, smile, and jaw, enabling a wide
+        range of facial expressions while remaining inexpensive and easy to build. Developed in collaboration
+        with Prusa and printed on the Core One L, the project serves as a platform for learning robotics,
+        mechanical design, embedded systems, and digital fabrication.
+      </p>
+
+      <ProjectImage
+        src="images/AnimatronicHead/Headv3Headshot.JPG"
+        alt="Hayley Bloch holding the Animatronic Head V3"
+        caption="Animatronic Head V3 with its creator"
+      />
+
+      <div className={styles['youtube-short']}>
+        <iframe
+          src="https://www.youtube.com/embed/FEKMwPlES3k"
+          title="Animatronic Head V3 demonstration"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        />
+      </div>
+
+      <p className={styles['youtube-link']}>
+        <a href="https://youtube.com/shorts/FEKMwPlES3k?si=K_mCHRa8GUhpwbEf" target="_blank" rel="noreferrer">
+          Watch Animatronic Head V3 on YouTube
+        </a>
+      </p>
+
+      <ProjectImage
+        src="images/AnimatronicHead/headv3CAD.png"
+        alt="CAD assembly of Animatronic Head V3"
+        caption="Complete V3 CAD assembly showing the printable structure and internal mechanisms"
+      />
 
       <ProjectImage 
         src="images/AnimatronicHead/headv3.0.jpg" 
-        alt="Animatronic head version 3 preview"
+        alt="Front view of the assembled Animatronic Head V3"
+        caption="Front view of the assembled V3 prototype"
       />
 
       <ProjectImage 
         src="images/AnimatronicHead/headv3.1.jpg" 
-        alt="Animatronic head version 3 second preview"
+        alt="Three-quarter view of the assembled Animatronic Head V3"
+        caption="Three-quarter view highlighting V3's facial mechanisms"
       />
     </div>
   );

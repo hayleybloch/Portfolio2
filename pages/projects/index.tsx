@@ -23,7 +23,6 @@ export default function ProjectsIndexPage() {
       <main style={{ minHeight: '100vh', padding: '2rem 1rem', background: '#f5f0e8' }}>
         <div style={{ maxWidth: 900, margin: '0 auto', background: '#fff', border: '1px solid #d9d2c8', padding: '1.25rem 1rem' }}>
           <h1 style={{ marginTop: 0 }}>Projects</h1>
-          <p>Shareable project links:</p>
           <ul>
             {projects.map((project) => (
               <li key={project.slug} style={{ marginBottom: '0.5rem' }}>

@@ -331,6 +331,27 @@ function ExperienceSubView(params: SubViewParams) {
         <div data-subpage-content className={`${styles["subpage-content"]} ${styles["experience-content"]}`}>
           <h1 className={styles["page-h1"]}>{t("about.navigation.experience")}</h1>
 
+          <h2>June 2026 – August 2026, Mechanical Engineering Intern, NASA Ames Research Center</h2>
+          <p>
+            During the summer of 2026, I worked as a Mechanical Engineering Intern at NASA Ames Research Center,
+            contributing to the design and development of robotic construction technologies for future lunar
+            infrastructure. Working within a multidisciplinary robotics team, I designed, prototyped, assembled, and
+            tested electromechanical systems that support autonomous in-space construction and manufacturing.
+          </p>
+
+          <p>
+            My work spanned mechanical design, embedded electronics, additive manufacturing, and hardware integration,
+            with a focus on developing reliable robotic systems capable of operating in challenging environments. The
+            role provided experience taking ideas from concept through fabrication and testing while collaborating
+            closely with engineers across multiple disciplines.
+          </p>
+
+          <h3>Technologies and tools</h3>
+          <p>
+            Mechanical design, robotics, electromechanical systems, mechanism design, rapid prototyping, hardware
+            integration, embedded electronics, additive manufacturing, CAD, 3D printing, testing and validation
+          </p>
+
           <h2>January 2026 – Present, Undergraduate Researcher, Center for Bits and Atoms, MIT Media Lab</h2>
           {content.cba}
 
@@ -365,22 +386,17 @@ export { ExperienceSubView };
 function ProjectsSubView(params: SubViewParams) {
   const t = params.translate;
 
-  function ProjectButton(name: string, target: SubView, imageUrl: string, slug: string) {
-    const projectUrl = getPublicPath(`/projects/${slug}`);
-
-    return (<>
+  function ProjectButton(name: string, target: SubView, imageUrl: string) {
+    return (
       <div style={{ marginBottom: '0.5rem' }}>
-        <button className={styles['project-button']} onClick={() => params.changeParent(target) }>
+        <button className={styles['project-button']} onClick={() => params.changeParent(target)}>
           <div>
             <img src={getPublicPath(imageUrl)} alt={`${target} thumbnail`} width={25} height={25} />
           </div>
           <span>{name}</span>
         </button>
-        <div style={{ marginLeft: '0.5rem', marginTop: '0.15rem' }}>
-          <a href={projectUrl} target="_blank" rel="noreferrer">Shareable link</a>
-        </div>
       </div>
-    </>);
+    );
   }
 
   return (<>
@@ -390,12 +406,12 @@ function ProjectsSubView(params: SubViewParams) {
         <h1 className={styles['page-h1']}>{t("about.navigation.projects")}</h1>
 
         <div>
-          {ProjectButton('Animatronic Humanoid Head', 'project-animatronic-head', '/icons/icons8-robot-head-67.png', 'animatronic-head')}
-          {ProjectButton('Wooden Record Player', 'project-record-player', '/icons/icons8-record-player-48.png', 'wooden-record-player')}
-          {ProjectButton('Flame Thrower Glove', 'project-flame-thrower', '/icons/icons8-flame-48.png', 'flame-thrower-glove')}
-          {ProjectButton('Rock-Paper-Scissors Hand', 'project-rock-paper-scissors', '/icons/icons8-hand-peace-50.png', 'rock-paper-scissors-hand')}
-          {ProjectButton('T-TREX Robot', 'project-t-trex-robot', '/icons/icons8-dinosaur-80.png', 't-trex-robot')}
-          {ProjectButton('For Fun: Pottery & Ceramics', 'project-pottery', '/icons/icons8-pottery-48.png', 'pottery')}
+          {ProjectButton('Animatronic Humanoid Head', 'project-animatronic-head', '/icons/icons8-robot-head-67.png')}
+          {ProjectButton('Wooden Record Player', 'project-record-player', '/icons/icons8-record-player-48.png')}
+          {ProjectButton('Flame Thrower Glove', 'project-flame-thrower', '/icons/icons8-flame-48.png')}
+          {ProjectButton('Rock-Paper-Scissors Hand', 'project-rock-paper-scissors', '/icons/icons8-hand-peace-50.png')}
+          {ProjectButton('T-TREX Robot', 'project-t-trex-robot', '/icons/icons8-dinosaur-80.png')}
+          {ProjectButton('For Fun: Pottery & Ceramics', 'project-pottery', '/icons/icons8-pottery-48.png')}
         </div>
       </div>
     </div>
@@ -424,7 +440,7 @@ export default function AboutApplicationView(props: WindowProps) {
 
   const [subView, setSubView] = useState<SubView>('home');
   const [needsMobileView, setNeedsMobileView] = useState<boolean>(false);
-  const [animatronicHeadVersion, setAnimatronicHeadVersion] = useState<AnimatronicHeadVersion>('v1');
+  const [animatronicHeadVersion, setAnimatronicHeadVersion] = useState<AnimatronicHeadVersion>('v3');
   const { t, i18n } = useTranslation("common");
 
   const apis = application.apis;
@@ -469,7 +485,7 @@ export default function AboutApplicationView(props: WindowProps) {
 
   function changeParent(view: SubView) {
     if (view === 'project-animatronic-head') {
-      setAnimatronicHeadVersion('v2');
+      setAnimatronicHeadVersion('v3');
     }
 
     if (view === 'contact') {
