@@ -482,6 +482,13 @@ function AnimatronicHeadV3Content() {
       </p>
 
       <p>
+        The free downloadable model is available on Printables at{' '}
+        <a href="https://www.printables.com/model/1783398-animatronic-robot-head" target="_blank" rel="noreferrer">
+          this link
+        </a>.
+      </p>
+
+      <p>
         The head features independently actuated eyebrows, eyelids, eyes, smile, and jaw, enabling a wide
         range of facial expressions while remaining inexpensive and easy to build. Developed in collaboration
         with Prusa and printed on the Core One L, the project serves as a platform for learning robotics,
