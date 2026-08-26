@@ -2,10 +2,10 @@
 
 const nextConfig = {
   output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
-  basePath: process.env.NODE_ENV === 'production' ? '/Portfolio2' : '',
+  basePath: '',
   env: {
-    NEXT_PUBLIC_BASE_PATH: process.env.NODE_ENV === 'production' ? '/Portfolio2' : '',
-    NEXT_PUBLIC_DESKTOP_BASE: process.env.NODE_ENV === 'production' ? '/Portfolio2' : ''
+    NEXT_PUBLIC_BASE_PATH: '',
+    NEXT_PUBLIC_DESKTOP_BASE: ''
   },
   images: { 
     unoptimized: true,
