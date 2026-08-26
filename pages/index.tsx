@@ -33,11 +33,55 @@ class ErrorBoundary extends React.Component<React.PropsWithChildren, { hasError:
 }
 
 export default function Home() {
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Hayley Bloch',
+    url: 'https://hayleybloch.com/',
+    sameAs: [
+      'https://github.com/hayleybloch'
+    ],
+    knowsAbout: [
+      'Robotics',
+      'Mechanical Engineering',
+      'Physical AI',
+      'Electromechanical Systems',
+      'Rapid Prototyping',
+      'Interactive Hardware'
+    ]
+  };
+
   return (
     <>
       <Head>
-        <title>Hayley Bloch - Desktop</title>
+        <title>Hayley Bloch | Robotics, Engineering & Design</title>
+        <meta
+          name="description"
+          content="Hayley Bloch is a Harvard student and engineer building robotics, physical AI, electromechanical systems, and interactive hardware."
+        />
+        <link rel="canonical" href="https://hayleybloch.com/" />
         <link rel="icon" href="/favicon.ico" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Hayley Bloch | Robotics, Engineering & Design" />
+        <meta
+          property="og:description"
+          content="Portfolio of Hayley Bloch, focused on robotics, physical AI, mechanical engineering, electromechanical systems, and interactive hardware."
+        />
+        <meta property="og:url" content="https://hayleybloch.com/" />
+        <meta property="og:site_name" content="Hayley Bloch" />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Hayley Bloch | Robotics, Engineering & Design" />
+        <meta
+          name="twitter:description"
+          content="Portfolio of Hayley Bloch, focused on robotics, physical AI, mechanical engineering, electromechanical systems, and interactive hardware."
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
       </Head>
       <main className={styles.main}>
         <ErrorBoundary>
