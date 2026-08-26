@@ -12,6 +12,7 @@ import { ProjectFlameThrowerGlove } from '@/applications/About/FlameThrowerGlove
 import { ProjectRockPaperScissorsHand } from '@/applications/About/RockPaperScissorsHand';
 import { ProjectTTrexRobot } from '@/applications/About/TTrexRobot';
 import { ProjectPottery } from '@/applications/About/Pottery';
+import SITE_URL from '@/lib/siteUrl';
 
 type ProjectSlug =
   | 'animatronic-head'
@@ -129,6 +130,7 @@ export default function ProjectSlugPage({ slug }: ProjectPageProps) {
       <Head>
         <title>{`Hayley Bloch - ${title}`}</title>
         <meta name="description" content={`${title} project page`} />
+        <link rel="canonical" href={`${SITE_URL}/projects/${slug}`} />
       </Head>
       {renderProject(slug, params)}
     </>

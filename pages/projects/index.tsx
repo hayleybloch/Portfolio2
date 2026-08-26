@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import type { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import SITE_URL from '@/lib/siteUrl';
 
 const projects = [
   { slug: 'animatronic-head', title: 'Animatronic Humanoid Head' },
@@ -17,7 +18,8 @@ export default function ProjectsIndexPage() {
     <>
       <Head>
         <title>Hayley Bloch - Projects</title>
-        <meta name="description" content="Project pages" />
+        <meta name="description" content="Browse Hayley Bloch's engineering and fabrication projects, including animatronics, robotics, and digital fabrication work." />
+        <link rel="canonical" href={`${SITE_URL}/projects`} />
       </Head>
 
       <main style={{ minHeight: '100vh', padding: '2rem 1rem', background: '#f5f0e8' }}>

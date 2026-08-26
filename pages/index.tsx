@@ -4,6 +4,7 @@ import styles from "@/styles/Home.module.css";
 import dynamic from 'next/dynamic';
 import type { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import SITE_URL from '@/lib/siteUrl';
 
 const OperatingSystem = dynamic(
   () => import("@/components/OperatingSystem").then(mod => ({ default: mod.OperatingSystem })),
@@ -59,7 +60,7 @@ export default function Home() {
           name="description"
           content="Hayley Bloch is a Harvard student and engineer building robotics, physical AI, electromechanical systems, and interactive hardware."
         />
-        <link rel="canonical" href="https://hayleybloch.com/" />
+    <link rel="canonical" href={SITE_URL} />
         <link rel="icon" href="/favicon.ico" />
 
         <meta property="og:type" content="website" />

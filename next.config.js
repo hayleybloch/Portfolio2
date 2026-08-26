@@ -1,11 +1,13 @@
 /** @type {import('next').NextConfig} */
 
+const isGitHubPagesBuild = process.env.BUILD_FOR_GITHUB === 'true';
+
 const nextConfig = {
   output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
-  basePath: '',
+  basePath: isGitHubPagesBuild ? '/Portfolio2' : '',
   env: {
-    NEXT_PUBLIC_BASE_PATH: '',
-    NEXT_PUBLIC_DESKTOP_BASE: ''
+    NEXT_PUBLIC_BASE_PATH: isGitHubPagesBuild ? '/Portfolio2' : '',
+    NEXT_PUBLIC_DESKTOP_BASE: isGitHubPagesBuild ? '/Portfolio2' : ''
   },
   images: { 
     unoptimized: true,
