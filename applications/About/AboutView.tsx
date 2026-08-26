@@ -113,7 +113,7 @@ function AboutSubView(params: SubViewParams) {
         <h1 className={styles['page-h1']}>Welcome</h1>
 
         <p>
-          I'm Hayley Bloch, a Harvard student cross‑registered at MIT exploring mechanical engineering, creative fabrication, and interactive art.
+          I'm Hayley Bloch, a Harvard student and undergraduate researcher at MIT exploring mechanical engineering, creative fabrication, and robotics.
         </p>
 
         <p>Thanks for taking the time to explore my portfolio. I hope you enjoy it as much I did enjoy developing it. If you have any questions or comments, please contact me via the <a onClick={() => openContactApp()} href='#contact'>contact application</a> or shoot me an email at <a href="mailto:hayleybloch@college.harvard.edu">hayleybloch@college.harvard.edu</a></p>

@@ -475,14 +475,16 @@ function AnimatronicHeadV3Content() {
     <div>
       <h3>Animatronic Head V3</h3>
       <p>
-        Animatronic Head V3 is a fully open source, expressive robotic face designed to make animatronics
-        more accessible to makers, students, and educators. The entire system is 3D printable, uses off the
-        shelf components costing around $50, and includes complete CAD files, electronics, firmware, and
-        step by step assembly instructions.
+        The goal of Animatronic Head V3 was to create a fully open source, expressive robotic face designed to make animatronics
+        more accessible to makers, students, and educators. To accomplish this goal, I designed the entire system to be easily 3D printable, while using off the
+        shelf components totaling in cost around $50. 
+      </p>
+      <p>
+        Making the project low cost, open source, and 3D printable matters because it lowers the barriers of who can actually use it. A lot of animatronics work is hidden behind expensive parts, proprietary designs, or a steep learning curve, which makes it hard for students, hobbyists, and smaller makers to get started. By keeping the build affordable, the project becomes more realistic for people to replicate. By making it open source, others can inspect the design, improve it, adapt it, and learn from it instead of starting from scratch. And by designing it to be easy to build and learn with, it becomes a teaching platform rather than just a finished object, which helps more people understand robotics, fabrication, and expressive mechanical design.
       </p>
 
       <p>
-        The free downloadable model is available on Printables at{' '}
+        The free downloadable model along with a BOM is available on Printables at{' '}
         <a href="https://www.printables.com/model/1783398-animatronic-robot-head" target="_blank" rel="noreferrer">
           this link
         </a>.
@@ -534,6 +536,9 @@ function AnimatronicHeadV3Content() {
         alt="Three-quarter view of the assembled Animatronic Head V3"
         caption="Three-quarter view highlighting V3's facial mechanisms"
       />
+      <p>
+        Stay tuned for a silicon skin update coming soon!
+      </p>
     </div>
   );
 }
