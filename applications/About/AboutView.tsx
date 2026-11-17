@@ -200,24 +200,32 @@ function ExperienceSubView(params: SubViewParams) {
     const cba = (
       <>
         <p>
-          Since January 2026, I've been working as an Undergraduate Researcher at the Center 
-          for Bits and Atoms at the MIT Media Lab. I assist the CBA team with collaborative 
-          projects while developing my own research on rapid prototyping mechanisms and 
-          motion systems.
+          Since January 2026, I've been conducting research at MIT's Center for Bits and Atoms,
+          exploring new approaches to mechanical design, robotics, and intelligent motion systems.
+          My work spans hardware development, computer vision, and machine learning, with a focus
+          on making robotic systems more adaptable and autonomous.
         </p>
 
         <p>
-          My primary project focuses on advancing the coreXYZ mechanism, an open-source system 
-          that enables 3D motion from three fixed motors. By reducing the weight of moving parts, 
-          the mechanism achieves faster accelerations across all three axes. I'm working to improve 
-          the existing prototype and explore belt drive alternatives to cable systems, making the 
-          mechanism more accessible for replication and wider adoption in the maker community.
+          My initial research focused on advancing <strong>coreXYZ</strong>, an open-source motion
+          system that enables three-dimensional movement using three fixed motors. I worked on
+          improving the existing prototype and exploring belt-driven alternatives to cable systems,
+          with the goal of making the mechanism easier to replicate and more accessible to the maker
+          community.
+        </p>
+
+        <p>
+          More recently, my research has focused on <strong>machine learning for machines</strong>,
+          investigating how AI agents can independently discover the kinematics of unfamiliar robotic
+          systems. I'm developing methods that combine computer vision, spatial reasoning, and
+          automated experimentation to enable robots to understand their own mechanical
+          configurations and learn how to control them without predefined models.
         </p>
 
         <h3>Technologies and tools</h3>
         <p>
-          Rapid prototyping, mechanical design, motion systems, belt and cable drive mechanisms, 
-          open-source hardware development
+          Robotics, mechanical design, rapid prototyping, computer vision, machine learning,
+          Python, motion control, kinematic modeling, open-source hardware development
         </p>
       </>
     );
@@ -331,6 +339,9 @@ function ExperienceSubView(params: SubViewParams) {
         <div data-subpage-content className={`${styles["subpage-content"]} ${styles["experience-content"]}`}>
           <h1 className={styles["page-h1"]}>{t("about.navigation.experience")}</h1>
 
+          <h2>January 2026 – Present, Visiting Student Researcher, Center for Bits and Atoms, MIT Media Lab</h2>
+          {content.cba}
+
           <h2>June 2026 – August 2026, Mechanical Engineering Intern, NASA Ames Research Center</h2>
           <p>
             During the summer of 2026, I worked as a Mechanical Engineering Intern at NASA Ames Research Center,
@@ -351,9 +362,6 @@ function ExperienceSubView(params: SubViewParams) {
             Mechanical design, robotics, electromechanical systems, mechanism design, rapid prototyping, hardware
             integration, embedded electronics, additive manufacturing, CAD, 3D printing, testing and validation
           </p>
-
-          <h2>January 2026 – Present, Undergraduate Researcher, Center for Bits and Atoms, MIT Media Lab</h2>
-          {content.cba}
 
           <h2>June 2025 – Present, Teaching Assistant, Harvard Innovation Labs Maker Studio</h2>
           {content.makerStudio}
